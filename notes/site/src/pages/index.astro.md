@@ -28,7 +28,8 @@ These address the three new pending items in CLI Web Tasks.
 
 **Follow-up fixes (same day GK):**
 - X button: replaced the SVG with the actual user-provided logo (X.jpg from Pictures/Web/General logos/ copied to public/x-logo.jpg); rendered as <img src="/x-logo.jpg" alt="X" /> inside the icon-only button.
-- X logo polish (user feedback): made the button a square w-9 h-9 with rounded-lg corners (instead of rounded-full / pill) and bigger icon (h-6 w-6) with small p-1.5 padding so the actual square logo picture fits nicely. Added dark mode filter for visibility. The button is now square-shaped with rounded corners to properly frame the provided logo image.
+- X logo polish (user feedback): made the button a square w-9 h-9 with rounded-lg corners (instead of rounded-full / pill) and bigger icon (h-6 w-6) with small p-1.5 padding so the actual square logo picture fits nicely. 
+- Fix: removed the dark mode brightness-0 invert filter on the img (it was causing the entire logo picture to render as solid white square, hiding the logo and picture). Now the actual provided picture renders with its native grayscale (dark square + X). In light: the dark square + X shows clearly on white surface. In dark: dark blends, X (white) is visible on dark button. The rounded square button properly frames the picture as requested.
 - "Local Florida Focus": removed the item from the trust row (section-box) because "it is not only florida focus is international"; the row now shows the other 4 items.
 - Builds performed after each; http://localhost:4321/ surfaced in terminal output.
 

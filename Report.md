@@ -402,9 +402,11 @@ User feedback on the X button: "The X logo can you make it a little bit bigger a
 - Updated the footer X <a> to w-9 h-9 (36px square) with rounded-lg (nice rounded corners, not full circle).
 - Icon <img> sized to h-6 w-6 (24px, bigger than previous ~14px).
 - Padding p-1.5 to frame the actual 960x960 square logo image nicely inside the square button.
-- Added dark mode filter via arbitrary variant so the grayscale logo inverts properly on dark surface.
 - Rebuilt; URL http://localhost:4321/ surfaced.
 
-This makes the button square-shaped with rounded corners that properly contains and fits the provided X logo picture.
+- Critical follow-up fix: removed the dark mode filter (the brightness-0 invert was turning the entire grayscale logo picture into a solid white square, so "Can't even see the logo now... It's just a white square."). Now the actual provided picture renders natively. The dark parts of the logo (black square bg) and bright X show via natural contrast:
+  - Light mode: dark square + X stands out on white --surface button.
+  - Dark mode: dark logo bg blends with dark --surface, white X pops cleanly (typical look for X icon on dark UIs).
+The square rounded button frames and fits the actual logo picture as requested.
 
 Updated pages/index.astro.md and this Report. Git pushed.
