@@ -1,117 +1,237 @@
-# Deployment — Publish eternalwebsite.com from GitHub
+# Deployment — Publish eternalwebsite.com from GitHub (Clear Checkbox Guide)
 
-**Source of truth:** GitHub repo `Inurath/eternal-website` (main branch). All deploys pull from there.
+**Source of truth on GitHub:** https://github.com/Inurath/eternal-website (main branch). All deploys come from here.
 
-**Current site status (2026-06-02 GK publish prep):** One-page Astro static site complete, themed, all feedback from CLI Web Tasks addressed (hero phrase "Built to Endure. Designed to Perform.", X/IG/FB footer squares, international positioning, team language only, pricing 1297/2197/3497 + optional $49/mo, Netlify Forms-ready contact form, clean build). Build: `npm run build` in `site/` produces `dist/`. Verified clean, ~17-20kB index.html.
+**Current site status:** One-page Astro + Tailwind site is complete, build-clean, all previous feedback incorporated (main phrase "Built to Endure. Designed to Perform.", your X logo filling the square, IG/FB visuals, international only, team language, pricing 1297/2197/3497 + optional $49/mo, Netlify Forms-ready contact form, etc.). `cd "site" && npm run build` produces a ready `dist/` folder.
 
-**Recommended hosting:** Netlify (free tier perfect for this: custom domain, HTTPS, form handling, instant deploys from GH, previews). Vercel is close second. cPanel static upload is fallback (since domain parking page exists on Namecheap).
+**Goal of this document:** Every single action **you** must take is a checkbox `- [ ]`.  
+After you finish a group of steps you will have clear "Checkpoint" boxes.  
+**If you get stuck:** Reply with the exact last checkbox number you checked + what you see on screen / error / dig output. This way I know precisely where you are and what to tell you next. No guessing.
 
-## 1. Netlify (Primary — Recommended)
+---
 
-### Connect from GitHub
-1. Go to https://app.netlify.com (sign up / log in with GitHub).
-2. "Add new site" → "Import an existing project".
-3. Choose GitHub → authorize if needed → select `Inurath/eternal-website` repo.
-4. **Important settings (because site/ is a subdir of the repo root):**
-   - Base directory: `site`
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - (Node version: default or 22+ fine; package has engines >=22.12)
-5. Click Deploy. First build runs from the GH main commit.
-6. Site gets a random Netlify URL like `https://random-name.netlify.app` — test it.
+## ⚠️ CRITICAL: Your Email Will NOT Break (Answer to the "Grok told me it will break email" concern)
 
-### Custom Domain (eternalwebsite.com)
-1. In Netlify site dashboard → Domain management → "Add custom domain".
-2. Enter `eternalwebsite.com` (and `www.eternalwebsite.com`).
-3. Netlify will guide DNS:
-   - **Preferred (easy):** Change nameservers at Namecheap to Netlify's (they provide 2-4 NS records like `dns1.p07.nsone.net` etc.). This moves the whole domain to Netlify DNS.
-   - **Alternative (keep Namecheap DNS):** Add CNAME for `www` → your-netlify-subdomain.netlify.app , and for apex (eternalwebsite.com) use ALIAS/ANAME or A records to Netlify's load balancer IPs (Netlify shows the exact values; usually 4 A records like 75.2.x.x etc. or use their "Apex record" helper).
-4. Once DNS propagates (minutes to hours, check with `dig eternalwebsite.com` or whatsmy dns.net), Netlify auto provisions Let's Encrypt HTTPS (green lock).
-5. In Netlify, set the primary domain, and enable "Redirects" or "Branch deploys" as needed. Add redirect rule for www → apex or vice-versa if desired (in _redirects file or UI).
+Namecheap Private Email for `admin@eternalwebsite.com` (and info@) uses these MX records:
+- Priority 10 → mx1.privateemail.com
+- Priority 10 → mx2.privateemail.com
 
-**After domain live:** Update any hard-coded URLs if needed (currently uses relative + og:url points to eternalwebsite.com).
+(Plus some CNAMEs for mail., autodiscover., etc. that are already set up.)
 
-### Netlify Forms (the contact form)
-- The form in `index.astro` already has `data-netlify="true" name="contact"`, hidden `form-name`, and honeypot. Netlify detects it on build/deploy.
-- Submissions appear in Netlify UI → Forms tab (with spam filtering).
-- **Configure notifications:** In Forms settings for this form → "Notification settings" → add email `info@eternalwebsite.com` (or the Private Email address). Netlify will forward submissions.
-- Test: After deploy + custom domain, fill the form on live site → check Netlify dashboard + your email (may have slight delay).
-- Honeypot catches bots. Native HTML5 validation + required attrs included.
-- If you want more advanced (e.g. success page, Zapier), see Netlify docs.
+**The risky way (what previous advice was probably warning about):** Changing the domain's **nameservers** at Namecheap to Netlify's four nameservers moves *all* DNS (including MX) to Netlify. You then have to manually re-add the exact MX + SPF + DKIM records or email stops.
 
-**_redirects for SPA-ish or nice 404 (optional):** Create `site/public/_redirects` with:
-```
-/*    /index.html   200
-```
-(Netlify copies public/ to root of deploy.)
+**The safe way we will use (RECOMMENDED — email stays 100% untouched):**
+- **Keep using Namecheap's DNS** (do **not** change nameservers).
+- Only add the two web records that point the website to Netlify (ALIAS or A for the bare domain + CNAME for www).
+- Your existing MX records for Private Email stay exactly where they are in Namecheap.
+- Email continues to work exactly as it does today in Thunderbird.
 
-## 2. Vercel (Alternative)
+This is the standard safe pattern when you have email on the registrar and web on Netlify/Vercel/etc.
 
-Similar flow:
-- Import GitHub repo in https://vercel.com
-- Root directory: `site`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Then add custom domain in project settings (Vercel also handles DNS + certs nicely for Namecheap).
-- Forms: Use Formspree or Resend + API route (or keep mailto / upgrade later). Vercel has no built-in forms like Netlify.
+We will do the safe way below.
 
-## 3. cPanel / Namecheap Hosting Fallback (Static Upload)
+---
 
-If you prefer to keep everything on Namecheap (domain + email + hosting):
-1. In `site/`: `npm run build`
-2. The `dist/` folder is the static site (index.html + _astro/ + images/ + logos etc.).
-3. Use File Manager or FTP/SFTP (or FileZilla) to upload the **contents of dist/** into the `public_html/` (or `www/`) folder on cPanel for eternalwebsite.com.
-4. For domain: if parking page was active, disable it or point the addon/subdomain to the folder.
-5. HTTPS: enable AutoSSL or install free cert in cPanel.
-6. Form: will fall back to mailto (or manually set up Formspree by adding `action="https://formspree.io/f/YOUR_KEY"` + `method="POST"` to the form, remove data-netlify attrs, and test).
+## 0. Pre-Checks (Do these first — tell me the results)
 
-**Downsides vs Netlify:** No automatic deploys from git (you re-build + re-upload on changes), no built-in forms, manual SSL/DNS, slower CDN usually.
+- [ ] Open Namecheap → Domain List → Manage eternalwebsite.com → **Advanced DNS** tab.  
+  Tell me: Do you currently see MX records for mx1.privateemail.com and mx2.privateemail.com? (Yes/No + paste the first 2-3 lines if possible)
 
-## 4. Form Handling Options Summary (v1 ready)
+- [ ] In the same Advanced DNS tab, tell me what the current A / ALIAS / CNAME for `@` (bare domain) and `www` look like right now (or if the parking page is still active).
 
-| Option       | Setup Effort | Pros                              | Cons                          | Recommended For |
-|--------------|--------------|-----------------------------------|-------------------------------|-----------------|
-| Netlify Forms (current attrs) | Low (UI config) | Free, spam filter, dashboard, email forward to info@ | Tied to Netlify host | Primary (easiest) |
-| Formspree    | Low (free key) | Works on any host (Netlify/cPanel/GH Pages) | 50/mo submissions free tier | If not on Netlify |
-| mailto (fallback) | Zero | Works immediately, uses your Thunderbird | UX poor on mobile (no client or ugly), no server capture | Local dev / backup only |
-| Custom (Resend + edge fn) | Medium | Full control, branded emails | Overkill for v1, costs | Later if volume grows |
+- [ ] Log into Netlify (https://app.netlify.com). Have you already added `eternalwebsite.com` (and www) under Domain management for the eternal-website site? (Yes/No)
 
-Current code supports Netlify out of box + direct email link always visible.
+- [ ] Run these two commands in your terminal and paste the full output here:
+  ```
+  dig eternalwebsite.com +short
+  dig www.eternalwebsite.com +short
+  ```
 
-## 5. Post-Deploy Polish / Verification
+**Checkpoint 0 — Reply with:**
+- Last checkbox: 0.x (the ones above)
+- Your dig outputs
+- Screenshot description or text from Namecheap Advanced DNS (especially MX and current web records)
+- Whether the domain is already added in Netlify
 
-- Run Lighthouse (DevTools or web.dev/measure) on live URL: target 95+ perf/accessibility (static + Tailwind helps; images are small).
-- Test form end-to-end on custom domain.
-- Test dark mode, mobile nav, all CTAs, pricing cards, portfolio images load.
-- Update OG image later: add a real hero/preview image to public/ and set `og:image` + twitter card in Layout.astro (see Report for plan).
-- Add sitemap: `npx astro add sitemap` (updates astro.config + generates /sitemap-index.xml on build).
-- robots.txt: add `site/public/robots.txt` with `Sitemap: https://eternalwebsite.com/sitemap-index.xml` + Allow.
-- Analytics (optional): Plausible or Umami self-hosted lightweight; or Netlify Analytics paid.
-- GitHub: keep pushing to main; Netlify auto-deploys on push (enable in UI if not).
+Once I have that I can give you the *exact* next records if needed. But you can also proceed with the steps below — Netlify will show you the precise values for your site.
 
-## 6. DNS / Namecheap Specific Notes
+---
 
-- Current: eternalwebsite.com has Namecheap parking page + Private Email (IMAP/SMTP mail.privateemail.com) configured (see Business Email Setup note in main vault).
-- When switching to Netlify nameservers: email continues to work (Namecheap Private Email is separate from web hosting; DNS for MX records will be handled by Netlify if you add them, or keep email DNS and only web records).
-- Test email still works after DNS change.
-- If using CNAME/A records only (no full NS change): MX for email stay at Namecheap, web points to Netlify.
-- Propagation: use https://dnschecker.org or `dig +short eternalwebsite.com`
+## 1. Connect / Verify the Site on Netlify (from GitHub)
 
-## 7. Rollback / Multi-Env
+- [ ] Go to https://app.netlify.com and log in with GitHub.
+- [ ] If you have not imported the site yet: "Add new site" → "Import an existing project" → GitHub → select `Inurath/eternal-website`.
+- [ ] **Critical settings for our repo structure** (site/ is a subfolder):
+  - Base directory: `site`
+  - Build command: `npm run build`
+  - Publish directory: `dist`
+- [ ] Click Deploy. Wait for the first build to finish.
+- [ ] You should now have a live random URL like `https://your-project-name.netlify.app`. Click it and confirm the site loads (hero phrase, dark mode toggle, contact form, etc.).
 
-- Netlify: previous deploys are one-click rollback in dashboard.
-- Git: tag releases or use branches + preview deploys (Netlify does this for PRs automatically).
-- Always test with `npm run preview` locally before pushing.
+- [ ] Now go to the site settings → **Domain management** (left sidebar or top).
+- [ ] Click **Add a domain** (or "Add custom domain").
+- [ ] Type `eternalwebsite.com` and add it. Also add `www.eternalwebsite.com`.
+- [ ] Netlify will now show you the **exact DNS records** you need to add at Namecheap for *this specific site*.  
+  **Screenshot or copy the exact recommended records** (it will say something like ALIAS for @ to apex-loadbalancer.netlify.com or 4x A records to 75.2.60.5 etc., plus CNAME for www).
 
-## 8. Future (v2+)
+**Checkpoint 1 — Reply with:**
+- Last checkbox you completed in this section.
+- The exact records Netlify is asking you to add (copy the table or text it shows).
+- The live Netlify URL for the site.
 
-- Multi-page site or blog → new Astro pages + client sites cloned from this template (data/ swap + rebrand).
-- Real booking/calendar integration.
-- Client portal / login.
-- See Report.md "Roadmap" + notes/Roadmap.md (to be created).
+---
 
-**Agent notes:** After any deploy change, update this file + Report.md + run build locally + test. User reviews final in VS Code or live URL. Push git. Update main CLI logs.
+## 2. Point the Domain from Namecheap (Safe Method — Email Protected)
 
-This document + the GH repo + `site/` source = everything needed to publish and maintain from "git push" to live custom domain.
+**We are keeping Namecheap as the DNS provider. No nameserver change.**
 
-*Created during GK "read your notes and do your tasks" session to close the publish readiness item in CLI Web Tasks.*
+- [ ] In Namecheap, go to eternalwebsite.com → Manage → **Advanced DNS** tab (not the nameservers tab).
+- [ ] **Important:** If you see any old A record for `@` (the bare domain) that points to parking or old hosting, delete it first (Namecheap sometimes shows a default one).
+- [ ] Add the records **exactly as Netlify told you** in the previous step.
+
+  Typical values (use whatever Netlify shows for your site — these are examples):
+
+  **For the bare domain (apex) — choose ONE of these two depending on what Namecheap + Netlify recommend for you:**
+
+  - [ ] Preferred if available: Add **ALIAS** record  
+    Host: `@` (or leave empty / @)  
+    Value / Points to: `apex-loadbalancer.netlify.com`   (or the exact ALIAS target Netlify gave you)
+
+  - [ ] Alternative (always works): Add **A** record(s)  
+    Host: `@`  
+    Value: `75.2.60.5`   (Netlify's standard IP — they may give you 4 different ones; add all of them as separate A records if shown)
+
+  **For www:**
+
+  - [ ] Add **CNAME** record  
+    Host: `www`  
+    Value / Points to: `your-project-name.netlify.app`   (use the exact one from Netlify, e.g. `eternal-website-abc123.netlify.app`)
+
+- [ ] **Do NOT touch or delete** any MX, TXT (SPF), CNAME for `mail`, `autodiscover`, `_dmarc`, or DKIM records. Those are your email. Leave them alone.
+- [ ] Save / Apply the changes in Namecheap.
+- [ ] Wait 5–30 minutes (sometimes up to a couple hours for full propagation). Use a checker.
+
+- [ ] Test propagation:
+  ```
+  dig eternalwebsite.com +short
+  dig www.eternalwebsite.com +short
+  ```
+  You should eventually see the Netlify IP or the netlify.app name (CNAME target).
+
+- [ ] Visit https://eternalwebsite.com and https://www.eternalwebsite.com in a private/incognito window. The site should load (you may get a "not secure" warning until SSL finishes — Netlify provisions it automatically once DNS is correct).
+
+**Checkpoint 2 — Reply with:**
+- Last checkbox completed.
+- Output of the two `dig` commands.
+- Does https://eternalwebsite.com load the Eternal Website hero with the purple phrase? (Yes / what you see instead)
+- Any errors you see in Namecheap when adding the records?
+
+---
+
+## 3. Set Up Netlify Forms Notifications (The "Notification Thing" You Couldn't Find)
+
+The form on the site already has the magic attributes (`data-netlify="true" name="contact"`, hidden form-name field, honeypot). Netlify should have auto-detected it after the first successful build.
+
+- [ ] In Netlify, go to your eternal-website project.
+- [ ] On the left sidebar, look for and click **Forms** (it may be under "Site overview" or directly in the menu).  
+  You should see a form named **contact** (or "contact" from the HTML name=). If you don't see it yet, trigger a new deploy (push any tiny change or use the "Trigger deploy" button) and refresh.
+
+- [ ] Once you see the form listed, click on it (the "contact" form).
+
+- [ ] Look for **Notification settings**, **Email notifications**, or a button **Add notification**.
+
+**Exact current paths (UI can have slight label differences — try them in order):**
+
+Path A (most common in 2026):
+- [ ] Go to the project → left menu: **Configuration** (or gear icon / Project configuration)  
+- [ ] Then **Notifications**  
+- [ ] Then **Form submission notifications** (or "Emails and webhooks")
+
+Path B:
+- [ ] Project sidebar → **Forms** → click the form → look for "Notifications" tab or "Set up notifications"
+
+- [ ] Click **Add notification** (or + Email).
+- [ ] Choose **Email**.
+- [ ] In the email address field, type: `info@eternalwebsite.com`
+- [ ] (Optional but recommended) Set a subject line like: "New website inquiry from {name} – {business}"
+- [ ] Save / Enable the notification.
+
+- [ ] (Optional extra) You can also add your personal Gmail or another address as a second notification for testing.
+
+**Test it:**
+- [ ] Go to the live site (after DNS is working) → fill out the contact form with test data → submit.
+- [ ] Within a minute or two, check the inbox of info@eternalwebsite.com (via Thunderbird or https://mail.privateemail.com).
+- [ ] Also check the Netlify Forms tab — you should see the submission appear there even if email is slow.
+
+**Checkpoint 3 — Reply with:**
+- Last checkbox in this section.
+- Did you find the form under the Forms section? (Yes/No — describe exactly what menus you clicked)
+- Did you successfully add the email notification for info@eternalwebsite.com? (Yes/No + exact path you used)
+- After test submit: did the submission appear in Netlify Forms list? Did the email arrive?
+
+---
+
+## 4. HTTPS / SSL (Automatic)
+
+- [ ] Once the DNS records are correct and the site loads on the custom domain, Netlify automatically requests a Let's Encrypt certificate.
+- [ ] It can take 5–30 minutes. Refresh the domain in incognito.
+- [ ] You should eventually see the green padlock and `https://eternalwebsite.com`.
+- [ ] In Netlify Domain management you can force HTTPS / HTTPS only if it isn't already on.
+
+---
+
+## 5. Quick Post-Deploy Checks (Do these and mark them)
+
+- [ ] Site loads on both `eternalwebsite.com` and `www.eternalwebsite.com` (decide which is primary in Netlify and add a redirect if wanted).
+- [ ] Dark mode toggle works.
+- [ ] Contact form submits and you receive the email (or see it in Netlify Forms).
+- [ ] All images (logos, portfolio) load.
+- [ ] Mobile view looks good (use browser dev tools or phone).
+- [ ] Run a quick Lighthouse in Chrome DevTools (or web.dev/measure) on the live URL — aim for 90+ on performance.
+
+---
+
+## 6. Other Hosting Options (Only if you don't want Netlify)
+
+### Vercel
+Similar Git import, base directory `site`, build `npm run build`, publish `dist`. Add domain in Vercel. Use Formspree for forms (or keep mailto).
+
+### cPanel / Namecheap Static (Fallback)
+1. `cd site && npm run build`
+2. Upload the **entire contents** of the `dist/` folder (not the dist folder itself) into `public_html/` via File Manager or FTP.
+3. Point the domain/addon to that folder.
+4. Form will use mailto fallback (or set up Formspree manually).
+
+---
+
+## 7. If You Ever Need to Roll Back or Change
+
+- Netlify: Every deploy has a "Publish deploy" button for instant rollback to a previous version.
+- DNS: Just edit/remove the ALIAS/A + CNAME records in Namecheap to point back to parking or old host.
+- Git: The source is always in the repo — you can always rebuild.
+
+---
+
+## Summary of What You Should Have When Done
+
+- [ ] Site live at https://eternalwebsite.com with green lock
+- [ ] Form submissions appearing in Netlify → Forms
+- [ ] Emails arriving at info@eternalwebsite.com (Thunderbird still works unchanged)
+- [ ] You can push changes to GitHub main and Netlify auto-deploys
+
+---
+
+**Agent / Future Notes:**  
+After any user feedback or change, update this file with new checkboxes for the new steps. Always keep the "reply with last checkbox number + symptoms" pattern. Update Eternal Report.md and main CLI logs when this doc is revised.
+
+*Heavily revised 2026-06-02+ for maximum clarity with checkboxes after user got stuck at DNS + "can't find notification" + email-break concern. Safe DNS path emphasized.*
+
+---
+
+**Next action for you right now (after reading this whole thing):**
+
+Start at **Section 0. Pre-Checks**, do the checkboxes, then reply here with the results (especially the dig outputs and what you see in Namecheap Advanced DNS + whether the domain is added in Netlify).
+
+I will then give you the next precise move or corrections.
+
+This format means you can never be "lost" — just tell me the last checked box.
