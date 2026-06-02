@@ -410,3 +410,19 @@ User feedback on the X button: "The X logo can you make it a little bit bigger a
 The square rounded button frames and fits the actual logo picture as requested.
 
 Updated pages/index.astro.md and this Report. Git pushed.
+
+---
+
+**X fill + added IG/FB visuals (2026-06-02 GK - user request):**
+
+User: "Can you make the icon fill the entire bottom like the picture fill the entire square? Also, on the same folder, I added the Instagram logo and Facebook logo. Add those two. But don't make them go to any link yet since I don't have those accounts yet. It's just to see how it looks."
+
+- For X: updated <a> to `overflow-hidden p-0`, <img class="w-full h-full object-cover" /> (no more small centered icon; the picture now fills the entire w-9 h-9 square button edge-to-edge).
+- Copied instagram-logo.jpg and facebook-logo.png to site/public/.
+- Added two <span class="inline-flex ... w-9 h-9 rounded-lg border ... overflow-hidden ..."> with <img class="w-full h-full object-cover" /> for IG and FB. Same visual style as X button but non-interactive (no <a>, no href) for preview only.
+- Kept flex gap-3 in footer for the three squares.
+- `npm run build`; localhost:4321/ surfaced.
+- Updated project note + this Report + CLI logs.
+- Git push.
+
+All per project AGENTS + web tasks procedure. No links added to IG/FB.
