@@ -329,6 +329,30 @@ This completes the heavy lifting for the website agency flagship. The Eternal va
 
 ---
 
+## Session Log — 2026-06-02 (GK: final web polish - X logo + international)
+
+**New pending from Web Tasks + new screenshot 20260602155135.png:**
+- X button still looks bad: user provided actual logo at /home/randy/Pictures/Web/General logos/X.jpg. Use it instead of SVG.
+- "take this out is not only florida focus is international": the "LOCAL FLORIDA FOCUS" item in the trust/section-box row.
+
+**Fixes:**
+- Copied X.jpg to site/public/x-logo.jpg.
+- Updated footer X link in index.astro: replaced SVG with <img src="/x-logo.jpg" alt="X" class="h-3.5 w-3.5" /> (icon-only, using real logo, minimal button).
+- Removed the <div>Local Florida Focus</div> from the trust row in index.astro (kept the other 4 items; updated to reflect international positioning).
+
+**Verification:** npm run build run; terminal now shows "Preview URL (clickable): http://localhost:4321/" .
+
+**Docs:**
+- Appended to notes/site/src/pages/index.astro.md .
+- This Report.md updated with log.
+- CLI Web Tasks.md, Log Completed Web Tasks by CLIs.md, main CLI Tasks.md, CLI Reports.md all updated with completions.
+- Git commit/push to eternal-website repo.
+- dotfiles-sync save at end.
+
+All changes follow project AGENTS (immediate notes/Report, build+URL after edits, sensible commit). No rice changes. Site now uses provided X logo and positions as international.
+
+---
+
 ## Session Log — 2026-06-02 (GK: latest web polish from new screenshots)
 
 **New pending (from CLI Web Tasks + screenshots 20260602153957.png, 20260602154236.png, 20260602154303.png):**

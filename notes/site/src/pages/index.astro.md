@@ -25,3 +25,10 @@ See global.css.md for full dark mode + palette details. Per project AGENTS: ever
 - Builds run; URL surfaced.
 
 These address the three new pending items in CLI Web Tasks.
+
+**Follow-up fixes (same day GK):**
+- X button: replaced the SVG with the actual user-provided logo (X.jpg from Pictures/Web/General logos/ copied to public/x-logo.jpg); now <img src="/x-logo.jpg" alt="X" class="h-3.5 w-3.5" /> inside the icon-only button for the real logo look.
+- "Local Florida Focus": removed the item from the trust row (section-box) because "it is not only florida focus is international"; the row now shows the other 4 items.
+- Builds performed after each; http://localhost:4321/ surfaced in terminal output.
+
+All per CLI Web Tasks pending + project AGENTS (document, build+URL, update notes/Report).
