@@ -17,3 +17,11 @@
 - All changes documented, built (see http://localhost:4321/ in terminal), logo filter ensures visibility in dark.
 
 See global.css.md for full dark mode + palette details. Per project AGENTS: every edit gets note + Report append.
+
+**Latest fixes (2026-06-02 GK - new web tasks from screenshots):**
+- X/Twitter button: made icon-only (removed @Eternalwebsite text and pill content); now just the clean X SVG icon in a minimal rounded button. Better "actual X logo" presentation, only the icon is the clickable target.
+- Removed "Flat project fee" from hero subline (was "Bradenton / Sarasota, FL - 1-2 week delivery - Flat project fee").
+- Fixed personal name in first testimonial quote (testimonials.ts): "Randy took..." → "The Eternal Website team took..." (consistent with team-only language rule).
+- Builds run; URL surfaced.
+
+These address the three new pending items in CLI Web Tasks.

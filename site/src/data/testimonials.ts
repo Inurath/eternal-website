@@ -10,7 +10,7 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "Randy took our scattered ideas and turned them into a clean one-page site that actually brings in calls. We look like the established choice now.",
+    quote: "The Eternal Website team took our scattered ideas and turned them into a clean one-page site that actually brings in calls. We look like the established choice now.",
     name: "Maria Lopez",
     role: "Owner",
     business: "Lopez Family Dental — Bradenton",

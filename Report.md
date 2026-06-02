@@ -327,6 +327,26 @@ This completes the heavy lifting for the website agency flagship. The Eternal va
 
 **Handoff / next:** All 3 pending web items now [x]. Mark in Web Tasks + log to Log Completed Web. Update main CLI Core tracking. Run dotfiles-sync save at true end of session. User: open VS Code or click the localhost URL to review the dark mode / logo polish.
 
+---
+
+## Session Log — 2026-06-02 (GK: latest web polish from new screenshots)
+
+**New pending (from CLI Web Tasks + screenshots 20260602153957.png, 20260602154236.png, 20260602154303.png):**
+- X button looks bad: was showing "X @Eternalwebsite" pill. Fixed to icon-only clean X (proper SVG logo), no @ text. The clickable target is now just the icon in a minimal rounded button. aria-label and title kept for a11y ("Follow on X").
+- "flat project fee" text: removed from hero subline (was "... delivery - Flat project fee"). Now clean "Bradenton / Sarasota, FL - 1-2 week delivery".
+- Still seeing personal name: in first testimonial quote ("Randy took our scattered ideas..."). Updated in testimonials.ts to "The Eternal Website team took our scattered ideas..." (consistent with long-standing "never say my name / use the team" rule).
+
+**Actions:**
+- Edited: site/src/pages/index.astro (footer X + hero line), site/src/data/testimonials.ts (quote).
+- npm run build run; terminal output includes "Preview URL (clickable): http://localhost:4321/".
+- Companion notes updated: testimonials.ts.md + pages/index.astro.md (latest fixes section appended).
+- This Report.md: log added.
+- Will sync to main CLI Core logs, Web Tasks, etc.
+
+**Verification:** Build clean. User can preview at http://localhost:4321/ to confirm: X is now a simple icon button (no text), fee line gone, testimonial quote team-only, no other "Randy" in source.
+
+All per project AGENTS (document every edit, build + URL after changes, update notes + Report immediately) + main rice web tasks procedure. No rice changes. Git push and dotfiles at close.
+
 **End of fixes:** All per global AGENTS (startup reads, todo, build URL, notes+Report, no user exec asked). Ready for closeout.
 
 ---
