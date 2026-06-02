@@ -27,7 +27,8 @@ See global.css.md for full dark mode + palette details. Per project AGENTS: ever
 These address the three new pending items in CLI Web Tasks.
 
 **Follow-up fixes (same day GK):**
-- X button: replaced the SVG with the actual user-provided logo (X.jpg from Pictures/Web/General logos/ copied to public/x-logo.jpg); now <img src="/x-logo.jpg" alt="X" class="h-3.5 w-3.5" /> inside the icon-only button for the real logo look.
+- X button: replaced the SVG with the actual user-provided logo (X.jpg from Pictures/Web/General logos/ copied to public/x-logo.jpg); rendered as <img src="/x-logo.jpg" alt="X" /> inside the icon-only button.
+- X logo polish (user feedback): made the button a square w-9 h-9 with rounded-lg corners (instead of rounded-full / pill) and bigger icon (h-6 w-6) with small p-1.5 padding so the actual square logo picture fits nicely. Added dark mode filter for visibility. The button is now square-shaped with rounded corners to properly frame the provided logo image.
 - "Local Florida Focus": removed the item from the trust row (section-box) because "it is not only florida focus is international"; the row now shows the other 4 items.
 - Builds performed after each; http://localhost:4321/ surfaced in terminal output.
 

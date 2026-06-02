@@ -392,3 +392,19 @@ All per project AGENTS (document every edit, build + URL after changes, update n
 **Verification note:** User should click http://localhost:4321/ or `cd "/home/randy/Documents/Eternal Website/site" && npm run preview` to see: extra space above badge, purple accents (badge, links, X hover), X button in footer, 4 image-enhanced portfolio cards in the Work section.
 
 All per Eternal AGENTS.md + main rice "web tasks first" + build URL rule. No rice changes. Dotfiles + push at close.
+
+---
+
+**Follow-up X logo polish (2026-06-02 GK - user request):**
+
+User feedback on the X button: "The X logo can you make it a little bit bigger and a square shape with rounded corners so it can fit the actual picture I gave you."
+
+- Updated the footer X <a> to w-9 h-9 (36px square) with rounded-lg (nice rounded corners, not full circle).
+- Icon <img> sized to h-6 w-6 (24px, bigger than previous ~14px).
+- Padding p-1.5 to frame the actual 960x960 square logo image nicely inside the square button.
+- Added dark mode filter via arbitrary variant so the grayscale logo inverts properly on dark surface.
+- Rebuilt; URL http://localhost:4321/ surfaced.
+
+This makes the button square-shaped with rounded corners that properly contains and fits the provided X logo picture.
+
+Updated pages/index.astro.md and this Report. Git pushed.
