@@ -9,14 +9,14 @@
 2. Read `Report.md` (current state, decisions, logs, handoff notes).
 3. Read `notes/Competitors.md`, `notes/Content.md` (when exists), `notes/Pricing.md`, `notes/Branding.md`.
 4. `ls -la site/` + `cd site && git status` (if git inited) to see current build state.
-5. Check `~/Obsidian/CLI Core/CLI Tasks.md` + `CLI Reports.md` for any related top-level tasks (Eternal is the flagship pending until marked complete).
+5. Check `/home/randy/Documents/Personal/CLI Core/CLI Tasks.md` + `CLI Reports.md` for any related top-level tasks (Eternal is the flagship pending until marked complete).
 
 ## Core Rules (from global AGENTS.md + this project spec)
 - **GK does heavy lifting / coding.** CC reviews the entire thing (use review skill, /review, or spawn reviewer subagent). User mostly opens VS Code to review finals. "I won't be doing basically nothing more than opening VScode and reviewing the final results."
 - **Document everything:** For **every** file created or edited in `site/` (or root notes), create or update a companion note (in `notes/<relative-path>.md` or sidecar). Note must cover: purpose, key code, decisions/tradeoffs, how to customize (for client clones), cross-refs.
 - **Report.md is the single source of truth** for the project (like CLI Reports). Update it with session log, file changes, verification, research, handoffs **on every significant turn**. Append, never overwrite history.
 - **Use the tools:** todo_write (track sub-tasks, one in_progress), enter_plan_mode for any ambiguity or high-impact change, spawn_subagent for parallel (explore for research, implement/review for code), skills (implement/review/check-work/design/execute-plan). Always `search_tool` before first `use_tool` on grok_com_github MCP.
-- **Dual handoff:** Shared via this vault (Report + notes + AGENTS) + main `~/Obsidian/CLI Core/`. Write clear "CC: ..." or "GK: ..." sections when pausing for the other.
+- **Dual handoff:** Shared via this vault (Report + notes + AGENTS) + main `/home/randy/Documents/Personal/CLI Core/`. Write clear "CC: ..." or "GK: ..." sections when pausing for the other.
 - **No user exec:** Do everything possible yourself (mkdir, npm, git, MCP GH calls, builds, verification). Only ask via ask_user_question for subjective choices (taglines, exact prices, hosting tweaks).
 - **End of every session:** Run `dotfiles-sync save` (global rice rule). Update main CLI Tasks (mark complete only when truly done per checklist) + CLI Reports with log. Push the eternal git repo.
 - **Verification always:** After any UI/content change: build, local serve/preview, manual section check (hero/CTA, pricing, form, mobile), optional Lighthouse or check-work subagent. Note results in Report. User sees final in VS Code.
@@ -54,11 +54,11 @@ When pausing for the other CLI:
 - Push everything.
 
 ## Resources
-- Main rice AGENTS: `~/.grok/AGENTS.md` + `~/Obsidian/CLI Core/` (Reports/Tasks for global state).
+- Main rice AGENTS: `~/.grok/AGENTS.md` + `/home/randy/Documents/Personal/CLI Core/` (Reports/Tasks for global state).
 - Skills: `~/.grok/skills/` (implement, review, check-work, design, execute-plan, etc.).
 - MCP GitHub: grok_com_github (search_tool first).
 - Web tools for ongoing research/competitor updates.
-- Business email: See `~/Obsidian/Quick Notes/Business Email Setup - admin@eternalwebsite.com.md` (Thunderbird primary).
+- Business email: See `/home/randy/Documents/Personal/Quick Notes/Business Email Setup - admin@eternalwebsite.com.md` (Thunderbird primary).
 
 **This file + Report.md + notes/ are the contract.** Follow them so the other agent (CC) or future GK can pick up seamlessly.
 

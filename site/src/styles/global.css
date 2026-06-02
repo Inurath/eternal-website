@@ -1,19 +1,35 @@
 @import "tailwindcss";
 
-/* Eternal Website — premium, clean, trustworthy one-pager
-   Accent: #8b3fff (user brand tie-in) + light variant for hover/focus
+/* Eternal Website - premium, clean, trustworthy one-pager
+   Comfy eye-friendly palette (teal/slate inspired by modern web design, high contrast, not flashy)
    Philosophy: generous whitespace, strong typography, professional calm,
    fast static, accessible, mobile-first. Not flashy. */
 
 :root {
-  --accent: #8b3fff;
-  --accent-light: #a86fff;
-  --text: #111827;
-  --text-muted: #4b5563;
+  /* Comfy, eye-friendly palette - teal accent for calm modern feel */
+  --accent: #0f766e;       /* teal-700 */
+  --accent-light: #14b8a6;
+  --accent-dark: #0d9488;
+  --text: #0f172a;
+  --text-muted: #475569;
   --surface: #ffffff;
   --surface-2: #f8fafc;
-  --border: #e5e7eb;
+  --border: #e2e8f0;
   --success: #10b981;
+  --box-bg: #f1f5f9;       /* for explicit boxed sections */
+}
+
+/* Dark mode (toggleable) - comfy for eyes, logo-inspired dark tones */
+html.dark {
+  --accent: #14b8a6;
+  --accent-light: #5eead4;
+  --accent-dark: #0f766e;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --surface: #0f172a;
+  --surface-2: #1e293b;
+  --border: #334155;
+  --box-bg: #1e293b;
 }
 
 html {
@@ -27,7 +43,7 @@ body {
   line-height: 1.6;
 }
 
-/* Headings — clear hierarchy, professional weight */
+/* Headings - clear hierarchy, professional weight */
 h1, h2, h3 {
   font-weight: 700;
   line-height: 1.1;
@@ -83,7 +99,7 @@ a:hover {
   color: var(--accent);
 }
 
-/* Cards — clean surfaces for services, pricing, portfolio, testimonials */
+/* Cards - clean surfaces for services, pricing, portfolio, testimonials */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -129,7 +145,7 @@ input, textarea, select {
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(139, 63, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
 }
 
 label {
@@ -140,9 +156,9 @@ label {
   margin-bottom: 0.35rem;
 }
 
-/* Navbar */
+/* Navbar - solid theme-aware background (was hardcoded white, broke dark mode) */
 nav {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -170,4 +186,44 @@ nav {
 ::selection {
   background: var(--accent);
   color: white;
+}
+
+/* Explicit "boxes" for sections (addresses "too plain and too white" - some areas now clearly boxed) */
+.section-box {
+  background: var(--box-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Dark mode toggle button - reliable hit area, theme aware, larger for usability */
+#dark-toggle {
+  cursor: pointer;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  line-height: 1;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  min-width: 2rem;
+  min-height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, transform 0.1s;
+}
+#dark-toggle:hover {
+  background: var(--surface);
+}
+#dark-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Logo visibility in dark mode (dark PNG logo inverted to light) */
+nav img[alt="Eternal Website"] {
+  transition: filter 0.2s ease;
+}
+html.dark nav img[alt="Eternal Website"] {
+  filter: brightness(0) invert(1);
 }

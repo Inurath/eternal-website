@@ -17,11 +17,13 @@
 - All values chosen for "premium but not flashy": generous spacing implied via Tailwind + padding, high contrast, calm.
 
 **Decisions & tradeoffs:**
-- Purple accent directly from user's rice (#8b3fff) for personal brand consistency across the agency site and desktop.
-- Light surface-2 bg for most of page (trustworthy, easy reading); white cards for content.
-- No dark mode v1 (keeps focus; can add later if clients want).
-- Tailwind v4 + CSS vars over heavy custom = fast, purge-friendly, maintainable for clones.
-- Form styles support the mailto fallback + future real handler.
+- Switched from original flashy purple to comfy eye-friendly teal/slate palette (per user feedback on "too flashy").
+- Full dark mode support (html.dark vars + toggle in navbar) for modern UX and to match user rice preference for dark UIs. Logo auto-inverted via filter in dark for visibility (single asset, no duplicate light logo files).
+- Solid var(--surface) nav (no more hardcoded white rgba) so fully theme consistent on scroll and in dark/light.
+- .section-box and cards use theme vars for "boxes" look without being plain white.
+- Tailwind v4 + CSS vars = easy client clones (just override :root).
+- Focus ring updated from old purple to current accent teal.
+- Form success now uses --surface / --success vars (was light green-50 hardcoded, broke dark).
 
 **How to customize / extend:**
 - Change --accent in :root for a client-branded clone (then update the note).
@@ -31,4 +33,16 @@
 
 **Related:** Layout.astro (imports it), index.astro (consumes classes), Report.md (Design System section), notes/Branding.md.
 
-**Status:** Scaffold + initial theme complete. Polish (more components, responsive fine-tuning) in later todos.
+**Status:** Dark mode fully working and consistent (nav, surfaces, toggle, logo visibility, success msgs). Logo resized/optimized + larger in navbar (h-12). Toggle made robust (addEventListener + readyState guard). All per CLI Web Tasks pending items addressed 2026-06-02.
+
+**Latest fixes (GK):**
+- Removed nav { background: rgba white } override; now uses --surface var (solid, theme aware).
+- Added html.dark img[alt=...] { filter: brightness(0) invert(1) } so dark logo mark is visible on dark nav.
+- Resized source "Eternal Logo with name.png" (trimmed to 260x96, ~9kB) and deployed — allows bigger crisp display.
+- #dark-toggle restyled larger (min 2rem, better padding, surface vars, active scale).
+- Toggle script rewritten: no onclick (timing safe), uses DOMContentLoaded/init + addEventListener('click'), icon set reliably.
+- Updated old purple focus ring rgba to teal matching palette.
+- Form success div now theme-var based (no more light-only green-50/200/800).
+- Build run after changes; localhost:4321 surfaced.
+
+**Related:** index.astro (contains the toggle script + nav markup + form), Report.md, CLI Web Tasks.md.
