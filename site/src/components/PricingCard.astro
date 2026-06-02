@@ -1,0 +1,30 @@
+---
+interface Props {
+  name: string;
+  price: string;
+  period: string;
+  popular?: boolean;
+  features: string[];
+  cta: string;
+}
+
+const { name, price, period, popular, features, cta } = Astro.props;
+---
+
+<div class={`card h-full flex flex-col ${popular ? 'popular' : ''}`}>
+  <div class="mb-4">
+    <div class="font-semibold text-lg">{name}</div>
+    <div class="mt-1">
+      <span class="text-3xl font-bold tracking-tighter">{price}</span>
+      <span class="text-[var(--text-muted)] text-sm ml-1">/ {period}</span>
+    </div>
+  </div>
+
+  <ul class="space-y-2 text-sm flex-1 mb-6 text-[var(--text-muted)]">
+    {features.map((f) => <li class="flex gap-2"><span class="text-[var(--accent)]">✓</span> {f}</li>)}
+  </ul>
+
+  <a href="#contact" class={`btn ${popular ? 'btn-primary' : 'btn-secondary'} w-full`}>
+    {cta}
+  </a>
+</div>

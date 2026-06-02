@@ -1,0 +1,17 @@
+# Eternal Website vault .gitignore
+# Ignore build artifacts + deps inside the Astro site
+site/node_modules/
+site/dist/
+site/.astro/
+site/.env
+site/.env.*
+
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Obsidian (optional — many keep .obsidian in git for workspaces)
+# .obsidian/
+
+# Keep everything else (notes, Report, AGENTS, source) tracked.

@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  result: string;
+  desc: string;
+}
+
+const { title, category, result, desc } = Astro.props;
+---
+
+<div class="card">
+  <div class="text-xs uppercase tracking-widest text-[var(--accent)] mb-1">{category}</div>
+  <div class="font-semibold text-lg mb-1">{title}</div>
+  <div class="text-sm text-[var(--success)] font-medium mb-3">{result}</div>
+  <p class="text-sm text-[var(--text-muted)]">{desc}</p>
+</div>
