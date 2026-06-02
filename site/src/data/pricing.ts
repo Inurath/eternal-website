@@ -15,7 +15,7 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     name: "Starter",
-    price: "$1,497",
+    price: "$1,297",
     period: "one-time",
     features: [
       "One-page custom design",
@@ -29,7 +29,7 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     name: "Professional",
-    price: "$2,497",
+    price: "$2,197",
     period: "one-time",
     popular: true,
     features: [
@@ -40,12 +40,13 @@ export const pricingTiers: PricingTier[] = [
       "2 rounds of revisions",
       "60-day support",
       "Google Business integration help",
+      "Optional $49/mo hosting & support subscription",
     ],
     cta: "Most popular choice",
   },
   {
     name: "Premium",
-    price: "$3,997",
+    price: "$3,497",
     period: "one-time",
     features: [
       "Everything in Professional",
@@ -55,6 +56,7 @@ export const pricingTiers: PricingTier[] = [
       "Unlimited small tweaks (30 days)",
       "90-day priority support",
       "Future page credit (blog/about)",
+      "Optional $49/mo hosting & support subscription",
     ],
     cta: "Go premium",
   },

@@ -11,7 +11,13 @@ site/.env.*
 *.swp
 *~
 
-# Obsidian (optional — many keep .obsidian in git for workspaces)
-# .obsidian/
+# Obsidian (volatile workspace state - keep committed base but ignore runtime files)
+.obsidian/workspace.json
+.obsidian/graph.json
+.obsidian/cache/
+
+# Editor / IDE
+.vscode/
+.idea/
 
 # Keep everything else (notes, Report, AGENTS, source) tracked.
