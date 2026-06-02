@@ -71,7 +71,7 @@ import { testimonials } from '../data/testimonials';
 	</script>
 
 	<!-- Hero -->
-	<header id="hero" class="section pt-20 pb-20 bg-[var(--surface)] border-b border-[var(--border)]">
+	<header id="hero" class="section pt-28 pb-20 bg-[var(--surface)] border-b border-[var(--border)]">
 		<div class="container text-center max-w-3xl mx-auto">
 			<div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-4 bg-[var(--accent)] text-white">FOR SMALL LOCAL BUSINESSES</div>
 			
@@ -146,6 +146,7 @@ import { testimonials } from '../data/testimonials';
 					category={p.category}
 					result={p.result}
 					desc={p.desc}
+					image={p.image}
 				/>
 			))}
 		</div>
@@ -252,6 +253,12 @@ import { testimonials } from '../data/testimonials';
 	</section>
 
 	<footer class="py-8 border-t text-xs text-center text-[var(--text-muted)]">
+		<div class="flex items-center justify-center gap-3 mb-2">
+			<a href="https://x.com/Eternalwebsite" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-[10px] font-medium text-[var(--text-muted)] transition hover:border-[var(--accent)] hover:text-[var(--accent)]" aria-label="Follow Eternal Website on X (Twitter)">
+				<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25l-7.451 8.52L4.5 2.25H1.25l7.5 8.5L1.25 21.75H4.5l6.293-7.2 7.207 7.2h3.25l-7.5-8.5 7.5-8.5h-3.25z"/></svg>
+				<span>@Eternalwebsite</span>
+			</a>
+		</div>
 		© 2026 Eternal Website. Bradenton/Sarasota, Florida. All sites are custom-built and hand-crafted.
 	</footer>
 </Layout>

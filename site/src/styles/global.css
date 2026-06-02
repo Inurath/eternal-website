@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 /* Eternal Website - premium, clean, trustworthy one-pager
-   Comfy eye-friendly palette (teal/slate inspired by modern web design, high contrast, not flashy)
+   Comfy eye-friendly palette (soft indigo/purple + slate - calm, professional, not flashy)
    Philosophy: generous whitespace, strong typography, professional calm,
-   fast static, accessible, mobile-first. Not flashy. */
+   fast static, accessible, mobile-first. Not flashy. Soft purple tone requested for brand feel. */
 
 :root {
-  /* Comfy, eye-friendly palette - teal accent for calm modern feel */
-  --accent: #0f766e;       /* teal-700 */
-  --accent-light: #14b8a6;
-  --accent-dark: #0d9488;
+  /* Comfy, eye-friendly soft purple/indigo accent (calm modern professional, similar tone to previous teal but purple) */
+  --accent: #6366f1;       /* indigo-500 soft */
+  --accent-light: #818cf8;
+  --accent-dark: #4f46e5;
   --text: #0f172a;
   --text-muted: #475569;
   --surface: #ffffff;
   --surface-2: #f8fafc;
   --border: #e2e8f0;
-  --success: #10b981;
+  --success: #10b981;      /* keep green for success states (positive actions) */
   --box-bg: #f1f5f9;       /* for explicit boxed sections */
 }
 
 /* Dark mode (toggleable) - comfy for eyes, logo-inspired dark tones */
 html.dark {
-  --accent: #14b8a6;
-  --accent-light: #5eead4;
-  --accent-dark: #0f766e;
+  --accent: #818cf8;
+  --accent-light: #c7d2fe;
+  --accent-dark: #6366f1;
   --text: #e2e8f0;
   --text-muted: #94a3b8;
   --surface: #0f172a;
@@ -145,7 +145,7 @@ input, textarea, select {
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
 
 label {

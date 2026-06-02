@@ -328,3 +328,23 @@ This completes the heavy lifting for the website agency flagship. The Eternal va
 **Handoff / next:** All 3 pending web items now [x]. Mark in Web Tasks + log to Log Completed Web. Update main CLI Core tracking. Run dotfiles-sync save at true end of session. User: open VS Code or click the localhost URL to review the dark mode / logo polish.
 
 **End of fixes:** All per global AGENTS (startup reads, todo, build URL, notes+Report, no user exec asked). Ready for closeout.
+
+---
+
+## Session Log — 2026-06-02 (GK follow-up web tasks)
+
+**New items from CLI Web Tasks + screenshot 20260602151308.png:**
+- Hero badge ("FOR SMALL LOCAL BUSINESSES") too tight to nav bar: increased `<header id="hero" ... pt-20>` to `pt-28`. More professional breathing room.
+- Green/teal theme to soft purple: full palette swap in global.css to soft indigo/purple (#6366f1 base) - calm, eye friendly, "same tone but purple, not too flashy". Updated focus ring, comments, dark/light vars. (Kept --success green.)
+- Add X account: new footer pill button with inline SVG X logo + text "@Eternalwebsite", links to https://x.com/Eternalwebsite (new tab, a11y, hover states).
+- Add royalty-free matching pictures: 4 Pexels commercial-free images downloaded to public/images/. Extended portfolio.ts interface + data (images assigned to the 4 examples: cafe, law, plumbing, wellness). Updated PortfolioCard.astro to render optional top image (flush, object-cover). Work section now has visuals that match the "timeless local businesses" vibe.
+
+**Process followed:**
+- Multiple targeted builds (`npm run build`) after batches; each time terminal output contains the http://localhost:4321/ URL + instructions.
+- Companion notes updated for PortfolioCard + portfolio.ts (image feature + specific assets listed).
+- Full session details logged here + in main Personal/CLI Core/ (Web Tasks, Log, Tasks, Reports).
+- Git: committed the 4 images + code + docs changes, pushed.
+
+**Verification note:** User should click http://localhost:4321/ or `cd "/home/randy/Documents/Eternal Website/site" && npm run preview` to see: extra space above badge, purple accents (badge, links, X hover), X button in footer, 4 image-enhanced portfolio cards in the Work section.
+
+All per Eternal AGENTS.md + main rice "web tasks first" + build URL rule. No rice changes. Dotfiles + push at close.

@@ -4,12 +4,21 @@ interface Props {
   category: string;
   result: string;
   desc: string;
+  image?: string;
 }
 
-const { title, category, result, desc } = Astro.props;
+const { title, category, result, desc, image } = Astro.props;
 ---
 
-<div class="card">
+<div class="card overflow-hidden">
+  {image && (
+    <img
+      src={image}
+      alt={`${title} example`}
+      class="w-full h-36 object-cover rounded-t-md border-b border-[var(--border)] -mx-6 -mt-6 mb-4"
+      loading="lazy"
+    />
+  )}
   <div class="text-xs uppercase tracking-widest text-[var(--accent)] mb-1">{category}</div>
   <div class="font-semibold text-lg mb-1">{title}</div>
   <div class="text-sm text-[var(--success)] font-medium mb-3">{result}</div>
