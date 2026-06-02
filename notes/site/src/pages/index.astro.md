@@ -35,3 +35,5 @@ These address the three new pending items in CLI Web Tasks.
 - Builds performed after each; http://localhost:4321/ surfaced in terminal output.
 
 All per CLI Web Tasks pending + project AGENTS (document, build+URL, update notes/Report).
+
+**Main phrase update:** Replaced hero h1 "Timeless websites that build trust and last." with the new main business phrase "Built to Endure.<br>Designed to Perform." (as requested). Also updated meta description and OG description in Layout.astro to lead with the phrase. This is now the primary tagline/headline for the site.

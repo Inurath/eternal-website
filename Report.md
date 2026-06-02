@@ -106,7 +106,7 @@ See main `/home/randy/Documents/Personal/CLI Core/CLI Reports.md` (Arch/Hypr/AGS
 - **Accent:** #8b3fff (user signature, "Eternal" timeless feel) + light #a86fff.
 - **Palette (draft):** Clean light bg (#fafafa or white), dark text (#111 or #1a1a2e), surface cards with subtle shadow or border, purple for CTAs/highlights. Professional trustworthy (not dark gaming rice).
 - **Typography:** System sans or Inter (via fontsource if bundle size allows). Large readable headings, good hierarchy, generous line-height.
-- **Logo:** Text "Eternal" (or minimal SVG mark later). Tagline: "Timeless websites for local businesses."
+- **Logo:** Text "Eternal" (or minimal SVG mark later). Tagline / main phrase: "Built to Endure. Designed to Perform." (updated in hero h1 + meta/OG descriptions).
 - **Tone:** Professional, calm, confident, benefit-focused. Short paragraphs. "Your business deserves a site that feels as solid as the work you do."
 - **Local:** Bradenton / Sarasota FL area references (from weather 34207, 941 area code in notes).
 - **Full details:** See `notes/Branding.md` (to be created on first visual build).
@@ -426,3 +426,17 @@ User: "Can you make the icon fill the entire bottom like the picture fill the en
 - Git push.
 
 All per project AGENTS + web tasks procedure. No links added to IG/FB.
+
+---
+
+**Main business phrase update (2026-06-02 GK):**
+
+User: "add Built to Endure. Designed to Perform as This is the main phrase for the business."
+
+- Replaced hero `<h1>` from "Timeless websites<br>that build trust and last." with "Built to Endure.<br>Designed to Perform."
+- Updated `<meta name="description">` and `og:description` in Layout.astro to lead with the new main phrase.
+- Updated project note (pages/index.astro.md) and Report.md (replaced old tagline reference).
+- `npm run build` + localhost:4321/ surfaced in terminal.
+- Git push.
+
+This is now the primary headline/tagline for the business site.
