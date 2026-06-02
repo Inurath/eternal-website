@@ -184,8 +184,15 @@ import { testimonials } from '../data/testimonials';
 			<h2 class="text-center mb-2">Ready to get a site that lasts?</h2>
 			<p class="text-center text-[var(--text-muted)] mb-8">Tell the Eternal Website team about your business. We reply within 24 hours.</p>
 
-			<!-- Form: JS-enhanced with mailto fallback (real service in polish) -->
-			<form id="contact-form" class="space-y-4">
+			<!-- Form: Netlify Forms ready (data-netlify + honeypot). Submits to Netlify dashboard on deploy (configure to email info@eternalwebsite.com). 
+			     Local dev falls back to direct email link below. Honeypot + native validation for spam protection. -->
+			<form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-4">
+				<input type="hidden" name="form-name" value="contact" />
+				<div hidden aria-hidden="true">
+					<label for="bot-field">Don’t fill this out if you’re human:</label>
+					<input id="bot-field" name="bot-field" />
+				</div>
+
 				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 					<div>
 						<label for="name">Your name</label>
@@ -214,40 +221,13 @@ import { testimonials } from '../data/testimonials';
 				<button type="submit" class="btn btn-primary w-full text-base">Send inquiry</button>
 
 				<div id="form-success" class="hidden p-4 bg-[var(--surface)] border border-[var(--success)] rounded text-sm text-[var(--success)]">
-					Thanks! Your email client should open with the details pre-filled. If it doesn't, just email <a href="mailto:info@eternalwebsite.com" class="font-medium underline">info@eternalwebsite.com</a> directly.
+					Thanks! Your message was sent. The Eternal Website team will reply within 24 hours.
 				</div>
 
 				<p class="text-[10px] text-center text-[var(--text-muted)]">Or email <a href="mailto:info@eternalwebsite.com" class="font-medium">info@eternalwebsite.com</a> directly.</p>
 			</form>
 
-			<script>
-				const form = document.getElementById('contact-form');
-				const success = document.getElementById('form-success');
-
-				form?.addEventListener('submit', (e) => {
-					e.preventDefault();
-
-					const name = (document.getElementById('name') as HTMLInputElement).value;
-					const business = (document.getElementById('business') as HTMLInputElement).value;
-					const email = (document.getElementById('email') as HTMLInputElement).value;
-					const phone = (document.getElementById('phone') as HTMLInputElement).value;
-					const msg = (document.getElementById('message') as HTMLTextAreaElement).value;
-
-					const subject = encodeURIComponent(`Website inquiry - ${business}`);
-					const body = encodeURIComponent(
-						`Name: ${name}\nBusiness: ${business}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\n\n${msg}`
-					);
-
-					// Open mailto to the team address
-					window.location.href = `mailto:info@eternalwebsite.com?subject=${subject}&body=${body}`;
-
-					// Show friendly success (in case mailto is blocked or user wants confirmation)
-					if (success) {
-						success.classList.remove('hidden');
-						form?.querySelector('button')?.classList.add('opacity-50', 'pointer-events-none');
-					}
-				});
-			</script>
+			<!-- No custom submit JS: native form POST works with Netlify Forms (or Formspree). Success UI can be enhanced with Netlify's AJAX handling if needed (see Deployment.md). -->
 		</div>
 	</section>
 

@@ -37,3 +37,14 @@ These address the three new pending items in CLI Web Tasks.
 All per CLI Web Tasks pending + project AGENTS (document, build+URL, update notes/Report).
 
 **Main phrase update:** Replaced hero h1 "Timeless websites that build trust and last." with the new main business phrase "Built to Endure.<br>Designed to Perform." (as requested). Also updated meta description and OG description in Layout.astro to lead with the phrase. This is now the primary tagline/headline for the site.
+
+**Publish prep (Netlify Forms + config) — GK 2026-06-02:** 
+- Upgraded contact form for production publish: added `name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"`, hidden `form-name` input, and honeypot field (hidden from humans). This makes the form work out-of-the-box when deployed to Netlify (submissions captured in Netlify Forms dashboard; configure email forwarding to info@eternalwebsite.com there).
+- Removed the custom mailto JS handler (it prevented native POST). Now native submit for hosted form handling. Success message text updated to generic "message was sent" (no more "email client should open").
+- Direct email link remains as fallback / alternative.
+- Updated astro.config.mjs: added `site: 'https://eternalwebsite.com'` (for canonical URLs, sitemap if added later, OG etc). Added comment for optional `npx astro add sitemap`.
+- Build re-run; http://localhost:4321/ surfaced.
+- Form is now "ready to publish" — no more placeholder mailto-only. See notes/Deployment.md for full Netlify setup + how to enable form notifications.
+- This closes the last pending in CLI Web Tasks ("now the site should have everything ready to publish on the domain").
+
+All changes per project AGENTS + web procedure (note updated immediately, build+URL, Report append next).

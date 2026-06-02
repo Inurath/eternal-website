@@ -29,7 +29,11 @@
 
 ## Vault Root (non-site)
 - Report.md, AGENTS.md, notes/Competitors.md, notes/DOCUMENTATION_STATUS.md — self-documenting or the "notes for notes".
-- Future: Content.md, Pricing.md, Branding.md, Deployment.md will be created as content is finalized.
+- notes/Deployment.md — created (full publish steps from GH: Netlify primary, form setup, DNS/Namecheap, alternatives).
+- Future: Content.md, Pricing.md, Branding.md, Roadmap.md as needed.
+
+## Configs
+- site/astro.config.mjs — site URL added for publish/SEO; sitemap note. (Low-level, documented in Report + Deployment + inline comments; no full companion note per prior status.)
 
 **Status:** All significant authored source files (components, pages, data, styles, layout) have dedicated notes as of this build. New files added in future turns must immediately receive a note (update this file too).
 

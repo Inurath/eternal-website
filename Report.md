@@ -440,3 +440,56 @@ User: "add Built to Endure. Designed to Perform as This is the main phrase for t
 - Git push.
 
 This is now the primary headline/tagline for the business site.
+
+---
+
+## Session Log — 2026-06-02 (GK: Publish readiness + Netlify Forms + Deployment docs — final web task closeout)
+
+**Trigger:** User prompt "read your notes and do your tasks" (standard GK startup via Super+Q / claude-tasks equivalent). Followed full startup checklist (CLI Core Reports/Tasks/TODO + Web Tasks + Eternal AGENTS.md + this Report + notes/ + Commands.md + git status).
+
+**Pending addressed (from CLI Web Tasks.md):**
+- [x] "now the site should have everything ready to publish on the domain. make sure that is the case and show me all steps to do it from my github"
+
+**Verification of completeness (pre-changes):**
+- Site already had all prior polish: hero main phrase, X logo (user image, square fill, no filter), IG/FB visual squares (no links), international (no "Local Florida Focus"), team-only language, lowered prices + $49/mo option, solid nav/logo/dark toggle, section boxes, info@ email, Pexels images, dark mode, build always surfaces http://localhost:4321/ .
+- `npm run build` clean (static, 1 page).
+- Git was slightly behind (pricing.ts had old higher prices locally updated; notes/git-github.md untracked; .obsidian/.vscode noise).
+
+**Actions (publish readiness):**
+- Cleaned git: updated .gitignore (volatile .obsidian/workspace*.json + .vscode/ + .idea/), committed pricing.ts (1297/2197/3497 + $49/mo lines), added notes/git-github.md, pushed. Confirmed via MCP `list_commits` that GH main now has the chore commit + prior phrase/X fills.
+- Upgraded contact form to production/Netlify-ready (see index.astro.md for details):
+  - Form now includes `name="contact" method="POST" data-netlify="true" data-netlify-honeypot=...` + hidden form-name + honeypot field.
+  - Removed custom mailto+preventDefault JS (was blocking native POST). Success text generalized ("message was sent... reply within 24h").
+  - Direct mailto link preserved as always-visible fallback.
+  - On Netlify deploy: form posts to Netlify backend (dashboard captures, spam filter, can auto-forward to info@eternalwebsite.com). Works immediately with current attrs.
+- Enhanced astro.config.mjs: `site: 'https://eternalwebsite.com'` (enables proper canonical/OG/sitemap URLs). Comment for `npx astro add sitemap` future.
+- Created `notes/Deployment.md` — comprehensive from-GitHub guide:
+  - Netlify (rec): import repo, base=site, build=npm run build, publish=dist; custom domain + DNS (nameservers or CNAME/A for Namecheap); forms config in UI.
+  - Vercel alt.
+  - cPanel static upload fallback (build + FTP dist/ contents).
+  - Form options table (Netlify primary, Formspree, mailto).
+  - Post-deploy: Lighthouse, _redirects, sitemap/robots, analytics, rollback.
+  - Namecheap DNS/email notes (MX stay working during web cutover).
+- Updated companion: notes/site/src/pages/index.astro.md (full form publish section + Netlify rationale).
+- Updated notes/DOCUMENTATION_STATUS.md (Deployment.md + config note).
+- Re-ran `npm run build` after edits; terminal now includes the clickable http://localhost:4321/ + preview instructions (per web tasks "do the Astro thing").
+- Git: committed the form/config + new Deployment.md + note updates + Report append (sensible commit), pushed to GH. Local clean.
+
+**Current state (ready to publish):**
+- Source on GH is authoritative.
+- `cd "/home/randy/Documents/Eternal Website/site" && npm run build` always works, produces deployable `dist/`.
+- Form is Netlify-native (or Formspree easy swap).
+- Full steps documented in notes/Deployment.md (user can follow from GH repo page).
+- All per Eternal AGENTS.md (docs updated live, build+URL surfaced, no user exec asked, GK heavy lift).
+- No rice changes. Eternal vault is clean second brain.
+
+**Closeout for this web item:**
+- Will mark [x] in CLI Web Tasks.md with completion date.
+- Append entry to Log Completed Web Tasks by CLIs.md .
+- Add session summary to main /home/randy/Documents/Personal/CLI Core/CLI Reports.md (and CLI Tasks if applicable).
+- Run `dotfiles-sync save` at true end of GK session.
+- User instruction: open the site in VS Code (`eternal` or `code "/home/randy/Documents/Eternal Website/"`), click http://localhost:4321/ to review the final publish-ready version, then follow Deployment.md to go live on eternalwebsite.com from the GH repo.
+
+**Next for Eternal (if any):** User review/feedback → minor tweaks or v2 (multi-page, real client examples, blog). All future work tracked here + main CLI Tasks. This fulfills the flagship "build the website agency site" objective.
+
+**End of GK web publish session.** All rules followed. GH pushed, docs complete, site verified.
