@@ -52,11 +52,16 @@ The public DNS is still getting the old A record. This usually means Namecheap s
 
 **Do these (checkboxes):**
 
-- [ ] Log into Namecheap → Domain List → Manage eternalwebsite.com.
-- [ ] Go to the **Advanced DNS** tab (or "DNS" / "Nameservers" area).
+- [x] Log into Namecheap → Domain List → Manage eternalwebsite.com.
+- [x] Go to the **Advanced DNS** tab (or "DNS" / "Nameservers" area).
 - [ ] **Delete any A records** for:
   - Host: @ or eternalwebsite.com (the one with 198.54.119.206)
   - Host: www (if it has an A or wrong value)
+  - All the service ones: ftp., autoconfig., cpcontacts., webdisk., cpcalendars., whm., webmail., autodiscover., cpanel. (all pointing to 198.54.119.206)
+
+**Yes — delete all of them** (the entire list in your latest screenshot). These are the old hosting/cPanel A records that are overriding the Netlify delegation and keeping the domain stuck on the old IP/LiteSpeed. 
+
+Once removed, the NETLIFY records you see in Netlify should take over for web resolution.
 - [ ] Delete or disable any **URL Redirect / Forwarding / Parking / "For Sale"** settings if present.
 - [ ] In the Nameservers section, confirm it is set to **Custom DNS** with exactly these 4 (add if missing, remove others):
   - dns1.p05.nsone.net
@@ -148,94 +153,9 @@ The old long pre-checks and old "add A records manually" instructions have been 
 
 Reply with your checkpoint results after the Namecheap cleanup + dig tests. That's the current blocker.
 
-## Add Email Records in Netlify (Do This After the Custom Domain Serves Your Site)
-
-Once https://eternalwebsite.com loads your actual Astro site (not the old LiteSpeed page), add the email records in the same Netlify DNS editor where you saw the NETLIFY records.
-
-Use your cPanel screenshots as the source for the exact values.
-
-Add:
-
-**MX (highest priority for email to work):**
-- [ ] eternalwebsite.com (or @) → MX 10 mx1.privateemail.com
-- [ ] eternalwebsite.com (or @) → MX 10 mx2.privateemail.com
-
-**CNAME:**
-- [ ] mail.eternalwebsite.com → CNAME privateemail.com
-
-**TXT records (copy exact values from your cPanel images):**
-- [ ] eternalwebsite.com (or @) → TXT v=spf1 include:spf.privateemail.com ~all   (the privateemail SPF)
-- [ ] default._domainkey.eternalwebsite.com → TXT v=DKIM1; k=rsa; p=[full long key from your cPanel screenshot]
-- [ ] _dmarc.eternalwebsite.com → TXT v=DMARC1; p=none;
-
-**SRV records (for full email client / calendar functionality - copy the exact ones from cPanel images):**
-- [ ] The _autodiscover._tcp.eternalwebsite.com SRV record(s)
-- [ ] The _caldav._tcp , _carddav._tcp , _caldavs._tcp , _carddavs._tcp SRV records
-
-**Checkpoint — Reply with:**
-- Which ones you added.
-- Output of: dig eternalwebsite.com MX +short
-- Test: Did a test email to info@eternalwebsite.com arrive in Thunderbird?
-
 ---
-
-## Set Up the Forms Notification ("the notification thing")
-
-This can be done on the preview right now.
-
-In Netlify dashboard for your site:
-- Look for **Forms** (sidebar) or go to Configuration → Notifications → Form submission notifications.
-- Find the "contact" form.
-- Add notification → Email → info@eternalwebsite.com
-- (Optional) customize subject.
-
-Test by filling the contact form on https://eternalwebsite.netlify.app and submitting.
-
-Check:
-- Netlify Forms tab — the submission should appear.
-- Your info@ inbox (Thunderbird or webmail).
-
-**Checkpoint — Reply with:**
-- Did you find the form and successfully add the info@ notification? (yes/no + path you clicked)
-- After test submit on preview: did it show in Netlify Forms? Did the email arrive?
-
----
-
-## Final Checks (Once Custom Domain is Fully Working)
-
-- [ ] https://eternalwebsite.com loads your full site (hero, pricing, form, X/IG/FB squares, dark mode) + green lock.
-- [ ] Form submit on the custom domain works end-to-end (appears in Netlify + email arrives).
-- [ ] Email to info@ / admin@ works (from outside + replies).
-- [ ] www version either redirects or also works cleanly.
-
-The preview https://eternalwebsite.netlify.app is always a working view of your site.
-
----
-
-**Cleaned note note:** Old pre-checks, old "add manual A records in Netlify", old "cPanel is your DNS" instructions, old progress history, and the long "safe vs risky" text have been removed. Only what is relevant to your current situation (Netlify DNS + NETLIFY records visible + old A still winning publicly + need to clean Namecheap + add email records) remains, with clear checkboxes and checkpoints.
-
-Reply after the Namecheap cleanup + the dig tests with the checkpoint info. That's the current step that will make the site load on eternalwebsite.com.
 
 **Agent / Future Notes:**  
 After any user feedback or change, update this file with new checkboxes for the new steps. Always keep the "reply with last checkbox number + symptoms" pattern. Update Eternal Report.md and main CLI logs when this doc is revised.
 
-*Heavily revised 2026-06-02+ for maximum clarity with checkboxes after user got stuck at DNS + "can't find notification" + email-break concern. Safe DNS path emphasized. Current focus: fix A record causing site down on custom domain.*
-
----
-
-**Your immediate next steps (based on your *latest* replies — NS are Netlify's, web is live, now fix email records):**
-
-1. [ ] In Netlify (the domain's DNS records editor), add the email records from your cPanel screenshots (start with the two MX, the mail. CNAME, the privateemail SPF TXT, the _dmarc TXT, the default._domainkey DKIM TXT, and the SRV ones for autodiscover/caldav/carddav). Use the detailed list in Section 2 above.
-2. [ ] After adding, re-run:
-   dig eternalwebsite.com MX +short
-   dig mail.eternalwebsite.com +short
-   dig _dmarc.eternalwebsite.com TXT +short
-   And test sending an email to one of the addresses and see if it arrives in Thunderbird.
-3. [ ] Visit https://eternalwebsite.com (incognito) and confirm the full site loads with green lock + your content (X logo square etc.).
-4. [ ] Go to Section 3 and set up the Forms notification for info@eternalwebsite.com (the "notification thing" you were looking for). Test submitting the contact form on the live site — it should appear in Netlify Forms dashboard, and after notification is set, arrive in email.
-
-**Reply format reminder:** Tell me the last checkbox number(s) you completed + the info requested in the relevant Checkpoint (0, 1, 1.5, 2, or 3). E.g. "Added MX and mail CNAME (checkboxes 2.1 and 2.2). New dig MX: ... . Live site looks good except ..."
-
-The web part of the site is published and working. Fixing the email records in Netlify DNS will restore Private Email, then we finish with the form notification and testing.
-
-If you run into any specific error adding a record in Netlify (e.g. validation on the DKIM key or SRV), paste the exact error and the checkbox number.
+*Note cleaned 2026-06-03: removed old bloat per user request. Current focus: Namecheap A record cleanup (delete all the ones in your latest screenshot), then migrate email records (MX/SRV/TXT) to Netlify DNS, then Forms notification.*
