@@ -524,3 +524,31 @@ This is now the primary headline/tagline for the business site.
 **End of session:** Update main CLI Reports + this Report, git add/commit/push in eternal (notes/Deployment.md + Report.md), dotfiles-sync save.
 
 ---
+
+## Session Log — 2026-06-03 (GK follow-up: user updated note again with Netlify cleanup [x] + CSV export; further trim + CSV-driven fixes)
+
+**Trigger:** User: "check the note again with the updated replies i did and pls delete what is not needed anymore"
+
+**What user did since last:** Marked all of section 1 Netlify cleanup checkboxes [x], pasted their test dig output (still 198 A + no MX), attached "here are the records on Netlify" as eternalwebsite.com (DNS Records) 1.csv (plus another .csv) — export of current Netlify DNS.
+
+**Actions:**
+- list_dir + read the two CSVs (show NETLIFY @/www correct, no A 198, but email records with duplicated names "eternalwebsite.com.eternalwebsite.com" for MX/SPF etc, mangled SRV names, one has old hosting SPF).
+- Ran fresh digs/curls (confirmed still 198 @nsone, no MX, parking on custom, preview good).
+- Updated Deployment.md Current Status: condensed to only the *newest* user action + CSV problems (deleted the long list of prior historical replies/images bullets as "not needed anymore").
+- Cleaned section 1: removed the embedded "output: randy@ dig 198" paste that was cluttering the test commands area (moved summary to Current Status).
+- Updated ## 1 header to reflect CSV reality (web NETLIFY good, no A 198 in zone).
+- In section 2: added prominent "Critical fix from your latest CSV export" + "Fix malformed names (do this now)" with explicit delete checkboxes for the bad full-name records + re-add instructions with correct short names (using CSV + images data). Kept the detailed SRV field guidance.
+- Removed duplicate "Fresh verification / Analysis / Direct answers / Immediate next" blocks that had accumulated.
+- Fixed garbled emdash chars.
+- Trimmed other remnants; note now 167 lines, very focused on "you did the cleanup, CSV shows name errors on email — here's exactly what to delete/re-add".
+- Re-read note + terminal wc/tail to confirm clean end (no old bloat text).
+- git add/commit/push (Deployment.md + small Report update).
+- Will append this to main CLI Reports, run dotfiles-sync.
+
+**Result:** Even tighter note. User marked progress on 1, the CSV revealed the exact next blocker (bad record names), and the note now tells them precisely what to delete and how to re-add correctly. Web side in Netlify is good per CSV; email side needs the name fix + possible Namecheap forwarding hunt for the 198.
+
+**Next for user (via the note):** Do the "Fix malformed names" checkboxes in 2 using the CSV as guide, re-test digs, then do 3 (forms). Report checkpoint with new digs + browser state + any new export.
+
+**End of this turn.** All per rules. dotfiles-sync at true close.
+
+---
