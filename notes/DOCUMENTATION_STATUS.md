@@ -29,7 +29,7 @@
 
 ## Vault Root (non-site)
 - Report.md, AGENTS.md, notes/Competitors.md, notes/DOCUMENTATION_STATUS.md — self-documenting or the "notes for notes".
-- notes/Deployment.md — created (full publish steps from GH: Netlify primary, form setup, DNS/Namecheap, alternatives).
+- notes/Deployment.md — created (full publish steps from GH: Netlify primary, form setup, DNS/Namecheap, alternatives). Trimmed/updated 2026-06-03 with user replies + deleted bloat per "delete what is not needed" (now focused checkboxes + current status only).
 - Future: Content.md, Pricing.md, Branding.md, Roadmap.md as needed.
 
 ## Configs
