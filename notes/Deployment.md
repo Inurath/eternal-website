@@ -17,27 +17,30 @@ After you finish a group of steps you will have clear "Checkpoint" boxes.
 - Marked A records deletion [x], provided screenshot of remaining A records (all the service subdomains + main), asked "this are all A records on namecheap side do i delete all of them?"
 - For the "URL Redirect / Forwarding / Parking" checkbox: "i dont know what are you talking abt URL Redirect / Forwarding / Parking / "For Sale" here are the rest of the records on namecheap" + images 20260602210111.png and 20260602210124.png (showing MX, SRV for autodiscover/caldav/carddav, SPF, DKIM, DMARC, mail CNAME, www CNAME to eternalwebsite.com).
 - Nameservers: "confirmed" + image 20260602210156.png (showing the 4 Netlify NS: dns1-4.p05.nsone.net).
+- After running digs: "still Your website is ready to go! from Namecheap"
+- "i cant find any of that is on namecheap or cpanel im lost with that site. can i give you my credentials and you check all?"
 
 **My checks right now:**
 - NS: the 4 Netlify ones (good).
 - A for eternalwebsite.com and www: still 198.54.119.206 (old IP) — even querying Netlify NS directly. So the A cleanup hasn't taken effect yet or main A record wasn't deleted.
-- curl to custom domain: still old hosting (LiteSpeed).
+- curl to custom domain: still old hosting (LiteSpeed), showing "Your website is ready to go!" parking page.
 - Preview works.
 
 **Key from your new images:** The "rest of the records" are exactly the email ones we need to copy to Netlify DNS (MX for privateemail, SRV for email clients/calendar, SPF, DKIM key, DMARC, mail. CNAME). There's also a bad www CNAME pointing to eternalwebsite.com (should be removed or fixed).
 
 **The URL Redirect question:** In Namecheap, even after setting custom nameservers, there can be separate "Forwarding" (URL Redirect) settings on the main domain overview page (not just Advanced DNS). Check the top-level domain management for any "URL Forwarding", "Domain Forwarding", or "Parking" and turn them off if present. The images you provided show the DNS records, not the forwarding settings.
 
-**Netlify side (from previous screenshot):** You see the correct "Type: NETLIFY" for the domain and www — good, no need to add manual A records there.
+**No, do not give credentials.** I can't and won't access your accounts for security reasons. Provide screenshots of the pages (like you are doing), and I'll guide you exactly where to click.
+
+**Netlify side (from previous screenshot):** You see the correct "Type: NETLIFY" for the domain and www — good, no need to add manual A records there. But since resolution is still old, we need to check the actual DNS records list in Netlify and remove any A record pointing to 198.54.119.206.
 
 **Next (in order):**
 1. Finish Namecheap cleanup: delete the remaining A records (yes, all of them from your screenshot), check for any forwarding/parking settings and disable, confirm NS.
-2. Add the email records (from the "rest of records" images) into Netlify's DNS editor (MX, SRV, TXT/SPF/DKIM/DMARC, mail CNAME). Remove the bad www CNAME if present.
-3. Wait/test propagation.
-4. Set up Forms notification.
-5. Test.
-
-I have cleaned the note: removed old bloat, duplicate sections, outdated instructions. Focused on current steps with your latest replies incorporated. Only what you need to act on now remains.
+2. In Netlify, go to DNS records for the domain and delete any A record for @ with 198.54.119.206.
+3. Add the email records (from the "rest of records" images) into Netlify's DNS editor (MX, SRV, TXT/SPF/DKIM/DMARC, mail CNAME). Remove the bad www CNAME if present.
+4. Wait/test propagation.
+5. Set up Forms notification.
+6. Test.
 
 ---
 
@@ -78,6 +81,19 @@ dig @dns1.p05.nsone.net eternalwebsite.com A +short
 dig www.eternalwebsite.com A +short
 ```
 
+output:  randy@RandysPC ~  v26.2.0 
+❯ dig eternalwebsite.com A +short
+198.54.119.206
+
+ randy@RandysPC ~  v26.2.0 
+❯ dig @dns1.p05.nsone.net eternalwebsite.com A +short
+198.54.119.206
+
+ randy@RandysPC ~  v26.2.0 
+❯ dig www.eternalwebsite.com A +short
+eternalwebsite.com.
+198.54.119.206
+
 Wait 5-15 minutes (or longer) and repeat. Use https://dnschecker.org for eternalwebsite.com (A record, all locations).
 
 **From your new images (20260602210111.png + 20260602210124.png) — the "rest of the records":**
@@ -90,9 +106,19 @@ These are mostly the email-related ones (MX, SRV for email/calendar, SPF, DKIM, 
 - Last checkbox completed.
 - The dig outputs (especially the @dns1 one).
 - What https://eternalwebsite.com shows in your browser now (does it load your "Built to Endure..." site, or still old page / LiteSpeed / 403?).
+reply: still Your website is ready to go! from Namecheap
 - Screenshot of any "Forwarding/Redirect/Parking" settings you found (if any).
+reply: i cant find any of that is on namecheap or cpanel im lost with that site. can i give you my credentials and you check all?
 
-Once the @dns1 dig returns something other than 198.54.119.206 (or the site loads your real content), the web is good. Then immediately add the email records from these images into Netlify.
+**No, do not give credentials.** I can't and won't access your accounts. We guide with screenshots and steps only.
+
+**Additional step for Netlify (since even direct to Netlify NS shows old IP):**
+- Go to Netlify → your site → Domain management → click eternalwebsite.com.
+- Find the "DNS records" or list of records (may be a tab or "Manage DNS records").
+- Delete any A record for "eternalwebsite.com" or "@" that has 198.54.119.206.
+- Save.
+
+**Once the @dns1 dig returns something other than 198.54.119.206 (or the site loads your real content), the web is good. Then immediately add the email records from these images into Netlify.**
 
 ---
 
@@ -154,19 +180,4 @@ Test by submitting the form on https://eternalwebsite.netlify.app (or the custom
 
 ---
 
-## Once Web is Working on Custom Domain (and after adding email records)
-
-- [ ] Test https://eternalwebsite.com loads your full site (hero "Built to Endure...", form, X/IG/FB squares, dark mode) + green lock.
-- [ ] Test form submit on the custom domain (appears in Netlify Forms + email arrives at info@).
-- [ ] Test email to info@/admin@ (send from outside, check in Thunderbird/webmail).
-- [ ] www version redirects cleanly or also works.
-- [ ] Optional: add any www/non-www redirects in Netlify if needed.
-
-The preview https://eternalwebsite.netlify.app is always a working view of your site while DNS settles.
-
 ---
-
-**Agent / Future Notes:**  
-After any user feedback or change, update this file with new checkboxes for the new steps. Always keep the "reply with last checkbox number + symptoms" pattern. Update Eternal Report.md and main CLI logs when this doc is revised.
-
-*Note cleaned 2026-06-03: removed old bloat per user request. Current focus: Namecheap A record cleanup (delete all the ones in your latest screenshot), then migrate email records (MX/SRV/TXT) to Netlify DNS, then Forms notification.*
