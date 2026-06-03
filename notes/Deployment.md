@@ -10,27 +10,31 @@ After you finish a group of steps you will have clear "Checkpoint" boxes.
 
 ---
 
-## 📍 Your Current Progress (from the replies + screenshots you added to this note)
+## 📍 Your Current Progress (from the replies + screenshots you added to this note) — LATEST UPDATE
 
-You have completed most of Pre-Checks (0) and all of Section 1 (Netlify side).
+**Great progress!** DNS is now pointing to Netlify (confirmed by dig output you added), and the live site at https://eternalwebsite.com is already serving the correct Eternal Website content (I verified via terminal: resolves to Netlify IPs 18.208.88.157 + 98.84.224.111, returns HTTP 200 with Netlify Edge cache, and page contains "Built to Endure" + "Eternal Website").
 
-**Key findings from your screenshots/replies:**
-- MX records (mx1.privateemail.com and mx2.privateemail.com priority 10) are visible and managed in **cPanel "Zone Records"**, not in the Namecheap "Advanced DNS" tab.
-- Namecheap Advanced DNS tab currently says: you manage records in cPanel (or transfer back to BasicDNS). This means the authoritative DNS zone for eternalwebsite.com is currently handled through your cPanel account (the IP 198.54.119.206 appears to be Namecheap's cPanel/shared hosting IP).
-- Current records (from cPanel):
-  - Bare domain (@) has A record to 198.54.119.206 (plus many subdomains like cpanel., webmail., whm., ftp., autoconfig., etc. also pointing there — these are for hosting control panel access).
-  - www is CNAME to eternalwebsite.com (the bare domain).
-  - mail. is CNAME to privateemail.com.
-- You have successfully added eternalwebsite.com + www to Netlify Domain management.
-- The screenshots you pasted for "Netlify recommended records" mostly show the **"Point your domain’s name servers to Netlify"** section (the 4 dns*.p05.nsone.net nameservers). We are **not** using that path (to protect email). We need the **external / manual DNS records** (A + CNAME) instead.
-- dig command not found (zsh tried to correct it to `dir`). We will fix that.
+You have completed:
+- Pre-Checks (0) including installing dig and running it (showing Netlify IPs — this means the DNS records were successfully added in cPanel and have propagated!).
+- Section 1 (Netlify side, adding the domain).
+- Marked the cPanel login checkbox.
+
+**Latest reply:** "cant find that **external DNS / manual records instructions** in Netlify"
+
+**Key situation:**
+- Your cPanel Zone Editor is where the records live (and apparently where you or previous steps added the Netlify A/CNAME — since dig now shows Netlify, not the old 198.54.119.206).
+- In Netlify, once the domain is added and DNS is detected as correct, the big "here are the records you need to add" prompt often moves or becomes a "status" view instead of the initial instructions page. The nameserver screenshots you took earlier are the alternative (we avoided it).
 
 **Next immediate focus:** 
-- Get the exact A/CNAME values Netlify wants for external DNS (not the nameserver list).
-- Add those records **inside cPanel's Zone Editor** (not Namecheap Advanced DNS).
-- Leave all MX, mail., cpanel.* etc. alone.
+- Confirm exactly what records are currently in your cPanel Zone Editor for @ and www.
+- In Netlify, find the current domain *status* / expected records view (alternative navigation below).
+- Set up the Forms notification (your original "can't find the notification thing" — you can do this *now* on the preview URL or live).
+- Test the contact form on the live https://eternalwebsite.com .
+- Verify SSL and full site.
 
-I have updated the checkboxes below to reflect what you have marked + your replies. New steps added for your actual environment (cPanel).
+I have updated checkboxes and added verification steps below based on your new replies. The site is basically live already — we're in verification + Forms setup phase!
+
+---
 
 ---
 
@@ -80,22 +84,43 @@ We will do the safe way below.
 
 **New action items for your situation (cPanel-managed DNS):**
 
-- [ ] Install `dig` so we can test DNS: Run `sudo pacman -S bind` (or the minimal package if prompted). Then re-run the two dig commands above and paste fresh output. (This package provides dig on Arch.)
+- [x] Install `dig` so we can test DNS: Run `sudo pacman -S bind` (or the minimal package if prompted). Then re-run the two dig commands above and paste fresh output. (This package provides dig on Arch.)
+  Your reply (fresh output):
+  ```
+  randy@RandysPC ~  v26.2.0 
+  ❯ dig eternalwebsite.com +short 
+  18.208.88.157
+  98.84.224.111
+   randy@RandysPC ~  v26.2.0 
+  ❯ dig www.eternalwebsite.com +short 
+  98.84.224.111
+  18.208.88.157
+  ```
+  **Excellent!** These are Netlify's IPs (not the old parking 198.54.119.206). DNS changes you made in cPanel have propagated. The site is live on Netlify.
 
-- [ ] Log into your **cPanel** for eternalwebsite.com (from Namecheap dashboard under the domain there should be a "cPanel" or "Login to cPanel" button, or try https://eternalwebsite.com:2083 or the IP:2083 with your cPanel credentials). Confirm you can see "Zone Editor" or "Advanced Zone Editor".
+- [x] Log into your **cPanel** for eternalwebsite.com (from Namecheap dashboard under the domain there should be a "cPanel" or "Login to cPanel" button, or try https://eternalwebsite.com:2083 or the IP:2083 with your cPanel credentials). Confirm you can see "Zone Editor" or "Advanced Zone Editor".
+  (Marked [x] by you — please confirm in your next reply what the current @ and www records look like in cPanel Zone Editor now.)
 
 - [ ] In Netlify (for the eternalwebsite.com domain you already added), look for the **external DNS / manual records instructions** (not the nameserver change page). Usually there is a tab or link "Configure external DNS", "DNS records for external provider", or it lists:
   - For the apex (@): A record(s) or ALIAS to specific value(s) Netlify gives (commonly 75.2.60.5 and/or 99.83.190.102).
   - For www: CNAME to your-project-name.netlify.app
   Find and screenshot/copy the **exact** recommended A/CNAME values (the ones for "use your current DNS provider").
+  Your reply: "cant find that **external DNS / manual records instructions** in Netlify"
+
+  **If you can't find the "add these records" instructions anymore** (common once it's working): 
+  - Go to Domain management in your site.
+  - Click on the "eternalwebsite.com" entry in the list.
+  - Look for tabs/sections like "DNS", "Configuration", "Status", "Records", or "Verify". It often shows the current status as "External DNS" or "DNS configured" and may still list the expected records for reference.
+  - Alternatively, from the main project sidebar: Domain management > (the domain) > there may be a "DNS records" link or "This domain uses external DNS. Netlify expects these records:" area.
+  Take a screenshot of whatever you see on that domain's detail page and add it here, or describe the options/tabs visible.
 
 **Checkpoint 0 (updated for you) — Reply with:**
-- Last checkbox you just completed (e.g. "0.7" or "the new install dig one").
-- Fresh `dig` output after installing.
-- Confirmation you can access cPanel Zone Editor.
-- The exact text or description of the A record and CNAME that Netlify is telling you to add for external DNS (transcribe from the UI or the images if clearer ones exist).
+- Last checkbox you just completed.
+- Fresh `dig` output (you already added good one — confirm if same now).
+- Confirmation + description/screenshot of what you see in cPanel Zone Editor for the @ (apex) and www records *right now*.
+- What you see when you click into the eternalwebsite.com entry in Netlify Domain management (tabs, status, any list of records, "external DNS" mention, etc.). Even if you can't find "instructions", describe the page.
 
-Once we have the exact Netlify-recommended values for external DNS, the next steps will be to add them in cPanel.
+Since dig already shows Netlify, we can treat DNS as done and move to verification + Forms. But report the cPanel current state so we can confirm it matches.
 
 ---
 
@@ -132,6 +157,24 @@ Once we have the exact Netlify-recommended values for external DNS, the next ste
 
 ---
 
+**DNS Verification (NEW — because your dig output already shows Netlify IPs and the site is live!)**
+
+Since `dig` now returns Netlify IPs (18.208.88.157 + 98.84.224.111) instead of the old parking IP, your cPanel records are working and propagated.
+
+- [ ] Open a browser (incognito/private) and visit **https://eternalwebsite.com** and **https://www.eternalwebsite.com**.
+- [ ] Confirm it loads the Eternal Website (hero "Built to Endure. Designed to Perform.", navigation, pricing, contact form, dark mode toggle, your X/IG/FB footer squares, etc.).
+- [ ] Check for green padlock (HTTPS/SSL — Netlify should have auto-provisioned it).
+- [ ] Note any issues (e.g. old parking page still showing, mixed content, form not there).
+
+**Checkpoint 1.5 (live verification) — Reply with:**
+- What you see on https://eternalwebsite.com (does it match the localhost preview? Any differences?).
+- Is there a green lock? Any browser warnings?
+- Screenshot description if something looks wrong.
+
+This confirms the DNS part from your side is successful. We can then focus on the Forms notification (the part you had trouble finding).
+
+---
+
 ## 2. Point the Domain from cPanel (Safe Method — Email Protected)
 
 **Important for your setup:** Because DNS is currently managed in cPanel (as your screenshots showed), we edit records **inside cPanel's Zone Editor**, not the Namecheap Advanced DNS tab. We keep the same nameservers (no change). This is still the safe path for email.
@@ -141,40 +184,33 @@ Once we have the exact Netlify-recommended values for external DNS, the next ste
 **First, get the exact values from Netlify (do this if not done):**
 - [ ] In Netlify Domain management for eternalwebsite.com, find and copy the **external DNS records** (A for apex + CNAME for www). Ignore any nameserver (NS) instructions.
 
-**Now edit in cPanel:**
-- [ ] Log into cPanel for eternalwebsite.com (as you confirmed access in pre-checks).
+**Verification / Confirmation in cPanel (DNS changes appear already done based on your dig!):**
+
+Since your `dig` now returns Netlify IPs, the A/CNAME records for Netlify have likely already been added in cPanel (by you or previously). We will verify instead of "add new".
+
+- [ ] Log into cPanel for eternalwebsite.com.
 - [ ] Go to **Zone Editor** (or "Advanced Zone Editor" / "DNS Zone Editor").
 - [ ] Find/select the eternalwebsite.com zone.
-- [ ] **Critical - leave these completely alone:**
+- [ ] **Critical - leave these completely alone (do not edit/delete):**
   - All MX records (mx1.privateemail.com, mx2.privateemail.com)
   - The mail. CNAME to privateemail.com
   - Any _dmarc, DKIM, SPF TXT records
   - All the service subdomains that point to 198.54.119.206 (cpanel., webmail., whm., ftp., autoconfig., webdisk., etc.) — these let you keep accessing cPanel and webmail if you want.
-- [ ] For the bare domain / apex (@ or eternalwebsite.com):
-  - Find the existing A record pointing to 198.54.119.206.
-  - Edit it (or delete and add new) to match exactly what Netlify told you for the apex (usually an A record with value like 75.2.60.5, or whatever specific IP/ALIAS Netlify lists for external providers). Use the same TTL if possible (e.g. 14400).
-- [ ] For www:
-  - Find the current CNAME (it points to eternalwebsite.com).
-  - Edit it to the exact CNAME target Netlify gave you (your-project-name.netlify.app).
+- [ ] Locate the records for the bare domain / apex (@ or eternalwebsite.com) and for www.
+  - Note exactly what they are now (e.g. A record(s) with the Netlify IPs like 18.208.88.157 / 98.84.224.111, or CNAME for www to the .netlify.app target). Paste or describe them here.
+- [ ] If they already match the Netlify external instructions (the ones you are trying to find in the UI), great — no changes needed. If something is still the old 198.54.119.206, then edit the @ to the Netlify A value(s) and www to the Netlify CNAME target.
 
-- [ ] Save / Apply the changes in cPanel.
-- [ ] Wait 5–60 minutes for propagation (cPanel changes can be fast but global DNS takes time). Use a checker like dnschecker.org.
+- [ ] Save any changes if you made them.
+- [ ] Re-run the dig tests (you already have good output).
 
-- [ ] Test (after installing dig):
-  ```
-  dig eternalwebsite.com +short
-  dig www.eternalwebsite.com +short
-  ```
-  You should see the Netlify IP (not 198.54.119.206) for the bare, and the netlify.app name for www.
-
-- [ ] Visit https://eternalwebsite.com and https://www.eternalwebsite.com in a private/incognito browser. The Eternal Website should appear (padlock may take a bit for SSL).
+- [ ] Visit https://eternalwebsite.com (incognito) and confirm it loads the correct site with green lock.
 
 **Checkpoint 2 (tailored to cPanel) — Reply with:**
-- Last checkbox completed (e.g. the www edit one).
-- The exact A and CNAME values you used from Netlify (so I can confirm they were right).
-- Fresh output of the two dig commands.
-- Does the site load the hero "Built to Endure. Designed to Perform." on the custom domain? (Yes / describe exactly what loads or any error).
-- Any issues adding/editing in cPanel Zone Editor?
+- Last checkbox completed.
+- Exact current records you see in cPanel for @ and www (this is important so we know they match Netlify).
+- Fresh dig output (or confirm same as before).
+- Does https://eternalwebsite.com load the hero "Built to Endure. Designed to Perform." with the full site? Any issues?
+- Any problems in cPanel Zone Editor?
 
 ---
 
@@ -291,15 +327,15 @@ After any user feedback or change, update this file with new checkboxes for the 
 
 ---
 
-**Your immediate next steps (based on your latest replies in this note):**
+**Your immediate next steps (based on your *latest* replies in this note — DNS is already working!):**
 
-1. [ ] Install dig: `sudo pacman -S bind` then re-run and paste the dig outputs.
-2. [ ] Access cPanel for the domain and confirm Zone Editor works.
-3. [ ] In Netlify, find the **external DNS A + CNAME instructions** (not the nameserver/NS page you screenshotted) and transcribe the exact values Netlify wants for @ and www.
-4. [ ] Once you have those exact values, come back and reply with them + the dig output + cPanel confirmation (using the updated Checkpoint 0 language). Then we will do the precise edits in cPanel Zone Editor (the new steps now in Section 2).
+1. [ ] In cPanel Zone Editor: look at the current @ and www records and reply with exactly what they say now (this confirms what you added for Netlify).
+2. [ ] In Netlify Domain management, click into the eternalwebsite.com entry and describe/screenshot what you see (status, any "external DNS", listed records, tabs available). Even if the "add instructions" are gone, tell me the current view.
+3. [ ] Visit https://eternalwebsite.com (and www) in incognito. Confirm it loads the full correct site (hero phrase, form, footer logos, etc.) + green lock.
+4. [ ] Proceed to Section 3: Set up the Forms notification for info@eternalwebsite.com (use the detailed paths — you can test the form submit on the live site or the preview URL right now). This was one of your original stuck points.
 
-**You can also start Section 3 (Forms notifications) in parallel right now** using the .netlify.app preview URL — the UI steps don't require the custom domain to be live yet.
+**Reply format reminder:** Tell me the last checkbox number(s) you completed + the info requested in the relevant Checkpoint (0, 1, 1.5, 2, or 3).
 
-Reply with your progress using the checkpoint format (or just say "last checkbox I marked is X.Y and here is ..."). I will keep refining the steps in this note as you report (and mark more as you complete them).
+Once you reply with the cPanel current records + Netlify domain page description + live site confirmation, I can confirm DNS is fully good and we'll knock out the Forms + final tests.
 
-This way we stay perfectly in sync on exactly where you are.
+The site is basically published already — awesome work on the DNS part! This is now mostly verification + the notification setup you were looking for.
