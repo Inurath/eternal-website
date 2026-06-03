@@ -196,27 +196,3 @@ If anything fails, reply with the checkpoint format + screenshot of the exact sc
 Once all pass: site + email + forms live from your GitHub on Netlify. Update this note with "done" + final checkpoint and we're closed.
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-
-
-
-
----
-
-
-
----
