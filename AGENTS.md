@@ -1,15 +1,16 @@
 # Eternal Website — Project AGENTS (GK / CC / Future Agents)
 
-**Project root:** `/home/randy/Documents/Eternal Website/`  
+**Project root:** `/home/randy/Documents/Web Agency/eternalwebsite.com/`  
 **Live site goal:** eternalwebsite.com (one-page premium web design service for small local businesses)  
-**Main objective of entire rice:** Build a website agency. This vault + repo is the second brain / canonical home for all web dev work.
+**Main objective of entire rice:** Build a website agency. The Web Agency vault + repo is the second brain / canonical home for all web dev work.
 
 ## Mandatory Startup (Every Session)
 1. Read this `AGENTS.md`.
 2. Read `Report.md` (current state, decisions, logs, handoff notes).
 3. Read `notes/Competitors.md`, `notes/Content.md` (when exists), `notes/Pricing.md`, `notes/Branding.md`.
 4. `ls -la site/` + `cd site && git status` (if git inited) to see current build state.
-5. Check `/home/randy/Documents/Personal/CLI Core/CLI Tasks.md` + `CLI Reports.md` for any related top-level tasks (Eternal is the flagship pending until marked complete).
+5. Check `Web Tasks.md` at `/home/randy/Documents/Web Agency/Web Tasks.md` for web-specific pending tasks.
+6. Check `/home/randy/Documents/Personal/CLI Core/CLI Tasks.md` + `CLI Reports.md` for any related top-level tasks.
 
 ## Core Rules (from global AGENTS.md + this project spec)
 - **GK does heavy lifting / coding.** CC reviews the entire thing (use review skill, /review, or spawn reviewer subagent). User mostly opens VS Code to review finals. "I won't be doing basically nothing more than opening VScode and reviewing the final results."

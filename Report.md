@@ -812,3 +812,24 @@ All per protocol, AGENTS.md (document immediately, build+verify after every key 
 
 ---
 
+
+---
+
+## Session Log — 2026-06-04 (Hermes: Protocol-driven "read your notes and do your tasks" + register cleanup + hero/live verification; no new site code)
+
+**Trigger:** Standard Hermes launch prompt. Full autonomous vault processing per Protocol.md + Web Agency/AGENTS.md + eternal AGENTS.md.
+
+**Startup + Scans:** Read Protocol, all CLI Core (Reports/Tasks/TODO cleaned), Dashboard, Home, Web AGENTS, Web Tasks (pending empty), eternal AGENTS + this Report (v1 done + prior hero logs); search_files on vaults; loaded obsidian + agent skills; todo tracking.
+
+**Actions:** 
+- Cleaned CLI Tasks.md pending (4 items moved to Completed [x] 2026-06-04: CC delegation priority, website live bg changes (hero collage), Super+Q / Waybar launchers, done-sound hook).
+- Verified hero bg (from prior 06-04 Hermes sessions): source (index.astro hero-bg-collage + enhanced device styles 0.32/6px/3.8x+ tint), build clean (677ms), dist has classes, live https://eternalwebsite.com serves "device-mockup" + "Built to Endure" (user preference for live refresh checks satisfied; git up-to-date).
+- Physicals (phone, FGCC crop/trivery/add link) left in CLI TODO.md only.
+- No new code edits to site/ (hero complete); untracked hands pngs/CSVs/.obsidian ignored per hygiene.
+
+**Verification:** All per AGENTS (doc, no user exec, build+verify, update logs); live site matches source; registers accurate.
+
+**End:** dotfiles-sync save, git (none for site), append to main CLI Reports + Log, closeout. Follow Protocol on next launch. Hero bg live and done.
+
+**Handoff:** Open eternalwebsite.com site/ in VS Code or browser (refresh for live). Physical items user-side.
+
