@@ -227,3 +227,176 @@ nav img[alt="Eternal Website"] {
 html.dark nav img[alt="Eternal Website"] {
   filter: brightness(0) invert(1);
 }
+
+/* ===== HERO DEVICE MOCKUP COLLAGE (2026-06-04 Hermes) =====
+   Professional, self-contained CSS frames for phone + laptop + desktop.
+   Rotations + layered shadows + z-index create dynamic "angles/hands holding device" collage feel.
+   All inner content + frame accents use CSS vars (--surface, --text, --accent, --text-muted, --border)
+   so it perfectly matches light/dark mode of the rest of the site with zero color conflicts or blur needed.
+   No external images, no JS, lightweight. Mini content is scaled representative of the actual hero for "see the site on your device" demo effect.
+   Sized/positioned to fit the right column of the new 2-col hero without crowding.
+*/
+.device-mockup {
+  background: #111;
+  border: 1px solid #222;
+  box-shadow: 0 15px 35px -5px rgb(0 0 0 / 0.3), 0 10px 15px -5px rgb(0 0 0 / 0.2);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.device-mockup:hover {
+  box-shadow: 0 20px 40px -5px rgb(0 0 0 / 0.35), 0 15px 20px -5px rgb(0 0 0 / 0.25);
+}
+.device-mockup .bezel {
+  background: #0a0a0a;
+  padding: 3px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: inherit;
+}
+.device-mockup .screen {
+  background: var(--surface);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 0.5px var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+  line-height: 1.05;
+  text-align: center;
+}
+.device-mockup .mini-nav {
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 3px;
+  font-weight: 700;
+  padding: 1px 2px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 0.5px solid var(--border);
+  letter-spacing: -0.2px;
+}
+.device-mockup .mini-badge {
+  font-size: 2px;
+  background: var(--accent);
+  color: white;
+  padding: 0.5px 2px;
+  border-radius: 9999px;
+  margin: 1px 0;
+  line-height: 1;
+}
+.device-mockup .mini-h1 {
+  font-size: 3.8px;
+  font-weight: 700;
+  line-height: 1.0;
+  margin: 0.5px 1px;
+  color: var(--text);
+  letter-spacing: -0.1px;
+}
+.device-mockup .mini-p {
+  font-size: 2.2px;
+  color: var(--text-muted);
+  line-height: 1.05;
+  margin: 0.5px 1px;
+}
+.device-mockup .mini-btns {
+  display: flex;
+  gap: 1.5px;
+  justify-content: center;
+  margin-top: 1px;
+  width: 100%;
+}
+.device-mockup .mini-btn {
+  font-size: 2px;
+  padding: 0.5px 2px;
+  border-radius: 1.5px;
+  background: var(--surface);
+  color: var(--text);
+  border: 0.5px solid var(--border);
+  line-height: 1;
+}
+.device-mockup .mini-btn.primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Phone: tall narrow, rounded modern bezel */
+.device-mockup.phone {
+  width: 72px;
+  height: 128px;
+  border-radius: 16px;
+  padding: 5px 3px;
+}
+.device-mockup.phone .bezel {
+  border-radius: 12px;
+}
+.device-mockup.phone .screen {
+  border-radius: 8px;
+}
+
+/* Laptop: wide screen + base */
+.device-mockup.laptop {
+  width: 148px;
+  height: 92px;
+  border-radius: 5px;
+  padding: 2.5px;
+}
+.device-mockup.laptop .bezel {
+  border-radius: 3px;
+}
+.device-mockup.laptop .screen {
+  border-radius: 1.5px;
+}
+.device-mockup.laptop .laptop-base {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 168px;
+  height: 6px;
+  background: #222;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 0.15);
+}
+
+/* Desktop: monitor + stand */
+.device-mockup.desktop {
+  width: 128px;
+  height: 86px;
+  border-radius: 3px;
+  padding: 3px;
+}
+.device-mockup.desktop .bezel {
+  border-radius: 2px;
+}
+.device-mockup.desktop .screen {
+  border-radius: 1px;
+}
+.device-mockup.desktop .desktop-stand {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 10px;
+  background: #222;
+  border-radius: 1px;
+}
+.device-mockup.desktop .desktop-stand::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 3px;
+  background: #222;
+  border-radius: 1px;
+}
