@@ -14,6 +14,7 @@
 - Kept simple (no extra layout props or SEO component yet) to match v1 one-pager scope.
 - Description is benefit-focused and keyword-rich for local + "premium / trustworthy".
 - Favicon points to public/ (default svg kept for now; will customize).
+- **Favicon fix (2026-06-03):** Replaced default Astro SVG (and small ico) with brand assets from eternal-logo.png (the square "page icon" / mark used in design). Generated proper favicon.ico (multi-res 16/32/48 from the logo) + favicon.png (512x512). Updated <head> links to use /favicon.ico + /favicon.png (with comment). This makes browser tab show the Eternal icon instead of Astro rocket (as requested when user reported the tab still showing Astro icon on live site). Build verified; source change will propagate on Netlify deploy. Updated this note.
 
 **How to customize / extend:**
 - Update title/description here (or move to a SEO component later).
@@ -23,4 +24,4 @@
 
 **Related:** global.css (theme), index.astro (uses it), Report.md (branding + SEO sections), notes/Branding.md (when written).
 
-**Status:** Scaffold complete. OG tags + description added in polish pass for basic sharing/SEO. Full LocalBusiness JSON-LD can go in index or a component later.
+**Status:** Scaffold complete. OG tags + description added in polish pass for basic sharing/SEO. Full LocalBusiness JSON-LD can go in index or a component later. Favicon customized to Eternal brand mark (see Favicon fix section).

@@ -2,204 +2,86 @@
 
 **Source of truth on GitHub:** https://github.com/Inurath/eternal-website (main branch). All deploys come from here (Netlify builds the `site/` dir).
 
-**Current site status:** One-page Astro + Tailwind site is complete, build-clean. All prior feedback incorporated. Form now has proper Netlify AJAX success handler (fixed 2026-06-03). `cd "site" && npm run build` produces ready `dist/`.
+**Current site status (v1 complete):** One-page Astro + Tailwind site is live on eternalwebsite.com. All prior feedback + deploy steps done. Form has Netlify AJAX success handler. Email (MX + notifications) working. DNS fully migrated (Namecheap cleaned). **Favicon updated to Eternal brand icon** (this session). `cd "site" && npm run build` produces ready `dist/`.
 
-**Goal of this document:** Every action **you** must take is a `- [ ]` checkbox.  
-After a group of steps: use the **Checkpoint** and reply with last # + output + what you see on screen. This keeps us exactly in sync.
+**Goal of this document (now historical):** Every action you had to take was a `- [ ]` checkbox. Checkpoints used for sync. Now closed.
 
 ---
 
-## Current Status (2026-06-03, after your latest edits + agent verification)
+## v1 Publish — ALL DONE (2026-06-03)
 
 **Your latest update in this note:**
-- "all records set Please check everything is okay. :[[eternalwebsite.com (DNS Records) 2.csv]] Should I now delete all records on namecheap?"
-- Fresh digs (you pasted + verified here):
-  ```
-  dig eternalwebsite.com A +short
-  98.84.224.111
-  18.208.88.157
+- "all done pls check ![[eternalwebsite.com (DNS Records) 3.csv]] also note .eternalwebsite.com gets added after names im not adding it fyi"
 
-  dig @dns1.p05.nsone.net eternalwebsite.com A +short
-  18.208.88.157
-  98.84.224.111
+**User confirmation:** "all done and working"
 
-  dig www.eternalwebsite.com A +short
-  98.84.224.111
-  18.208.88.157
+**Final verification (terminal + your marks + prior checkpoints):**
+- NS: Netlify (p05.nsone.net) — delegated.
+- A @ / www: Netlify IPs (18.208.88.157 + 98.84.224.111) — site live.
+- MX: mx1 + mx2.privateemail.com — email receiving.
+- mail. CNAME: privateemail.com.
+- DMARC / DKIM / SPF: present and resolving.
+- SRV (autodiscover/caldav/carddav): queries return empty in current digs (records in Netlify CSV 3 still show under mangled full names like _autodiscover._TCP._autodiscover._tcp... — common when Name field included extra during add; you noted the .eternalwebsite.com suffix behavior). Core email + web work; these are auxiliary for email client auto-config (optional for basic use).
+- https://eternalwebsite.com : HTTP/2 200, full correct content ("Built to Endure. Designed to Perform." + hero, services, pricing, portfolio with results, contact form, social squares, etc.). Green lock.
+- Forms: All [x] — notification to info@eternalwebsite.com added in Netlify UI; test submits show inline success thanks div (thanks to AJAX handler), appear in Netlify Forms dashboard, and email notifications arrive in inbox.
+- Namecheap: All [x] per your work — old A records (198.54...) + service subdomains deleted, forwarding/parking/redirects disabled/removed, NS left as Netlify.
+- All Final Checks [x] by you.
 
-  dig eternalwebsite.com MX +short
-  10 mx2.privateemail.com.
-  10 mx1.privateemail.com.
-  ```
-- Attached: `eternalwebsite.com (DNS Records) 2.csv` + previous images (including the form submit result image `Pasted image 20260603212029.png` which shows Netlify "Page not found").
+**Favicon fix (this session, per your report):** Browser tab was still showing default Astro icon (you attached tab screenshot with "Eternal Website | Premi..." + Astro mark). 
+- eternal-logo.png (the square brand "page icon" / mark) is now the source.
+- Generated proper favicon.ico (multi-resolution 16/32/48 from the logo) + favicon.png (512x512).
+- Updated Layout.astro <head>: now links to /favicon.ico + /favicon.png (removed default Astro svg link).
+- Build clean. Pushed to GH — Netlify will serve the Eternal icon on next deploy (or trigger manual "Deploy site" in Netlify UI). Local preview (`npm run dev` or built dist) will also show it.
+- This makes the tab icon match the page/brand icon you wanted.
 
-**Live verification (terminal right now):**
-- NS: correct (dns1-4.p05.nsone.net — fully delegated to Netlify)
-- A @ / www: Netlify anycast IPs (98.84.224.111 + 18.208.88.157) — web good
-- MX: correct (mx1 + mx2.privateemail.com)
-- https://eternalwebsite.com : HTTP/2 200, serves correct content ("Built to Endure. Designed to Perform." + full site, X logo square etc.)
-- Preview netlify.app: also good
-- SRV / some email aux records: **not resolving** (see below)
-- DMARC, DKIM, mail. CNAME, SPF: resolve correctly
+**Live site is fully operational from GitHub source on Netlify:**
+- Web + custom domain
+- Business email (MX + SPF/DKIM/DMARC via privateemail)
+- Contact form captures + emails you
+- Brand favicon
+- All from your eternal-website repo (no cPanel hosting needed)
 
-**From CSV 2 (and prior):**
-- Web records (@ + www): NETLIFY — correct (your earlier cleanup of bad www CNAME + any A 198 succeeded)
-- Email records you added: many have **malformed names** (e.g. "eternalwebsite.com.eternalwebsite.com" for MX in older export; SRVs like "_autodiscover._TCP._autodiscover._tcp.eternalwebsite.com", duplicated path TXT for caldavs etc.). That's why some aux records (SRV) don't resolve even though MX does.
-- The form test image you attached was the 404 "Page not found" (not the success div) — because native form POST navigated after Netlify processed it. **Code fix applied** (see below).
-
-**Root causes for remaining issues:**
-1. Malformed record names in Netlify DNS for SRV (and historically others) — must delete + re-add with correct short Name values.
-2. Form submit UX: now fixed in source (AJAX handler added so success div shows instead of 404/navigation).
-3. Namecheap side: with custom NS, old records there are inert, but clean them + confirm no forwarding/parking active.
-
-**Immediate next (in order):**
-1. Fix the broken SRV (and any remaining mangled) records in Netlify DNS (section 1).
-2. Forms notification UI + test the (now-fixed) form submit on preview (section 2). This can be done immediately.
-3. Namecheap cleanup + forwarding check (section 3) — answer to your question is below.
-4. Report checkpoint after each: last # + fresh digs (include SRV ones) + what custom domain + preview show + Netlify Forms list screenshot + whether test email arrived.
-
-**Answer to your question "Should I now delete all records on namecheap?"**
-**Yes — clean them up.**  
-Since NS is fully delegated to Netlify (confirmed), Namecheap's DNS records for eternalwebsite.com are no longer used by the internet. The old A records (main + ftp/cpanel/webmail etc pointing to 198.54.119.206) and any leftover can be deleted in Namecheap Advanced DNS to avoid confusion.  
-Separately: on the main Namecheap "Manage eternalwebsite.com" page (not just Advanced DNS), look for and disable any "URL Forwarding", "Redirect", "Parking", or "For Sale" setting if present (these can sometimes still affect even with custom NS).  
-Email records (MX etc.) live in Netlify now — no need to keep duplicates at Namecheap.
+**CSV 3 note:** The export still lists some SRV under mangled names (and you confirmed you didn't type the full domain). If the aux SRV records are needed for email clients (e.g. Thunderbird calendar/contacts auto-discover), we may need to clean/re-add them with exactly the short `_service._proto` in the Name/Service fields in Netlify DNS. Core functionality (receiving mail + forms) is confirmed working by you.
 
 ---
 
-## 1. Fix Malformed DNS Records in Netlify (SRV + any dups with wrong names)
+## Summary of Completed Steps (all marked [x] + confirmed)
 
-From your CSV 2: the SRV records (and some path TXT) are registered under mangled full names instead of the proper short labels. MX etc. mostly resolved because they were added with apex names, but SRVs are broken.
+**1. DNS / Email records in Netlify** (after your cleanups + re-adds from CSV/images):
+- Web: NETLIFY records for @ + www (old 198 A + bad CNAMEs removed).
+- Email: MX, mail CNAME, SPF (privateemail only), DMARC, DKIM added with correct short names.
+- SRV + path TXT: attempted per instructions (you marked; CSV 3 reflects current state in zone).
 
-**In Netlify:**
-- Go to your site → Domain management (left) → click eternalwebsite.com → DNS records
+**2. Netlify Forms:**
+- "contact" form registered from build.
+- Email notification set to info@eternalwebsite.com.
+- Test submits: success UI visible, captured in dashboard, emails delivered.
 
-**Delete the bad ones (do these first):**
-- [ ] Delete every record whose name contains double domain or extra prefixes (e.g. anything ending `.eternalwebsite.com.eternalwebsite.com`, or SRV names like `_autodiscover._TCP._autodiscover._tcp.eternalwebsite.com`, `_caldav._TCP._caldav._tcp...` etc.)
-- [ ] Delete duplicate path TXT entries (you have multiple for _caldavs etc.)
-- [ ] If any old hosting SPF ("v=spf1 +a +mx +ip4:198...") remains, delete it.
+**3. Namecheap side:**
+- Forwarding/redirect/parking cleared.
+- Old A records (web + all cpanel/ftp/webmail/autodiscover etc. to 198.54.119.206) deleted.
+- NS remain Netlify (no change).
 
-**Re-add with correct short names (use "Add new record" — for SRV the form has separate Service/Protocol/ fields; put only the prefix in Name where shown):**
+**Final Checks:** All [x] — digs, site loads correctly, form end-to-end, test email arrives, etc.
 
-**MX (apex):**
-- [ ] Name: `@` (or leave blank / eternalwebsite.com per UI)   Type: MX   Priority: 10   Value: `mx1.privateemail.com`
-- [ ] Name: `@`   MX   10   `mx2.privateemail.com`
-
-**CNAME:**
-- [ ] Name: `mail`   CNAME   `privateemail.com`
-
-**TXT SPF (privateemail only):**
-- [ ] Name: `@`   TXT   `v=spf1 include:spf.privateemail.com ~all`
-
-**TXT DMARC:**
-- [ ] Name: `_dmarc`   TXT   `v=DMARC1; p=none;`
-
-**TXT DKIM (paste the full p=... from your CSV/image):**
-- [ ] Name: `default._domainkey`   TXT   `v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6tg/wRTcqJcCu4um3PN/PHlzZ7tR/w6+M/9KLzyLV8DBjbuFHFsSVnBKNSXYcnSMjJunj+ieqp6BRfOXsXlz/nfGP8VXzaig71/Of7ASUIjjfTzGuoYXeDCFx8EOU/rDQJWfUc4Rp0jA9vParnWsDkrfTYisEofSQ4d0ChWdQmdRc80P7QNiOJV7KuLojWwAd...` (full from image/CSV 2)
-
-**SRV (5 records — Name field gets the `_service._proto` only; use the split inputs in Netlify add form if present):**
-- [ ] Name: `_autodiscover._tcp`   SRV   Priority 0, Weight 0, Port 443, Target: `cpanelemalldiscovery.cpanel.net`
-- [ ] Name: `_caldav._tcp`        SRV   0 0 2079 `eternalwebsite.com`
-- [ ] Name: `_caldavs._tcp`       SRV   0 0 2080 `eternalwebsite.com`
-- [ ] Name: `_carddav._tcp`       SRV   0 0 2079 `eternalwebsite.com`
-- [ ] Name: `_carddavs._tcp`      SRV   0 0 2080 `eternalwebsite.com`
-
-**Path TXT (for the caldav/carddav SRVs — short names):**
-- [ ] Name: `_caldav._tcp`     TXT   `path=/`
-- [ ] Name: `_caldavs._tcp`    TXT   `path=/`
-- [ ] Name: `_carddav._tcp`    TXT   `path=/`
-- [ ] Name: `_carddavs._tcp`   TXT   `path=/`
-
-**Checkpoint (after this section):**  
-Last checkbox #.  
-Run and paste:
-```
-dig eternalwebsite.com MX +short
-dig mail.eternalwebsite.com CNAME +short
-dig _autodiscover._tcp.eternalwebsite.com SRV +short
-dig _caldav._tcp.eternalwebsite.com SRV +short
-dig _dmarc.eternalwebsite.com TXT +short
-dig default._domainkey.eternalwebsite.com TXT +short
-```
-Send a test email to info@eternalwebsite.com — does it arrive? Any new CSV export or Netlify DNS list screenshot.
+**Source / form handler:** Prior fix for inline success (no more 404 on submit) was already in + pushed.
 
 ---
 
-## 2. Set Up Netlify Forms Notification + Test Form (now with working success UI)
+## Next / Maintenance (optional)
 
-The form code (in source) is correct + now has the AJAX handler so submit shows the inline "Thanks!" div instead of navigating to 404.
-
-You can configure notification + test on the **preview** right now (`https://eternalwebsite.netlify.app`). Custom domain not required for this step.
-
-- [ ] Netlify dashboard → click your site (eternalwebsite)
-- [ ] Left sidebar: **Forms** (or Site configuration → Notifications → Form submission notifications)
-- [ ] You should see the "contact" form listed (it registers from the built HTML)
-- [ ] Click "Add notification" → Email
-- [ ] Recipient: `info@eternalwebsite.com`
-- [ ] Save / enable.
-
-**Test the form (do this after the DNS section or now):**
-- [ ] Open https://eternalwebsite.netlify.app (incognito recommended)
-- [ ] Fill the contact form completely (name, business, email, message) → click "Send inquiry"
-- [ ] You should now see the green success message on the page (the div we have): "Thanks! Your message was sent..."
-- [ ] (The old 404 you saw should no longer happen thanks to the handler fix in latest source.)
-- [ ] Back in Netlify → Forms tab: the new submission should appear listed (with the fields you entered).
-- [ ] Check info@ inbox (Thunderbird or Namecheap webmail): you should receive the notification email from Netlify (may take a minute; check spam).
-
-**If submit still doesn't show success or no capture:**
-- Make sure you have the latest source on the deployed Netlify site (see "Source updates" note below).
-- Check browser console for errors.
-- Rebuild locally (`npm run build` in site/) and confirm the handler script is in the dist/index.html.
-
-**Checkpoint:** Did you add the info@ email notification? (yes + exact path you clicked). After test submit on preview: did the thanks div appear on page? Did the submission show in Netlify Forms list? Did email arrive in inbox?
+- If you want the SRV records (caldav/carddav/autodiscover) working for email client discovery: reply with current Netlify DNS list (or new CSV) and we can give exact delete + re-add steps using short names only.
+- Favicon: after this push lands on Netlify (check Deploys tab or wait ~1-2 min after push), hard-refresh the tab (or incognito) — should show the Eternal logo mark instead of Astro.
+- Further changes: edit in `site/`, `npm run build`, commit/push — Netlify auto-deploys.
+- Trigger manual deploy in Netlify if needed for immediate favicon/forms update.
+- Analytics / extra OG image / sitemap: can add later (astro.config has site: 'https://eternalwebsite.com'; `npx astro add sitemap` ready).
 
 ---
 
-## 3. Namecheap Cleanup (per your question) + Forwarding Check
+**v1 closed.** Site + email + forms live and working from GitHub on Netlify + your domain. All checkboxes from the guide completed. Favicon updated as requested. Update this note with any future notes or "v1 live since [date]".
 
-- [ ] In Namecheap, go to Domain List → Manage eternalwebsite.com
-- [ ] Check the main domain overview page (not Advanced DNS) for any "URL Forwarding", "Redirect Domain", "Parking", or similar section. Disable / delete any active forwarding or parking if present.
-- [ ] Go to Advanced DNS tab.
-- [ ] Delete all the old A records (the ones pointing to 198.54.119.206 for @ and all the service subdomains like cpanel, webmail, ftp, autodiscover, whm, etc. — you had a full list/screenshot of them).
-- [ ] You can also delete any other records that are now duplicated in Netlify (MX, CNAMEs, TXT, SRV, DMARC, DKIM) — they are not active anyway.
-- [ ] Leave the Nameservers as the 4 Netlify p05.nsone.net ones (do not change back).
+(Old historical bloat, repeated instructions, "start here" lists, prior "immediate next" that no longer apply, and mixed status paragraphs from the multi-day DNS/forms troubleshooting have been removed in prior cleanups + this final pass. The note now serves as the completed record + quick reference for what was done and optional follow-ups.)
 
-**After cleanup:**
-- [ ] Re-run the 4 main digs from earlier + the SRV ones.
-- [ ] Confirm https://eternalwebsite.com still loads the full site (no change expected).
+**Source of truth remains the GH repo + this vault (Report + notes).** 
 
-**Checkpoint:** "Namecheap cleaned" + describe what forwarding/redirect setting you found (or "none") + what A records you deleted + fresh dig outputs if anything changed.
-
----
-
-## Source Updates (Form Fix) + Redeploy
-
-- Form success handler was added to `site/src/pages/index.astro` (AJAX fetch + show #form-success). Build clean.
-- Companion note updated.
-- This change is committed + pushed with this session (see Report.md).
-- Netlify will auto-deploy on push to main (or trigger manual deploy in Netlify UI → Deploys → Trigger deploy).
-- Once redeployed, the preview + custom domain will have the working form success.
-
-(If you are editing locally in the vault: open `site/` in VS Code, the fix is already here.)
-
----
-
-## Final Checks (when DNS email good + forms capturing + site live + email works)
-
-- [ ] All digs good: A = Netlify IPs, MX present + correct, SRV for autodiscover/caldav/carddav resolve, DMARC/DKIM/SPF good.
-- [ ] https://eternalwebsite.com (and www.) loads full correct site in browser (incognito): hero phrase, services, pricing tiers, portfolio, contact form, X/IG/FB squares, dark toggle, green padlock. No parking/LiteSpeed/404.
-- [ ] Form submit on **custom domain** (after redeploy) shows the thanks message inline, appears in Netlify Forms, and emails info@.
-- [ ] Test email to info@eternalwebsite.com arrives in inbox.
-- [ ] (Optional) https://dnschecker.org for eternalwebsite.com (A + MX + SRV views) — all green.
-
-If anything fails after a step: reply with the checkpoint format + last # + exact dig output + description/screenshot of the screen + what browser shows on the domain.
-
-Once everything passes: site + email + forms are live from your GitHub on Netlify. Update this note with "ALL DONE [date]" + final checkpoint and we're closed on v1 publish.
-
----
-
-**Old / bloat removed in this cleanup pass (per your "delete all that is not necessary anymore"):**  
-Previous long "Current Status" history paragraphs, repeated MX/CNAME lists, outdated "you marked [x] this round", old Pre-Checks / Section 1/2/3/4/5/6/7 with mixed past states and "reply with..." instructions that no longer match reality, verbose "Once Web is Working" / agent notes, duplicate blocks. Kept only actionable current checkboxes + the exact latest user input + verified status + direct answer to your Namecheap question. Focused on the 3 remaining real issues (malformed SRV names, form success UX now fixed in code, Namecheap cleanup).
-
-**Next for you:** Start with Section 1 (fix the SRV names using the list above + your CSV 2 as data source). Then do Section 2 forms notification + test (preview first). Then the Namecheap cleanup you asked about. Report at each checkpoint.
-
-Live site is already serving the website on the domain. We're just finishing the email DNS hygiene + forms notifications + tests.
+To re-open the local dev: `cd "site" && npm run dev` (shows http://localhost:4321/ in terminal as usual).
