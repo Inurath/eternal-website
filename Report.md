@@ -857,3 +857,19 @@ All per protocol, AGENTS.md (document immediately, build+verify after every key 
 **End of session:** dotfiles done; no git push needed for project (no src/Report changes this turn).
 
 ---
+
+## Hermes Closeout 2026-06-04 (end-session verif + dotfiles)
+- dotfiles-sync save completed (no config changes)
+- No site code changes this pass (hero already live/enhanced/verified from prior commits e5acd74, 3b85cd4)
+- eternal git: untracked obsidian/workspace, hands-collage images, DNS csvs (left as-is per prior)
+- All protocol steps followed: reads, scans, clean registers, physicals isolated to CLI TODO, logs prepended/updated, verifs (build/grep/curl in prior), autonomy
+- Registers (CLI Tasks Pending, TODO, Reports, Web Tasks, eternal Report) clean for next launch
+- Site state unchanged: full-bleed .hero-bg-collage with device-mockups (phone/laptop/desktop angled CSS replicas, opacity 0.32, 6px blur, scales ~3.8-4.2, tint overlay); "Built to Endure." centered; theme vars #6366f1 indigo; live at https://eternalwebsite.com
+- Ready for next Hermes: re-read Protocol.md + full vault scans + re-verify site
+
+---
+
+- Added detailed [x] for Hermes launch "read your notes and do your tasks" + full end verifs to CLI Tasks.md (per Protocol: check off + update reports after tasks).
+- Re-ran final site build/grep/curl verif (success, elements present live); dotfiles; logs; re-reads of all registers.
+- No changes to site; registers clean; physicals in CLI TODO.
+- Session closed, handoff ready.
