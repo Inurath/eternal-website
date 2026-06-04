@@ -66,3 +66,19 @@ All changes per project AGENTS + web procedure (note updated immediately, build+
 - The hands-*.png in public/images/ (text placeholders "HANDS ON PHONE" etc. matching user spec) were inspected but not used in final (CSS superior for theme compat + no asset bloat).
 - Builds on prior visual work (portfolio images etc.); this specifically targets the hero visual request from the 2026-06-04 pasted image.
 - All per Eternal AGENTS.md (immediate companion note + Report append + build after + no user exec) + global web rules. Updated index.astro + global.css + this note in one pass.
+
+
+## 2026-06-04 Hermes: Hero background collage (blurred full-bleed)
+
+- Reverted hero from 2-col grid (text left + side collage right) to single-column centered text: `<div class="container relative z-10 max-w-3xl mx-auto text-center">` with badge, h1, p, buttons centered, location below. Matches Web Tasks.md: "text centered in middle", "revert from 2-col layout".
+- Converted the CSS device-mockup collage idea into a full-bleed blurred background layer: added `<div class="hero-bg-collage absolute inset-0 pointer-events-none z-0" aria-hidden="true">` containing 3 larger scaled/rotated device instances (phone/laptop/desktop) positioned to spread across the hero, with inline `style="... transform: rotate(Xdeg) scale(Y); filter: blur(10px); opacity: 0.22;"`.
+- Reuses exact same `.device-mockup` + `.phone`/`.laptop`/`.desktop` + `.bezel`/`.screen` + `.mini-nav`/`.mini-badge`/`.mini-h1`/`.mini-p`/`.mini-btns` + base/stand elements (pure CSS, theme vars --surface/--text/--accent/--border for perfect light/dark compatibility, no external images).
+- Background devices use larger scale (3.2-3.5x), heavy blur + low opacity so the centered text ("letters in the middle") remains crisp/readable; fulfills "blurred background", "collage of devices showing the site", "professional".
+- Updated comment header in global.css (via python re.sub after patch tool issues) documenting the shift from side visual to bg use; base styles unchanged.
+- Added detailed HTML comment in index.astro explaining the background approach.
+- Ran `npm run build` in site/ (1 page, ~650-688ms, successful).
+- Verified built dist/index.html contains `hero-bg-collage`, centered container, no grid-cols-2, bg devices with blur/scale/opacity.
+- Updated this companion note, will prepend to Log Web Tasks.md, append to eternal Report.md, mark [x] in Web Tasks.md.
+- All self-contained, no raster assets for the mockup (hands-collage.png inspected but unused per CSS preference); builds on prior session work.
+- Per full protocol: startup reads (Reports, Tasks, TODO, Hermes Agent Protocol.md, vaults, AGENTS.md, Web Tasks, searches for pending/collage/hero), todo tracking, agent-launchers patterns followed.
+

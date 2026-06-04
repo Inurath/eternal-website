@@ -71,65 +71,65 @@ import { testimonials } from '../data/testimonials';
 	</script>
 
 	<!-- Hero -->
-	<header id="hero" class="section pt-28 pb-20 bg-[var(--surface)] border-b border-[var(--border)]">
-		<div class="container grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 items-center">
-			<!-- Text content (left on md+) -->
-			<div class="text-center md:text-left max-w-xl mx-auto md:mx-0">
-				<div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-4 bg-[var(--accent)] text-white">FOR SMALL LOCAL BUSINESSES</div>
-				
-				<h1 class="mb-4">Built to Endure.<br>Designed to Perform.</h1>
-				<p class="text-xl text-[var(--text-muted)] mb-8">
-					Premium one-page sites for local businesses. Clean, fast, professional - designed to generate leads and make you look like the obvious choice.
-				</p>
-
-				<div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-					<a href="#pricing" class="btn btn-primary text-base px-8">See pricing</a>
-					<a href="#contact" class="btn btn-secondary text-base px-8">Get a quote</a>
+	<header id="hero" class="section pt-28 pb-20 bg-[var(--surface)] border-b border-[var(--border)] relative overflow-hidden">
+		<!-- Blurred device collage as background (the "idea" the user liked from the previous collage implementation: devices showing the site itself via mini CSS replicas).
+		     Now full-bleed professional background layer. Heavily blurred + low opacity so centered text (letters in the middle) is crisp and highly readable.
+		     Uses exact same .device-mockup + mini-* HTML/CSS (theme vars for perfect dark/light, no color conflicts). Self-contained, no external images.
+		     Fulfills: "background that is an image" (the collage approach), "it could be blur", "letters in the middle", "images has to be the background". Reverted from side-by-side 2-col. -->
+		<div class="hero-bg-collage absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+			<!-- Phone (larger, left side for bg spread) -->
+			<div class="device-mockup phone absolute" style="left: -8%; top: 5%; transform: rotate(-10deg) scale(3.2); filter: blur(10px); opacity: 0.22;">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-badge">FOR SMALL LOCAL BUSINESSES</div>
+						<div class="mini-h1">Built to<br>Endure.</div>
+						<div class="mini-p">Premium one-page sites...</div>
+						<div class="mini-btns"><span class="mini-btn primary">Get quote</span></div>
+					</div>
 				</div>
-				<p class="mt-4 text-xs text-[var(--text-muted)]">Bradenton / Sarasota, FL - 1-2 week delivery</p>
 			</div>
 
-			<!-- Visual collage (right on md+) - pure CSS device mockups (phone + laptop + desktop) with rotations/shadows/angles to evoke hands viewing the site on devices. Inner mini content uses live theme vars (--surface, --text, --accent, --border, --text-muted) for perfect dark/light compatibility and no color conflicts. Self-contained, professional, no external images or deps. Fulfills the collage request from Web Tasks. -->
-			<div class="relative h-[260px] sm:h-[280px] md:h-[300px] w-full max-w-[420px] mx-auto md:mx-0" aria-label="Collage of the website displayed on phone, laptop, and desktop devices at professional angles">
-				<!-- Phone mockup (left, tilted for dynamic angle) -->
-				<div class="device-mockup phone absolute" style="left: 3%; top: 8%; transform: rotate(-14deg); z-index: 3;">
-					<div class="bezel">
-						<div class="screen">
-							<div class="mini-nav">Eternal</div>
-							<div class="mini-badge">FOR SMALL LOCAL BUSINESSES</div>
-							<div class="mini-h1">Built to<br>Endure.</div>
-							<div class="mini-p">Premium one-page sites...</div>
-							<div class="mini-btns"><span class="mini-btn primary">Get quote</span></div>
-						</div>
+			<!-- Laptop (center, larger) -->
+			<div class="device-mockup laptop absolute" style="left: 18%; top: 18%; transform: rotate(4deg) scale(3.5); filter: blur(10px); opacity: 0.22;">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-h1">Built to Endure.<br>Designed to Perform.</div>
+						<div class="mini-p">Clean, fast, professional sites that generate leads.</div>
+						<div class="mini-btns"><span class="mini-btn primary">See pricing</span><span class="mini-btn">Get quote</span></div>
 					</div>
 				</div>
-
-				<!-- Laptop mockup (center, slight tilt) -->
-				<div class="device-mockup laptop absolute" style="left: 22%; top: 22%; transform: rotate(5deg); z-index: 2;">
-					<div class="bezel">
-						<div class="screen">
-							<div class="mini-nav">Eternal</div>
-							<div class="mini-h1">Built to Endure.<br>Designed to Perform.</div>
-							<div class="mini-p">Clean, fast, professional sites that generate leads.</div>
-							<div class="mini-btns"><span class="mini-btn primary">See pricing</span><span class="mini-btn">Get quote</span></div>
-						</div>
-					</div>
-					<div class="laptop-base"></div>
-				</div>
-
-				<!-- Desktop mockup (right, angled) -->
-				<div class="device-mockup desktop absolute" style="left: 52%; top: 2%; transform: rotate(9deg); z-index: 1;">
-					<div class="bezel">
-						<div class="screen">
-							<div class="mini-nav">Eternal</div>
-							<div class="mini-h1">Built to Endure.</div>
-							<div class="mini-p">Professional sites for local businesses.</div>
-							<div class="mini-btns"><span class="mini-btn primary">Get a quote</span></div>
-						</div>
-					</div>
-					<div class="desktop-stand"></div>
-				</div>
+				<div class="laptop-base"></div>
 			</div>
+
+			<!-- Desktop (right, larger) -->
+			<div class="device-mockup desktop absolute" style="left: 55%; top: -5%; transform: rotate(8deg) scale(3.3); filter: blur(10px); opacity: 0.22;">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-h1">Built to Endure.</div>
+						<div class="mini-p">Professional sites for local businesses.</div>
+						<div class="mini-btns"><span class="mini-btn primary">Get a quote</span></div>
+					</div>
+				</div>
+				<div class="desktop-stand"></div>
+			</div>
+		</div>
+
+		<div class="container relative z-10 max-w-3xl mx-auto text-center">
+			<div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-4 bg-[var(--accent)] text-white">FOR SMALL LOCAL BUSINESSES</div>
+			
+			<h1 class="mb-4">Built to Endure.<br>Designed to Perform.</h1>
+			<p class="text-xl text-[var(--text-muted)] mb-8">
+				Premium one-page sites for local businesses. Clean, fast, professional - designed to generate leads and make you look like the obvious choice.
+			</p>
+
+			<div class="flex flex-col sm:flex-row gap-3 justify-center">
+				<a href="#pricing" class="btn btn-primary text-base px-8">See pricing</a>
+				<a href="#contact" class="btn btn-secondary text-base px-8">Get a quote</a>
+			</div>
+			<p class="mt-4 text-xs text-[var(--text-muted)]">Bradenton / Sarasota, FL - 1-2 week delivery</p>
 		</div>
 	</header>
 

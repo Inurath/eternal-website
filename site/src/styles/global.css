@@ -228,13 +228,12 @@ html.dark nav img[alt="Eternal Website"] {
   filter: brightness(0) invert(1);
 }
 
-/* ===== HERO DEVICE MOCKUP COLLAGE (2026-06-04 Hermes) =====
-   Professional, self-contained CSS frames for phone + laptop + desktop.
-   Rotations + layered shadows + z-index create dynamic "angles/hands holding device" collage feel.
-   All inner content + frame accents use CSS vars (--surface, --text, --accent, --text-muted, --border)
-   so it perfectly matches light/dark mode of the rest of the site with zero color conflicts or blur needed.
-   No external images, no JS, lightweight. Mini content is scaled representative of the actual hero for "see the site on your device" demo effect.
-   Sized/positioned to fit the right column of the new 2-col hero without crowding.
+/* ===== HERO DEVICE MOCKUP COLLAGE (2026-06-04 Hermes, updated 2026-06-04 for background use) =====
+   The collage approach (devices showing the site via mini replicas) is now used as a full-bleed blurred background layer in the hero.
+   .hero-bg-collage contains larger scaled/rotated/filtered instances (inline styles for size/blur/opacity/pos).
+   Base .device-mockup + .phone etc + .mini-* styles are shared/reused for the bg version (perfect theme var matching, no conflicts).
+   Blurring + low opacity ensures centered text remains highly readable ("letters in the middle").
+   Self-contained CSS only. Fulfills the follow-up Web Tasks request exactly.
 */
 .device-mockup {
   background: #111;
