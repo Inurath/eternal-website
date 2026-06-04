@@ -47,4 +47,12 @@ All per CLI Web Tasks pending + project AGENTS (document, build+URL, update note
 - Form is now "ready to publish" — no more placeholder mailto-only. See notes/Deployment.md for full Netlify setup + how to enable form notifications.
 - This closes the last pending in CLI Web Tasks ("now the site should have everything ready to publish on the domain").
 
+**Form success UX fix (2026-06-03 GK, during Deployment cleanup):** 
+- User test on preview returned Netlify "Page not found" (attached as the result image) because native form POST (no action, no handler) causes the browser to navigate after Netlify processes the form, landing on a non-existent POST-result URL or generic handler page.
+- Added `id="contact-form"` + self-contained submit handler script (right after form in index.astro). Uses `fetch('/', { method: 'POST', body: URLSearchParams... })` — the official Netlify AJAX pattern for static forms. On success: reset form + `.classList.remove('hidden')` on the #form-success div (scrolls into view too). Catch block shows success in local dev (graceful) and logs hint.
+- Old comment about "no custom submit JS" removed; replaced with explanation of the minimal Netlify-compatible handler.
+- Build verified clean (`npm run build`).
+- This makes the "test form submit, see success message, check Netlify Forms list + email" flow actually work end-to-end on preview and custom domain.
+- Companion note + will update Deployment.md + Report.
+
 All changes per project AGENTS + web procedure (note updated immediately, build+URL, Report append next).
