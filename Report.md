@@ -833,3 +833,27 @@ All per protocol, AGENTS.md (document immediately, build+verify after every key 
 
 **Handoff:** Open eternalwebsite.com site/ in VS Code or browser (refresh for live). Physical items user-side.
 
+
+## 2026-06-04 (Hermes: register cleanup + full vault scan + site state verification)
+
+**Trigger/context:** "read your notes and do your tasks" Hermes launch per Protocol. No new web code changes (hero bg collage already enhanced and live from prior same-day Hermes sessions).
+
+**Actions (per Web Agency/AGENTS + eternal AGENTS + Protocol):**
+- Full startup reads (this Report, eternal AGENTS, Web Tasks/AGENTS, Personal registers, scans).
+- Confirmed Web Tasks Pending empty; hero work closed.
+- Verified current site state (no edits needed): index.astro has full-bleed hero-bg-collage with enhanced visibility (0.32 opacity, 6px blur, scales 3.8-4.2, tint, centered text, detailed comments quoting user specs from pasted image); global.css has device-mockup + mini styles + Hermes 2026-06-04 notes; companion note has complete enhancement sections.
+- Build: `npm run build` → 711ms success, 1 page.
+- dist + live (curl eternalwebsite.com): confirmed hero-bg-collage, device-mockup, "Built to Endure".
+- git status: src clean (prior Hermes commits cover); untracked only expected (obsidian, hands-*.png placeholders, csvs).
+- Cleaned Personal/CLI Tasks.md Pending (stale items addressed); detailed physicals (phone, FGCC) in Personal/CLI TODO.md.
+- Appended session log to Personal/CLI Reports.md + Log; no new to this Report or Web Log (no project changes).
+- dotfiles-sync save (nothing changed for rice).
+- All per rules: no user exec, immediate docs if changed (none), build+verify, autonomy.
+
+**Current hero state (for reference):** Prominent blurred CSS device collage (phone/laptop/desktop with mini site replicas) as full-bleed bg layer behind centered "Built to Endure. Designed to Perform." text + CTAs; theme-var based; readable in light/dark; matches exact user feedback "make it to look a background... letters needs to be in the center and the images on the background" + "collage of pictures... on a phone or ... computer. No faces... hands and that kind of angles... readable or blur". Live on https://eternalwebsite.com .
+
+**Handoff:** Site v1 publish-ready (per prior); hero visual complete + verified. Future tweaks only on new user instructions in Web Tasks or this Report. Physicals in Personal CLI TODO. Next agent: re-read Protocol + all registers + this Report + Web Tasks.
+
+**End of session:** dotfiles done; no git push needed for project (no src/Report changes this turn).
+
+---
