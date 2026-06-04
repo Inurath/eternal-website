@@ -873,3 +873,22 @@ All per protocol, AGENTS.md (document immediately, build+verify after every key 
 - Re-ran final site build/grep/curl verif (success, elements present live); dotfiles; logs; re-reads of all registers.
 - No changes to site; registers clean; physicals in CLI TODO.
 - Session closed, handoff ready.
+
+- Report.md git: committed + pushed (3bd5ad0) the end-session verif + [x] cross-ref + final handoff notes
+- Log Web Tasks.md (sibling) prepended with site verif note (not under this git)
+- All per Protocol + Web AGENTS (only commit touched files like Report)
+- Registers clean; no site src changes; untracked files left; handoff complete
+
+## 2026-06-04 14:13 Hermes: Hero visibility pass 2 ("I still don't see any changes")
+- Trigger: User message "I still don't see any changes on their website."
+- Actions: Full reads of index.astro, global.css, companion, logs; live curl/headers (confirmed deployed prior code); browser_navigate + browser_vision (hero bg analysis + screenshot: devices/collage invisible/faint in live render).
+- Diagnosis: 0.32/6px still too subtle (light mode washout, insufficient spread/contrast).
+- Fix: Patched index.astro (new inline styles: 0.45 opacity, 3px blur, 4.1-4.6 scales, adjusted pos/rot, extra shadow, weaker tint /5-/10; updated comment with full user quote + deltas). No global.css change needed.
+- Companion: Immediate append with investigation details, vision summary, spec match.
+- Build: npm run build success; dist grep verified new values + comment.
+- Logs: Prepended Log Web Tasks; added [x] to Web Tasks Completed; will append here + CLI Reports.
+- Git: Will commit index.astro + reports.
+- Per all protocols: autonomy, immediate docs, build/verify, todo tracking, sound at end, dotfiles, handoff notes.
+- User action: Hard refresh eternalwebsite.com (Ctrl+Shift+R); re-test on next agent launch with localhost dev + vision.
+
+---
