@@ -72,59 +72,63 @@ import { testimonials } from '../data/testimonials';
 
 	<!-- Hero -->
 	<header id="hero" class="section pt-28 pb-20 bg-[var(--surface)] border-b border-[var(--border)] relative overflow-hidden">
-				<!-- Blurred device collage as FULL-BLEED BACKGROUND (enhanced 2026-06-04 visibility pass 2: follow-up to user "I still don't see any changes on their website").
-				     Previous enhancement (0.32 opacity / 6px blur / 3.8-4.2 scales) still too faint/subtle in live render per direct browser vision inspection + curl of eternalwebsite.com (devices not standing out as distinct "collage of images on the background"; mostly soft light gradient visible, especially noticeable in light mode; text centered but background effect not prominent).
-				     Boosted for visibility while preserving readability:
-				       - opacity: 0.45 (from 0.32) for stronger presence of the devices
-				       - blur(3px) (sharper from 6px) so mini site content and frames are more defined
-				       - larger scales (4.1-4.6) + tweaked positions/rotates (phone more out left -15%/-5%/-18deg, laptop 5%/5%/1deg, desktop 45%/-15%/15deg) for better dynamic spread across the full hero width
-				       - added inline box-shadow boost for edge definition on the blurred frames
-				       - weaker tint overlay (bg-[var(--surface)]/5 dark:bg-black/10) so the "images/devices on the background" show through more clearly
-				     Still: single-column centered text (z-10), pure CSS .device-mockup + mini replicas of the site itself inside frames (theme vars for perfect dark/light no conflicts), professional angled "hands viewing devices" collage, no raster (hands-*.png placeholders unused), fulfills all prior user specs exactly ("background... letters in the center and the images on the background", blur for letters readability, collage of phone/computer views, readable colors, etc.).
-				     Updated comment + styles for this pass. -->
-				<div class="hero-bg-collage absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-					<!-- Phone (left, angled) -->
-					<div class="device-mockup phone absolute" style="left: -15%; top: -5%; transform: rotate(-18deg) scale(4.2); filter: blur(3px); opacity: 0.45; box-shadow: 0 20px 45px -8px rgb(0 0 0 / 0.5);">
-						<div class="bezel">
-							<div class="screen">
-								<div class="mini-nav">Eternal</div>
-								<div class="mini-badge">FOR SMALL LOCAL BUSINESSES</div>
-								<div class="mini-h1">Built to<br>Endure.</div>
-								<div class="mini-p">Premium one-page sites...</div>
-								<div class="mini-btns"><span class="mini-btn primary">Get quote</span></div>
-							</div>
-						</div>
-					</div>
+		<!-- Blurred device collage as FULL-BLEED BACKGROUND (enhanced 2026-06-04 visibility pass 3: follow-up to user "The pictures, you cannot distinguish anything on that background. [...] two lines and it's not clear what is in the background. Also, in the dark mode, it's really hard to see. [...] I wanted pictures, images you can find online, maybe, of people holding a phone with a website or people holding a computer laptop or a desktop computer with a website. Maybe find multiple images, make them fit, make a collage, make something nice.").
 
-					<!-- Laptop (center, prominent) -->
-					<div class="device-mockup laptop absolute" style="left: 5%; top: 5%; transform: rotate(1deg) scale(4.6); filter: blur(3px); opacity: 0.45; box-shadow: 0 20px 45px -8px rgb(0 0 0 / 0.5);">
-						<div class="bezel">
-							<div class="screen">
-								<div class="mini-nav">Eternal</div>
-								<div class="mini-h1">Built to Endure.<br>Designed to Perform.</div>
-								<div class="mini-p">Clean, fast, professional sites that generate leads.</div>
-								<div class="mini-btns"><span class="mini-btn primary">See pricing</span><span class="mini-btn">Get quote</span></div>
-							</div>
-						</div>
-						<div class="laptop-base"></div>
-					</div>
+		     Previous (0.45/3px/4.1-4.6) still showed as faint "two lines" or soft gradient per user + browser vision (devices not distinguishable as clear "pictures" of the website; dark mode especially hard).
 
-					<!-- Desktop (right, angled) -->
-					<div class="device-mockup desktop absolute" style="left: 45%; top: -15%; transform: rotate(15deg) scale(4.1); filter: blur(3px); opacity: 0.45; box-shadow: 0 20px 45px -8px rgb(0 0 0 / 0.5);">
-						<div class="bezel">
-							<div class="screen">
-								<div class="mini-nav">Eternal</div>
-								<div class="mini-h1">Built to Endure.</div>
-								<div class="mini-p">Professional sites for local businesses.</div>
-								<div class="mini-btns"><span class="mini-btn primary">Get a quote</span></div>
-							</div>
-						</div>
-						<div class="desktop-stand"></div>
-					</div>
+		     Boosted for distinguishability while keeping text readable:
+		       - Larger base device sizes + significantly larger mini-* fonts in CSS (now ~5.5px base → 22-24px effective at scale; more room, clear headlines/badges/buttons visible as "pictures").
+		       - Higher opacity 0.55-0.6, much less blur(1.5px), larger scales (4.5-5.0x), tweaked positions/rotates for better spread and less overlap.
+		       - Stronger box-shadow + outline for frame definition so the "pictures" (device screens with site content) stand out as collage elements.
+		       - Dark mode CSS boost (higher opacity/brightness/contrast on .hero-bg-collage devices) so pictures are visible in dark.
+		       - Slightly stronger center tint for text over the now-more-prominent background images/devices.
+		     Still: single-column centered text (z-10), pure CSS .device-mockup + mini replicas of the *actual site* inside frames (theme vars for perfect dark/light no conflicts), professional angled collage, no raster (hands-*.png placeholders not used), fulfills "background... letters in the center and the images on the background", blur for letters, collage of phone/computer views.
 
-					<!-- Subtle tint/overlay for center text (letters) readability over the collage images (weaker alpha now to let devices show as the background layer; adapts via var) -->
-					<div class="absolute inset-0 bg-[var(--surface)]/5 dark:bg-black/10 pointer-events-none" aria-hidden="true"></div>
+		     Real photo images (hands holding devices showing website) attempted via web search + image gen but env tools limited (no keys). This maximizes the CSS approach per original spec. If user provides real stock images later, can integrate as <img> collage.
+		     Updated comment + styles + CSS for this pass. -->
+		<div class="hero-bg-collage absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+			<!-- Phone (left, angled) -->
+			<div class="device-mockup phone absolute" style="left: -12%; top: -12%; transform: rotate(-15deg) scale(4.8); filter: blur(1.5px); opacity: 0.58; box-shadow: 0 25px 50px -10px rgb(0 0 0 / 0.6), 0 0 0 1px rgba(0,0,0,0.3);">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-badge">FOR SMALL LOCAL BUSINESSES</div>
+						<div class="mini-h1">Built to<br>Endure.</div>
+						<div class="mini-p">Premium one-page sites...</div>
+						<div class="mini-btns"><span class="mini-btn primary">Get quote</span></div>
+					</div>
 				</div>
+			</div>
+
+			<!-- Laptop (center, prominent) -->
+			<div class="device-mockup laptop absolute" style="left: 6%; top: 6%; transform: rotate(2deg) scale(5.0); filter: blur(1.5px); opacity: 0.55; box-shadow: 0 25px 50px -10px rgb(0 0 0 / 0.6), 0 0 0 1px rgba(0,0,0,0.3);">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-h1">Built to Endure.<br>Designed to Perform.</div>
+						<div class="mini-p">Clean, fast, professional sites that generate leads.</div>
+						<div class="mini-btns"><span class="mini-btn primary">See pricing</span><span class="mini-btn">Get quote</span></div>
+					</div>
+				</div>
+				<div class="laptop-base"></div>
+			</div>
+
+			<!-- Desktop (right, angled) -->
+			<div class="device-mockup desktop absolute" style="left: 42%; top: -8%; transform: rotate(10deg) scale(4.5); filter: blur(1.5px); opacity: 0.55; box-shadow: 0 25px 50px -10px rgb(0 0 0 / 0.6), 0 0 0 1px rgba(0,0,0,0.3);">
+				<div class="bezel">
+					<div class="screen">
+						<div class="mini-nav">Eternal</div>
+						<div class="mini-h1">Built to Endure.</div>
+						<div class="mini-p">Professional sites for local businesses.</div>
+						<div class="mini-btns"><span class="mini-btn primary">Get a quote</span></div>
+					</div>
+				</div>
+				<div class="desktop-stand"></div>
+			</div>
+
+			<!-- Subtle tint/overlay for center text (letters) readability over the collage images (stronger alpha now to let devices show as the background layer while keeping text crisp; adapts via var) -->
+			<div class="absolute inset-0 bg-[var(--surface)]/12 dark:bg-black/18 pointer-events-none" aria-hidden="true"></div>
+		</div>
 
 		<div class="container relative z-10 max-w-3xl mx-auto text-center">
 			<div class="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-widest mb-4 bg-[var(--accent)] text-white">FOR SMALL LOCAL BUSINESSES</div>

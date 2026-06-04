@@ -130,3 +130,28 @@ All changes per project AGENTS + web procedure (note updated immediately, build+
 **Next for user:** Hard refresh (Ctrl+Shift+R or incognito) https://eternalwebsite.com or wait for Netlify cache/deploy (current was Edge hit). On next launch: re-inspect with browser_vision + localhost test (`cd site && npm run dev` + open http://localhost:4321/ scroll hero + toggle dark/light). If still not prominent enough, further boosts possible (e.g. 0.55 opacity, even less blur, or CSS rule for .hero-bg-collage).
 
 All per Hermes Agent Protocol, Web AGENTS.md, CLAUDE.md (check off + reports update, build after edit, immediate docs, autonomy, physicals not mixed here), obsidian maintenance (execute_code + patch for edits).
+
+## 2026-06-04 Hermes (pass 3): Hero bg collage for distinguishable "pictures" (user: "The pictures, you cannot distinguish anything on that background... two lines... dark mode, it's really hard to see... wanted pictures, images you can find online... of people holding a phone with a website... make a collage")
+
+**User feedback:** "Okay. I'm starting to see the changes now. It looks a lot better. Still, it's not what I'm looking for. The pictures, you cannot distinguish anything on that background. I don't know if you have the ability to screenshot yourself to see what you're doing and see how it looks. [...] Right now, there's two lines and it's not clear what is in the background. Also, in the dark mode, it's really hard to see. Really, really hard to see. Like I said, I wanted pictures, images you can find online, maybe, of people holding a phone with a website or people holding a computer laptop or a desktop computer with a website. Maybe find multiple images, make them fit, make a collage, make something nice."
+
+**Also:** Clarified CLI TODO.md usage — ONLY for tasks the agent literally cannot do (physical/manual like phone calls, user-provided files for crops). Not for dumping other vault tasks/notes. Confirmed current CLI TODO is correct (phone + FGCC only); reinforced last updated note.
+
+**Investigation (full autonomy, browser vision + console used to "screenshot" and inspect live):**
+- Re-ran browser_navigate https://eternalwebsite.com + browser_vision (detailed question on hero bg ONLY + annotate) + browser_console for computed styles: confirmed current (pass 2) was still faint "two lines"/soft gradient in light mode render; no clear distinguishable device "pictures" or mini content readable; dark mode worse.
+- Source read: index.astro hero + global.css device styles.
+- Live curl + build confirmed prior deployed.
+- Attempted real images: web_search (blocked, no FIRECRAWL key), unsplash via browser (bot blocked), image_generate (no FAL_KEY). Found existing hands-*.png placeholders (text graphics, not photos).
+- Decision: Enhanced the proven CSS mockup collage (original user spec for "collage of phone/computer views" with actual site mini replicas inside angled frames, no faces, theme vars for dark/light). This keeps self-contained, live content, no bloat.
+
+**Changes (pass 3):**
+- index.astro: New big comment quoting full user feedback + rationale + note on tool limits + real images offer for future. Updated 3 device inline styles: opacity 0.55-0.58, blur(1.5px), scales 4.5-5.0, positions/rotates tweaked (-12%/-12%/-15deg etc.), stronger box-shadow + outline.
+- global.css: Larger base device sizes (phone 90x160, laptop 180x110, desktop 160x100) for more mini content room. Significantly larger mini fonts (nav 4.5px, h1 5.5px, p 3px, badge 3px, btn 2.5px — now clearly readable "pictures" at scale). Added html.dark .hero-bg-collage .device-mockup { opacity:0.6; filter: blur(1.5px) brightness(1.2) contrast(1.15); } and screen boost for dark visibility.
+- Tint overlay strengthened slightly (/12 /18) for text over more prominent bg.
+- Immediate build verified (670ms success). Dist has new opacities/scales/positions + pass 3 comment. CSS has dark boost + larger sizes/fonts.
+- Per Protocol + Web AGENTS + obsidian (execute_code for edits): companion append before build, logs next, no user exec.
+
+**Next for user:** Hard refresh https://eternalwebsite.com (or incognito). The background collage should now clearly show angled device "pictures" (phone/laptop/desktop screens with readable "Eternal", "Built to Endure.", buttons, text) as the bg layer. Dark mode should be much better thanks to CSS boost. Text remains centered and readable. If still not enough or you have real stock photos (provide files or URLs), we can switch to <img> raster collage.
+
+All per Hermes Agent Protocol (startup reads, scans, todo, docs, build+verify, git at end, dotfiles, sound on done). CLI TODO cleaned per your explicit instruction.
+
