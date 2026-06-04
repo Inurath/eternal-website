@@ -82,3 +82,18 @@ All changes per project AGENTS + web procedure (note updated immediately, build+
 - All self-contained, no raster assets for the mockup (hands-collage.png inspected but unused per CSS preference); builds on prior session work.
 - Per full protocol: startup reads (Reports, Tasks, TODO, Hermes Agent Protocol.md, vaults, AGENTS.md, Web Tasks, searches for pending/collage/hero), todo tracking, agent-launchers patterns followed.
 
+
+**Hero bg enhancement for visibility (2026-06-04 Hermes - follow-up to Web Tasks pending "I don't see any change on the section we were working on the webpage... I still want that section to have a background... Just do it as a background and letters needs to be in the center and the images on the background")**
+
+- Inspected current implementation (post previous full-bleed): code had .hero-bg-collage absolute inset-0 with 3 .device-mockup (phone/laptop/desktop) using inline style="... scale(3.2-3.5) rotate(...) blur(10px) opacity:0.22", centered text container z-10, full CSS device styles + mini site replicas in screens (theme vars), header relative overflow-hidden + bg surface. Build/grep confirmed elements present. Companion + Log already documented the bg conversion.
+- Root cause of "don't see any change" (and plain dark centered hero in attached pasted image 20260604112947.png): the bg layer was too subtle (low 0.22 opacity + heavy 10px blur made devices blend into the surface bg; not prominent "images on the background" as collage). User viewing either old deploy (eternalwebsite.com not yet updated) or local without noticing faint effect, or light mode variant.
+- Enhancement (self-executed, no user input): 
+  - Updated the three device inline styles for stronger presence: opacity: 0.32 (from 0.22), filter: blur(6px) (sharper from 10px), scale(3.8-4.2 from ~3.3), tweaked left/top/rotate (-14/2/12deg, positions -10%/12%/52%) for fuller dynamic collage spread across hero without center overlap.
+  - Added subtle tint/overlay div inside .hero-bg-collage: `<div class="absolute inset-0 bg-[var(--surface)]/10 dark:bg-black/20 pointer-events-none">` to boost center text/letters readability and pop over the "images" (adapts to light/dark).
+  - Updated the large preceding HTML comment with exact quotes from the current Web Tasks pending + full user spec (blur, letters center, images bg, readable dark/light, no faces/angles/hands).
+- Reuses 100% prior .device-mockup CSS (base + phone/laptop/desktop + mini-* + bezel/screen) for perfect self-contained theme compatibility (no color conflicts ever).
+- No raster used (hands-*.png in public/images/ are text placeholders "HANDS ON PHONE" etc., not actual photos; CSS devices better as they render live mini site content inside frames, literally "pictures ... viewing the website").
+- Per project AGENTS.md + Hermes Protocol + obsidian maintenance ref: immediate source edit (patch), companion note append *before* build, build+verify (grep dist), no user exec, update logs next.
+- This makes the collage (devices as "hands and that kind of angles" showing the site) clearly visible and professional as the background layer, with letters/text centered and readable.
+
+

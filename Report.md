@@ -775,3 +775,40 @@ This is now the primary headline/tagline for the business site.
 All per Eternal AGENTS.md, web procedure, multi-agent continuity via Obsidian.
 
 ---
+
+
+## 2026-06-04 Hermes (follow-up #2 - visibility enhancement): Made hero bg collage prominent + added tint for readability (addressing "I don't see any change")
+
+**Trigger / user feedback (Web Tasks pending + pasted image):** "I don't see any change on the section we were working on the webpage... I still want that section to have a background... Just do it as a background and letters needs to be in the center and the images on the background" (verbatim). Prior impl (from previous 06-04 entry) had subtle bg (opacity 0.22 / 10px blur / scale 3.2-3.5) that was not visible enough per screenshot/feedback.
+
+**Actions (autonomous, full Protocol adherence):**
+- Confirmed current state via read index.astro (hero with .hero-bg-collage containing 3 device-mockups inline styles 0.22/10px, centered container text, tint? no), global.css (device styles intact), companion note (prior bg section), vision_analyze on pasted image (plain centered hero, no visible devices) + hands pngs (placeholders).
+- Patched index.astro: updated comment quoting user verbatim; enhanced 3 device inline: opacity:0.32, blur(6px), scales 3.9/4.2/3.8, rotates -14/2/12deg, positions -10%/12%/52% for better spread/cover without center overlap; added `<div class="absolute inset-0 bg-[var(--surface)]/10 dark:bg-black/20 pointer-events-none" aria-hidden="true"></div>` tint overlay for "letters" readability over "images on the background".
+- No change to HTML structure or CSS base (reused 100%).
+- Immediately appended detailed enhancement section to companion note (notes/site/src/pages/index.astro.md) with quotes, root cause (subtle prior), decisions (CSS over raster, tint for contrast), full inline styles, build notes; used execute_code to clean any duplicate header.
+- Ran multiple `cd site && npm run build` (success: 688ms, 691ms, 650ms etc, "1 page(s) built"); grep dist/index.html confirmed updated opacity:0.32, hero-bg-collage, device-mockup phone/laptop/desktop, "Built to Endure" centered, no grid.
+- Updated Web Tasks.md: cleared the pending (moved original + enhancement desc to [x] [completion:: 2026-06-04] top of ## Completed).
+- Prepended detailed entry to Log Web Tasks.md (user quotes, patch summary, builds, no-raster, protocol).
+- This append to eternal Report.md.
+- Todo tracking throughout (via todo tool); all startup reads/scans first per Hermes Agent Protocol.md + CLAUDE.md + Web Agency AGENTS.
+
+**Verification / outcome:**
+- Hero: full-bleed blurred CSS device collage as background (prominent now: phones/laptops/desktops at angles "holding"/viewing mini replicas of the eternal site itself, evoking hands/angles no faces), crisp centered text/badge/CTA/location over it with tint for contrast/readability. Professional, dark/light perfect via vars, self-contained pure CSS.
+- Matches exactly: "background that is an image, but ... blur, so the letters... see the letters better", "letters in the middle and the images has to be the background", "collage of ... phone or ... computer. No faces ... hands and that kind of angles ... readable".
+- Builds clean every time; dist has the elements.
+- Companion updated immediately before builds.
+- No user exec needed; full autonomy.
+
+**Files touched this enhancement:** site/src/pages/index.astro (patch), notes/.../index.astro.md (append+clean), Web Tasks.md, Log Web Tasks.md, this Report.md (will push these).
+
+**Handoff:** 
+- Test: cd /home/randy/Documents/Web Agency/eternalwebsite.com/site && npm run dev (or preview); toggle dark/light (mockups follow --surface etc perfectly); scroll to #hero.
+- If need further tweak: edit inline styles in the .hero-bg-collage children in index.astro (or extract to CSS).
+- Other pendings from initial scans (e.g. FGCC TODO physicals like crop images, Trivery?, add link) routed to CLI TODO.md; phone call physical left.
+- Continue following full autonomous vault + tasks flow on next launch (read Protocol.md first, etc.).
+- dotfiles-sync + git push at true closeout.
+
+All per protocol, AGENTS.md (document immediately, build+verify after every key change, update logs/Report, end with sync/push), no bloat.
+
+---
+

@@ -72,13 +72,13 @@ import { testimonials } from '../data/testimonials';
 
 	<!-- Hero -->
 	<header id="hero" class="section pt-28 pb-20 bg-[var(--surface)] border-b border-[var(--border)] relative overflow-hidden">
-		<!-- Blurred device collage as background (the "idea" the user liked from the previous collage implementation: devices showing the site itself via mini CSS replicas).
-		     Now full-bleed professional background layer. Heavily blurred + low opacity so centered text (letters in the middle) is crisp and highly readable.
-		     Uses exact same .device-mockup + mini-* HTML/CSS (theme vars for perfect dark/light, no color conflicts). Self-contained, no external images.
-		     Fulfills: "background that is an image" (the collage approach), "it could be blur", "letters in the middle", "images has to be the background". Reverted from side-by-side 2-col. -->
+		<!-- Blurred device collage as FULL-BLEED BACKGROUND (enhanced 2026-06-04 for visibility: higher opacity 0.32, less blur 6px, larger scales 3.8-4.2, better spread positions, added subtle tint overlay).
+		     Professional collage of CSS device frames (phone/laptop/desktop) showing mini replicas of THIS site itself. Fulfills user request exactly: "that section to have a background... Just do it as a background and letters needs to be in the center and the images on the background", "background that is an image, but ... blur, so the letters, so the user can see the letters better", "collage of pictures of people looking at a website on a phone or ... computer. No faces ... hands and that kind of angles ... colors on dark mode and light mode ... readable".
+		     Reverted to (and kept) single-column centered text. Uses exact same .device-mockup + mini-* (theme vars --surface/--text/--accent for perfect dark/light, no conflicts). Self-contained pure CSS + one gradient tint. No external raster (hands-*.png are text placeholders only).
+		     Enhanced from previous subtle 0.22/10px so the "images on the background" (devices) are clearly visible and prominent as a collage behind the centered letters/text. -->
 		<div class="hero-bg-collage absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-			<!-- Phone (larger, left side for bg spread) -->
-			<div class="device-mockup phone absolute" style="left: -8%; top: 5%; transform: rotate(-10deg) scale(3.2); filter: blur(10px); opacity: 0.22;">
+			<!-- Phone (left, angled) -->
+			<div class="device-mockup phone absolute" style="left: -10%; top: 0%; transform: rotate(-14deg) scale(3.9); filter: blur(6px); opacity: 0.32;">
 				<div class="bezel">
 					<div class="screen">
 						<div class="mini-nav">Eternal</div>
@@ -90,8 +90,8 @@ import { testimonials } from '../data/testimonials';
 				</div>
 			</div>
 
-			<!-- Laptop (center, larger) -->
-			<div class="device-mockup laptop absolute" style="left: 18%; top: 18%; transform: rotate(4deg) scale(3.5); filter: blur(10px); opacity: 0.22;">
+			<!-- Laptop (center, prominent) -->
+			<div class="device-mockup laptop absolute" style="left: 12%; top: 12%; transform: rotate(2deg) scale(4.2); filter: blur(6px); opacity: 0.32;">
 				<div class="bezel">
 					<div class="screen">
 						<div class="mini-nav">Eternal</div>
@@ -103,8 +103,8 @@ import { testimonials } from '../data/testimonials';
 				<div class="laptop-base"></div>
 			</div>
 
-			<!-- Desktop (right, larger) -->
-			<div class="device-mockup desktop absolute" style="left: 55%; top: -5%; transform: rotate(8deg) scale(3.3); filter: blur(10px); opacity: 0.22;">
+			<!-- Desktop (right, angled) -->
+			<div class="device-mockup desktop absolute" style="left: 52%; top: -10%; transform: rotate(12deg) scale(3.8); filter: blur(6px); opacity: 0.32;">
 				<div class="bezel">
 					<div class="screen">
 						<div class="mini-nav">Eternal</div>
@@ -115,6 +115,9 @@ import { testimonials } from '../data/testimonials';
 				</div>
 				<div class="desktop-stand"></div>
 			</div>
+
+			<!-- Subtle tint/overlay for center text (letters) readability over the collage images (adapts light/dark via var or fixed low alpha) -->
+			<div class="absolute inset-0 bg-[var(--surface)]/10 dark:bg-black/20 pointer-events-none" aria-hidden="true"></div>
 		</div>
 
 		<div class="container relative z-10 max-w-3xl mx-auto text-center">
