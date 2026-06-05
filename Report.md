@@ -961,3 +961,42 @@ User also: "you're still not using CC. My claude code subscription is still unto
 
 All autonomous, followed every rule in the notes. Ready for build + closeout.
 
+
+## 2026-06-04 Hermes (follow-up): Hero banner blur reduction to 5px ("Too much blur, a little bit less.")
+
+**Trigger:** User feedback: "Too much blur, a little bit less."
+
+**Startup (per Protocol):** Confirmed current state via reads of index.astro (hero style blur(8px) → now to change, comment), companion (latest banner section), Web Tasks (top [x] was banner), Log, this Report (prior banner section at end), CLI Reports.
+
+**Actions (autonomous, self for visual/CSS):**
+- Used execute_code (python re.sub + replace) on site/src/pages/index.astro:
+  - Confirmed style already updated or set filter: blur(5px); opacity: 0.38 on the .hero-bg div (url('/banner.jpg'), cover, center).
+  - Updated the large HTML comment block: changed "Blur increased to 8px..." to detailed "Initial blur set to 8px ... Follow-up (user: \"Too much blur, a little bit less.\"): reduced to 5px for better balance — softer professional background while making the devices/hands/office in the photo more distinguishable as the \"images on the background\"."
+  - Also cleaned any "increased to 8px" references in header.
+- Immediately appended detailed follow-up section to companion note (before build).
+- Prepended new [x] entry to top of ## Completed in Web Tasks.md (with trigger quote, exact change, cross-refs, completion date).
+- Prepended detailed log entry to Log Web Tasks.md.
+- This Report append (this section).
+- (Will: build + verify with grep, git add only touched: index.astro + reports + companion, commit, push; append to CLI Reports.md; dotfiles-sync save; play completion sound.)
+
+**Rationale:**
+- 8px (from the "blur it a little bit more" banner request) was too heavy, washing out the photo details (office, people, hand holding phone with UI, laptop, desktop) that provide the "images on the background" / collage effect.
+- Reduced to 5px ("a little bit less"): maintains soft, non-distracting professional background blur while improving visibility of the photo's elements (devices/hands as the visual layer). Text remains centered, crisp, readable via 0.38 opacity + adaptive tint overlay. Matches all prior specs exactly.
+- No other changes (no raster to CSS revert, no layout shifts, legacy device CSS untouched in global.css).
+
+**Verification (self-executed next):**
+- cd /home/randy/Documents/Web Agency/eternalwebsite.com/site && npm run build (expect ~1 page, <1s success).
+- grep dist/index.html for 'blur(5px)' + 'banner.jpg' + 'hero-bg' + 'Built to Endure' (confirm no device-mockup in hero section).
+- git status only shows the intended files.
+- After push: curl or browser on https://eternalwebsite.com (user should hard refresh); optionally browser_vision focused on hero for visual proof of improved photo legibility under less blur.
+- All registers updated for handoff.
+
+**Handoff for next (CC/GK/Hermes):**
+- Hero now has the user banner photo at blur(5px) — better balance per latest feedback.
+- Full history of iterations (CSS passes → banner at 8px → 5px tweak) in companion, logs, this Report, Web Tasks.
+- If further small tweaks (e.g. 6px, opacity, or other sections), user will provide on next launch.
+- Always: full startup reads (Protocol first), update companion/Report/logs immediately, build+git+dotfiles at end, physicals only in CLI TODO (currently empty).
+- Site is live on Netlify; changes deploy on push.
+
+All followed Hermes Agent Protocol.md + Web AGENTS.md + CLAUDE.md exactly. No user actions requested. Ready for build/closeout.
+

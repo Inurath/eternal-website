@@ -189,3 +189,34 @@ All per Hermes Agent Protocol.md (startup reads in order, vault scans, todo trac
 
 **Next for user:** After this session closeout, hard refresh the live site to see the replaced banner photo background (blurred a bit more) with the centered letters/text on top. The photo provides exactly the "images on the background" you described across sessions. Let me know if opacity/blur/positioning needs a small tweak or if other sections need the same treatment.
 
+
+## 2026-06-04 Hermes (follow-up): Reduced hero background blur ("Too much blur, a little bit less.")
+
+**User feedback:** "Too much blur, a little bit less."
+
+**Actions (full autonomy, immediate docs per Protocol + Web AGENTS):**
+- Re-read current index.astro hero section (confirmed style had filter: blur(8px); opacity: 0.38 on .hero-bg with /banner.jpg; large comment still referenced the initial 8px "increased to 8px" from the banner replacement).
+- Used execute_code (python re + string replace) to:
+  - Confirm style already at 5px from prior step (or set it).
+  - Replace the comment's blur description line with detailed follow-up: "Initial blur set to 8px ... Follow-up (user: \"Too much blur, a little bit less.\"): reduced to 5px for better balance — softer professional background while making the devices/hands/office in the photo more distinguishable as the \"images on the background\"."
+  - Also fuzzy-updated any remaining "increased to 8px" header text.
+- Kept all other hero elements identical: full-bleed banner photo, 0.38 opacity, centered text container (z-10), tint overlay (var-based for light/dark readability), no device mockups in HTML (legacy in css only).
+- Per strict rules: appended this section to companion *before* any build.
+
+**Rationale for 5px:**
+- 8px was "a little bit more" from the banner request, but user feedback indicated it was too much (washed out detail in the office/devices/hand/phone photo).
+- 5px is "a little bit less" — keeps the soft, professional, non-distracting background effect (photo still reads as collage of people/devices/office) while allowing more of the "pictures" / details to be distinguishable, matching the long-running desire for visible images on the bg.
+- Opacity and tint unchanged so text/letters stay perfectly readable and centered.
+
+**Verification (to be run next):**
+- Build success expected.
+- Grep dist for "blur(5px)" + "banner.jpg" + "hero-bg" + "Built to Endure" (no old device structure in hero).
+- Live: after git push, user hard refresh https://eternalwebsite.com (or incognito). The banner photo bg should now have a slightly sharper (less blurred) but still soft professional look.
+- Optional: browser_navigate + browser_vision on hero only for visual confirmation of improved photo detail visibility.
+
+**Files touched this follow-up:** index.astro (style + comment), this companion note (immediate append), will update Web Tasks.md (new [x]), Log Web Tasks.md (prepend), eternal Report.md (append), CLI Reports.md (append).
+
+All per Hermes Agent Protocol (reads, todo, no user exec, document immediately, build+verify, git only touched, dotfiles, sound on complete). Obsidian is source of truth. No changes to CLI TODO (stays empty).
+
+**Next for user:** Hard refresh the live site to see the adjusted blur on the real banner photo background. If still needs minor tweak (e.g. 6px or 4px, or opacity), provide feedback on next launch. The photo now better shows the office/devices as the background imagery with letters in the center.
+

@@ -78,7 +78,7 @@ import { testimonials } from '../data/testimonials';
 		     Replaced the previous pure-CSS device-mockup collage (which was simulating the "images on the background") with this actual user-supplied raster banner photo.
 		     - Copied to public/banner.jpg so served at /banner.jpg.
 		     - Used as background-image on absolute full-bleed layer.
-		     - Blur increased to 8px ("a little bit more" than the prior 1.5px/3px/6px device passes for a softer, more professional background effect while still showing the devices/people as the visual layer).
+		     - Initial blur set to 8px ("a little bit more" than the prior 1.5px/3px/6px device passes for a softer, more professional background effect while still showing the devices/people as the visual layer). Follow-up (user: "Too much blur, a little bit less."): reduced to 5px for better balance — softer professional background while making the devices/hands/office in the photo more distinguishable as the "images on the background".
 		     - Opacity ~0.38 + strong center tint overlay so the centered "letters in the middle" (h1, p, CTAs, badge) remain crisp and readable in both light/dark.
 		     - The photo itself now provides the professional collage of devices/hands/office as the "images on the background".
 		     - No more CSS mockups in this layer (device styles left in global.css for potential future reuse or other sections; harmless).
@@ -86,7 +86,7 @@ import { testimonials } from '../data/testimonials';
 
 		     Previous CSS collage history preserved in this note + Report for reference. -->
 		<div class="hero-bg absolute inset-0 pointer-events-none z-0" aria-hidden="true"
-		     style="background-image: url('/banner.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.38;"></div>
+		     style="background-image: url('/banner.jpg'); background-size: cover; background-position: center; filter: blur(5px); opacity: 0.38;"></div>
 
 		<!-- Subtle tint/overlay for center text (letters) readability over the blurred photo background (adapts via var; slightly adjusted for the new image) -->
 		<div class="absolute inset-0 bg-[var(--surface)]/10 dark:bg-black/15 pointer-events-none z-0" aria-hidden="true"></div>
