@@ -1000,3 +1000,46 @@ All autonomous, followed every rule in the notes. Ready for build + closeout.
 
 All followed Hermes Agent Protocol.md + Web AGENTS.md + CLAUDE.md exactly. No user actions requested. Ready for build/closeout.
 
+
+## 2026-06-04 Hermes (follow-up): Update delivery time text in hero to "1 to 2 weeks delivery (times may vary)"
+
+**Trigger:** User: "Change all the text that says 1 to 2 weeks delivery to 1 to 2 weeks delivery (times may vary)"
+
+**Startup (per Hermes Agent Protocol + eternal AGENTS + Web AGENTS):** Re-read Protocol.md (mandatory), CLI Core registers (Reports/Tasks/TODO/Dashboard/Home), Web Agency/AGENTS.md, Web Tasks.md, eternal AGENTS.md + this Report.md (up to prior blur tweak); scanned vaults (search_files for delivery|1-?2 week|delivery across site/ and notes/); read index.astro hero + Layout.astro meta + pricing.ts + companion (latest blur section); loaded obsidian skill + reference for maintenance patterns; todo tool tracking.
+
+**Actions (full self-contained autonomy, no user exec):**
+- Confirmed via searches + reads: only **one** instance of "delivery" timing text on the live site in `site/src/pages/index.astro` (hero section, small text-xs line below buttons/CTAs in the banner photo bg): `Bradenton / Sarasota, FL - 1-2 week delivery`.
+  - No matches in Layout.astro (meta description/OG/title unchanged).
+  - Pricing.ts has "Priority scheduling (1-2 weeks)" — different phrasing/context ("scheduling" not "delivery"); left as-is.
+  - Historical mentions in logs/companion/Reports are records only (not edited).
+- Edit via execute_code (python replace + verification): updated the exact string in the p tag to `Bradenton / Sarasota, FL - 1 to 2 weeks delivery (times may vary)`.
+  - Matched user's requested phrasing literally ("1 to 2 weeks delivery (times may vary)"); adjusted original hyphen/singular "1-2 week" to natural "1 to 2 weeks" + added the parenthetical.
+  - No layout/CSS/other changes (same classes, position, small muted text under the centered hero content).
+- Immediately appended detailed section to companion `notes/site/src/pages/index.astro.md` (per "document every file touched" + immediate rule before build).
+- Prepended new [x] to top of ## Completed in Web Tasks.md (via execute_code).
+- Prepended detailed entry to Log Web Tasks.md (via execute_code).
+- This Report append (this section).
+- (Will: build + verify with grep, git add only touched files from eternalwebsite.com/ root, commit + push, append to CLI Reports.md, dotfiles-sync save, sound on full completion.)
+
+**Rationale:**
+- The delivery timing line (added in early hero polish when "flat project fee" was removed) was the exact text the user referenced.
+- "(times may vary)" adds a realistic, professional disclaimer for the custom one-page service without lengthening the line excessively or affecting readability/positioning in the hero.
+- Keeps the local Florida (Bradenton/Sarasota) flavor and small text style consistent with prior hero iterations (banner photo bg, centered text, etc.).
+- Fulfills the request precisely while following "change all the text" (only one instance qualified).
+
+**Verification (self-executed next in flow):**
+- `cd /home/randy/Documents/Web Agency/eternalwebsite.com/site && npm run build` (expect success, 1 page).
+- `grep dist/index.html '1 to 2 weeks delivery (times may vary)'` + "Bradenton / Sarasota" (confirm exact new text; old gone).
+- `git status --porcelain` only shows intended (index.astro + reports/companion).
+- After push: live curl or browser https://eternalwebsite.com (user hard refresh recommended for Netlify cache); confirm the small text under hero CTAs.
+- All registers updated for next agent (CC/GK/Hermes).
+
+**Handoff / notes for next:**
+- Hero location text now includes the "(times may vary)" disclaimer per user request.
+- Full history of hero changes (banner photo, blur tweaks, this text) documented in companion + logs + this Report.
+- If more copy tweaks, other sections, or similar disclaimers elsewhere, user will specify on next launch.
+- Always: full Protocol startup (Protocol first + scans + reads), immediate companion/Report updates, build+verify after source, git only project files, dotfiles at end.
+- Site live on Netlify (auto-deploy from main).
+
+All autonomous, followed every rule. Ready for build + closeout.
+

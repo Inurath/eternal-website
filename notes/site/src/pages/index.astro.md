@@ -220,3 +220,41 @@ All per Hermes Agent Protocol (reads, todo, no user exec, document immediately, 
 
 **Next for user:** Hard refresh the live site to see the adjusted blur on the real banner photo background. If still needs minor tweak (e.g. 6px or 4px, or opacity), provide feedback on next launch. The photo now better shows the office/devices as the background imagery with letters in the center.
 
+
+## 2026-06-04 Hermes (follow-up): Update delivery time text in hero (user: change "1 to 2 weeks delivery" to include "(times may vary)")
+
+**User instruction:** "Change all the text that says 1 to 2 weeks delivery to 1 to 2 weeks delivery (times may vary)"
+
+**Actions (full autonomy per Protocol + Web AGENTS + eternal AGENTS.md):**
+- Re-read mandatory files per Hermes Agent Protocol (Protocol.md first, CLI Reports/Tasks/TODO, Dashboard, Home, Web Agency/AGENTS.md, Web Tasks.md, eternal AGENTS.md + Report.md); scanned vaults with search_files for "delivery|1-?2 week" across site/ and notes/.
+- Confirmed **only one live site instance** of the delivery phrasing in source: `site/src/pages/index.astro` hero location line: `Bradenton / Sarasota, FL - 1-2 week delivery` (the "delivery" text under the centered CTAs in the banner hero bg).
+- Other "1-2 weeks" in pricing.ts is "Priority scheduling (1-2 weeks)" (different context, not "delivery"; left unchanged).
+- No mentions in Layout.astro meta/OG, trust row, footer, or other components.
+- Used execute_code (python string replace + verification) to update the exact p tag text to: `Bradenton / Sarasota, FL - 1 to 2 weeks delivery (times may vary)`
+  - Kept formatting, classes, and position identical (small muted text below buttons).
+  - Matched user's exact requested phrasing ("1 to 2 weeks delivery (times may vary)"); normalized hyphen/singular "week" to "to ... weeks" for natural grammar.
+- Immediately appended this section to the companion note (before any build, per "document every file touched" + "immediate" rule in AGENTS.md).
+- Updated todo tracking.
+
+**Rationale:**
+- The hero location/delivery line was the only place using "delivery" timing text (added/updated in early sessions when "flat project fee" was removed).
+- Adding "(times may vary)" provides realistic disclaimer without changing meaning or layout (keeps it short, in the small text-xs line).
+- Matches user request literally and improves transparency for the one-page premium service.
+- No impact on other sections (pricing scheduling note kept separate as it's not "delivery").
+
+**Verification (next):**
+- `cd site && npm run build` success.
+- `grep dist/index.html` for the new full phrase + "Bradenton / Sarasota".
+- Live: after git push to eternalwebsite.com repo, hard refresh https://eternalwebsite.com (or incognito) to see the updated hero footer text.
+- Optional browser_vision on hero only if visual confirmation needed.
+
+**Files touched:** 
+- site/src/pages/index.astro (the single text string in hero)
+- This companion note (immediate append)
+- Will: Web Tasks.md (new [x] at top of Completed), Log Web Tasks.md (prepend), eternal Report.md (append), CLI Reports.md (append)
+- Git: only the above + reports (from eternalwebsite.com/ root)
+
+All per Hermes Agent Protocol.md (full startup reads/scans in order, todo, no user exec), Web Agency/AGENTS.md, eternalwebsite.com/AGENTS.md (companion + Report for every edit, build+verify, end with dotfiles + git push), and obsidian reference (execute_code for edits, immediate docs). CLI TODO untouched (empty). Registers clean for handoff.
+
+**Next for user:** Hard refresh the live site. The small text under the hero buttons now reads "Bradenton / Sarasota, FL - 1 to 2 weeks delivery (times may vary)". If other timing texts or locations need similar updates, provide details.
+
