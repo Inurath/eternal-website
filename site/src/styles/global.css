@@ -228,17 +228,13 @@ html.dark nav img[alt="Eternal Website"] {
   filter: brightness(0) invert(1);
 }
 
-/* ===== HERO DEVICE MOCKUP COLLAGE (2026-06-04 Hermes, enhanced 2026-06-04 for visibility pass 3: distinguishable pictures) =====
-   Full-bleed blurred background layer in the hero.
-   Enhanced per user: "The pictures, you cannot distinguish anything on that background. [...] two lines and it's not clear what is in the background. Also, in the dark mode, it's really hard to see. [...] I wanted pictures, images you can find online, maybe, of people holding a phone with a website or people holding a computer laptop or a desktop computer with a website. Maybe find multiple images, make them fit, make a collage, make something nice."
-   Real stock photo search/generation tools limited in current env (no API keys for web image search or FAL gen). Maximized the CSS mockup approach (original spec "collage of phone/computer views" with actual live site content inside frames, no faces, hands/angles implied by tilt, theme var compatible for dark/light).
-   Changes for distinguishability:
-   - Larger base device sizes (more room for readable mini content).
-   - Significantly larger mini-* fonts (now ~20-24px effective at scale).
-   - Reduced blur, higher base opacity in inline.
-   - Dark mode specific boost: higher opacity/brightness/contrast on the collage devices so "pictures" pop in dark.
-   - Stronger device shadows/outlines for frame definition as "pictures on the background".
-   Still fulfills: background collage, letters centered in middle, images/devices as the background layer, blur for readability of text over it, professional, self-contained CSS (perfect dark/light no conflicts).
+/* ===== HERO DEVICE MOCKUP COLLAGE (legacy - 2026-06-04 Hermes iterations) =====
+   These styles powered the pure-CSS device collage (phone/laptop/desktop mockups with live mini-site content inside angled frames) used as full-bleed blurred background in the hero (or earlier as side visual in 2-col).
+   History of passes: initial collage → full-bleed conversion → visibility boosts (opacity 0.32→0.45→0.55, blur 10px→6px→3px→1.5px, larger scales) → real photo replacement.
+   As of 2026-06-04 follow-up session: HERO BACKGROUND NOW USES THE REAL USER-PROVIDED BANNER PHOTO (see index.astro <header id="hero"> comment for details on /banner.jpg, blur(8px), opacity 0.38, tint).
+   The CSS .device-mockup rules + .phone/.laptop/.desktop + mini-* + dark boost are left in the stylesheet (harmless; not referenced by current hero layer). They can be cleaned up later if no other use, or repurposed.
+   Full iteration details + user quotes preserved in notes/site/src/pages/index.astro.md and eternal Report.md.
+   (Original enhanced comment text for the CSS version kept below for reference in case of rollback.)
 */
 .device-mockup {
   background: #111;

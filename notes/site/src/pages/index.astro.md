@@ -155,3 +155,37 @@ All per Hermes Agent Protocol, Web AGENTS.md, CLAUDE.md (check off + reports upd
 
 All per Hermes Agent Protocol (startup reads, scans, todo, docs, build+verify, git at end, dotfiles, sound on done). CLI TODO cleaned per your explicit instruction.
 
+
+## 2026-06-04 Hermes (follow-up): Replace hero background image with user-provided real banner photo + more blur
+
+**User instruction (this turn):** "Also replace the image that we will work on the website. Replace it with this one I'm gonna give you right now and please blur it a little bit more."
+- Attached/provided file: `/home/randy/Pictures/Web/Eternal Website/banner.jpg` (wide banner photo of modern office: people at desks with monitors, prominent foreground hand holding smartphone showing a website UI, woman at laptop, another person with desktop in bg — exactly matches for the long-standing spec of "pictures, images you can find online, maybe, of people holding a phone with a website or people holding a computer laptop or a desktop computer with a website. Maybe find multiple images, make them fit, make a collage, make something nice.").
+
+**Actions (full autonomy per Protocol + Web AGENTS.md):**
+- Copied the provided banner.jpg to `site/public/banner.jpg` (so available at root `/banner.jpg` on the built site; consistent with other static assets like logos).
+- In `site/src/pages/index.astro`:
+  - Replaced the entire previous `.hero-bg-collage` (3 device-mockup divs with inline transforms/blurs/opacities + mini content) with a real photo background layer:
+    - `<div class="hero-bg absolute inset-0 ..." style="background-image: url('/banner.jpg'); background-size: cover; background-position: center; filter: blur(8px); opacity: 0.38;">`
+  - Blur set to 8px ("a little bit more" than the last CSS device pass of 1.5px / earlier 6px passes) for softer professional background effect.
+  - Opacity 0.38 chosen so the photo (devices/hands/office) shows through as the "images on the background" while keeping the centered text fully readable.
+  - Kept/adjusted the tint overlay div below it (bg-[var(--surface)]/10 dark:bg-black/15) for extra letter readability.
+  - Updated the large preceding HTML comment with full quote of the new request, description of the photo, exact implementation details, history note ("replaced the previous pure-CSS device-mockup collage"), and fulfillment of all prior "background... letters in the center and the images on the background" + blur specs.
+- In `site/src/styles/global.css`:
+  - Updated the top comment of the device-mockup section to mark it **legacy** (full history of CSS passes → real banner replacement), noted that hero no longer references the devices, styles left harmlessly in place for possible future use/rollback.
+- Per rules: edit source first, then **immediately** append this section to the companion note (before any build).
+- No changes to other hero text/content (badge/h1/p/buttons/location remain perfectly centered on top of the new blurred photo bg).
+- The photo replaces the CSS simulation exactly as requested; the real devices/people in the banner now serve as the visual "collage" layer.
+
+**Verification (self-executed):**
+- Build will be run next (see todo + Report).
+- Expected: dist/index.html will reference /banner.jpg in the hero-bg style, no more device-mockup or hero-bg-collage class in the hero section, blur(8px), opacity 0.38 present.
+- Live after push: hard refresh https://eternalwebsite.com (or incognito) to see the new real photo banner as soft blurred full-bleed hero background with crisp centered "Built to Endure..." text + CTAs over it. The office/devices in the photo will be visible as the background imagery.
+- Dark/light modes: tint overlay adapts; photo should look good in both (professional stock photo style).
+- If visibility needs tweak (more/less blur, opacity), can adjust the inline style easily.
+
+**Files touched:** index.astro (hero layer + comment), global.css (legacy note), public/banner.jpg (new asset), this companion note (immediate append), will update Web Tasks.md / Log / eternal Report.md / CLI Reports.md.
+
+All per Hermes Agent Protocol.md (startup reads in order, vault scans, todo tracking, no user exec, document immediately, build+verify, git, dotfiles at end), Web AGENTS.md (companion + Report for every site/ edit), and your explicit "right now it should be empty" rule for CLI TODO (no mixing).
+
+**Next for user:** After this session closeout, hard refresh the live site to see the replaced banner photo background (blurred a bit more) with the centered letters/text on top. The photo provides exactly the "images on the background" you described across sessions. Let me know if opacity/blur/positioning needs a small tweak or if other sections need the same treatment.
+
