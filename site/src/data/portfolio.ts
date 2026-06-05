@@ -7,7 +7,8 @@ export interface PortfolioItem {
   category: string;
   result: string;
   desc: string;
-  image?: string;  // optional royalty-free image for visual examples (added per web tasks)
+  image?: string;
+  url: string;
 }
 
 export const portfolio: PortfolioItem[] = [
@@ -17,6 +18,7 @@ export const portfolio: PortfolioItem[] = [
     result: "+47% inquiries in first month",
     desc: "One-page menu + hours + location + online order CTA. Clean photos and easy mobile experience.",
     image: "/images/cafe-local.jpg",
+    url: "https://familygoldcare.com",
   },
   {
     title: "Harbor Law Group",
@@ -24,6 +26,7 @@ export const portfolio: PortfolioItem[] = [
     result: "Higher quality leads, less 'price shoppers'",
     desc: "Authority-building layout with clear practice areas, flat-fee messaging, and direct contact form.",
     image: "/images/professional-services.jpg",
+    url: "https://familygoldcare.com",
   },
   {
     title: "Gulf Coast Plumbing",
@@ -31,6 +34,7 @@ export const portfolio: PortfolioItem[] = [
     result: "Top 3 for 'Bradenton plumber'",
     desc: "Fast-loading service grid, prominent phone + quote button, service area map, and testimonials.",
     image: "/images/modern-office.jpg",
+    url: "https://familygoldcare.com",
   },
   {
     title: "Palma Sola Wellness",
@@ -38,5 +42,6 @@ export const portfolio: PortfolioItem[] = [
     result: "New patients booking directly from site",
     desc: "Trust-focused design with practitioner bio, services, and simple scheduling form integration.",
     image: "/images/laptop-work.jpg",
+    url: "https://familygoldcare.com",
   },
 ];

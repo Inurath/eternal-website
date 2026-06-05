@@ -6,9 +6,10 @@ interface Props {
   popular?: boolean;
   features: string[];
   cta: string;
+  slug: string;
 }
 
-const { name, price, period, popular, features, cta } = Astro.props;
+const { name, price, period, popular, features, cta, slug } = Astro.props;
 ---
 
 <div class={`card h-full flex flex-col ${popular ? 'popular' : ''}`}>
@@ -24,7 +25,7 @@ const { name, price, period, popular, features, cta } = Astro.props;
     {features.map((f) => <li class="flex gap-2"><span class="text-[var(--accent)]">✓</span> {f}</li>)}
   </ul>
 
-  <a href="#contact" class={`btn ${popular ? 'btn-primary' : 'btn-secondary'} w-full`}>
+  <a href={`/pricing/${slug}`} class={`btn ${popular ? 'btn-primary' : 'btn-secondary'} w-full`}>
     {cta}
   </a>
 </div>
