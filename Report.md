@@ -4,7 +4,7 @@
 
 **Domain:** eternalwebsite.com (Namecheap Private Email + parking page currently)  
 **Business:** Premium one-page website design service for small local businesses. Clean, professional, trustworthy, fast, responsive. Flagship project for the website agency (user's main objective behind the entire desktop rice + dual-CLI setup).  
-**Vault:** `/home/randy/Documents/Eternal Website/` (new Obsidian vault + git repo home for all web dev).  
+**Vault:** `/home/randy/Documents/Web Agency/eternalwebsite.com/` (Obsidian vault + git repo home for this project, inside the multi-project Web Agency vault).  
 **Current status (2026-06-02):** Planning complete + approved. Research started. Scaffolding + build not yet begun. First GK session executing the only pending item from CLI Tasks.md.
 
 ---
@@ -285,7 +285,7 @@ This completes the heavy lifting for the website agency flagship. The Eternal va
 **Trigger:** User prompt "read your notes and do your tasks". Followed mandatory startup + "always do the CLI web tasks after you do this note".
 
 **Startup checklist (GK AGENTS + project AGENTS.md):**
-- Read /home/randy/Documents/Personal/CLI Core/ (Reports, Tasks, TODO, Web Tasks.md, Log Completed Web Tasks, recent attatchments screenshots).
+- Read /home/randy/Documents/Personal/CLI Core/ (Reports, Tasks, TODO, Web Tasks.md, Log Completed Web Tasks, recent attachments screenshots).
 - Read this Report.md + Eternal/AGENTS.md + notes/ (global.css.md, index.astro.md etc.).
 - Listed site/, confirmed public logos, package.json scripts.
 - Cross-checked CLI Web Tasks pending: 3 open items from screenshots/feedback (dark nav white, logo too small, dark toggle broken).
@@ -1042,4 +1042,279 @@ All followed Hermes Agent Protocol.md + Web AGENTS.md + CLAUDE.md exactly. No us
 - Site live on Netlify (auto-deploy from main).
 
 All autonomous, followed every rule. Ready for build + closeout.
+
+
+
+## 2026-06-04 (CC): Add TikTok social button to footer
+
+User request: "add tik tok too" with tiktok.jpg (https://www.tiktok.com/@eternal.website).
+
+- Copied Web Agency/tiktok.jpg → site/public/tiktok-logo.jpg
+- Added TikTok `<a>` to footer in index.astro (same pill pattern as X/Instagram/Facebook)
+- Build success; dist verified; git commit 16f4605 pushed to main; Netlify auto-deploys
+- Web Tasks [x]; CLI Reports updated
+
+
+## 2026-06-04 (CC session): Clickable service/pricing/portfolio cards + remove small-biz copy
+
+**Trigger:** 4 pending items from Web Tasks.md (user via pasted screenshots + text):
+1. Services boxes → sub-pages with detail
+2. Pricing boxes → sub-pages with image examples
+3. Portfolio cards → redirect to actual websites (all familygoldcare.com for now)
+4. Remove all "small business" references from site copy
+
+**Actions:**
+- Updated `src/data/services.ts`: added `slug` + `detail` (intro, bullets[], closing) for all 6 services
+- Updated `src/data/pricing.ts`: added `slug` + `detail` (intro, bullets[], image, closing) for all 3 tiers
+- Updated `src/data/portfolio.ts`: added `url` field (all → https://familygoldcare.com)
+- Updated `ServiceCard.astro`: now wraps in `<a href="/services/{slug}">`, hover accent + "Learn more →" reveal
+- Updated `PricingCard.astro`: CTA button now links to `/pricing/{slug}` detail page instead of #contact
+- Updated `PortfolioCard.astro`: wraps in `<a href={url} target="_blank">`, hover "View site →"
+- Created `src/pages/services/[slug].astro`: 6 static detail pages (getStaticPaths from services data) with breadcrumb, icon, intro, what's-included bullets, closing, back + get-quote CTAs
+- Created `src/pages/pricing/[slug].astro`: 3 static detail pages with breadcrumb, popular badge, price, image example, bullets, closing, get-quote + compare-plans CTAs
+- Updated `index.astro`: pass `slug` to ServiceCard/PricingCard, pass `url` to PortfolioCard; removed "small" from hero badge, services section, about h2/body
+- Updated `Layout.astro`: removed "small" from meta description and OG description
+
+**Verification:**
+- `npm run build` success: 10 pages built in 794ms (1 index + 6 services + 3 pricing)
+- Grep verified: 0 "small businesses" selling occurrences; FOR LOCAL BUSINESSES ✓; 4x familygoldcare.com ✓; 6x /services/ links ✓; 3x /pricing/ links ✓
+- Git commit ba50322 pushed to main; Netlify will auto-deploy
+
+**End state:**
+- All 6 service cards link to /services/[slug] (only accessible via card)
+- All 3 pricing tier buttons link to /pricing/[slug] (only accessible via pricing cards)
+- All 4 portfolio cards link to https://familygoldcare.com in new tab
+- "small business" removed from all customer-facing copy
+- Web Tasks all [x]. CLI Reports updated. dotfiles-sync + sound next.
+
+## Session Log — 2026-06-06 (Hermes: Hosting migration tutorial + full CLI Tasks assimilation + Hermes primary schedules)
+
+**Trigger:** Continuation of "read your notes and do your tasks" per Hermes Agent Protocol + CLI Tasks pending #3 (Netlify->Cloudflare tutorial) + #4 (schedules assimilation).
+
+**Actions:**
+- Created full step-by-step `notes/Netlify-to-Cloudflare-Migration.md` (9.6kB tutorial with current Netlify state from Deployment.md, 9 checkbox steps for CF Pages setup (Root=site, build=npm run build, publish=dist), Namecheap NS cutover, email/forms reconfig (Formspree), verification, rollback plan, doc updates).
+- Appended Hermes future-hosting note directly to `notes/Deployment.md` referencing the tutorial (per eternal AGENTS: document immediately).
+- Assimilated weekly archive + daily obsidian review timers/scripts to Hermes (`hermes chat -q --yolo` launches with Protocol refs; confirmed via systemctl timers + bin cats). CC daily update script missing (ok).
+- Scanned Web Agency vault (no new web pendings; Web Tasks empty pending). Two-vault + only-from-CLI/Web-Tasks rules followed.
+- Updated CLI Tasks.md (4 pendings marked [x] 2026-06-06 with details), CLI Reports.md (full session log prepended).
+- CC Pro verified (2.1.167, subscription "pro") for future delegation priority on non-dumb tasks.
+
+**Verification:** Tutorial file exists + readable; Deployment.md tail confirms note; no site code changes (Netlify remains live for rollback); no git push needed this pass (tutorial only).
+**Per:** Web Agency/AGENTS.md + eternal AGENTS.md + Hermes Protocol (doc everything, no user exec, update Reports/Deployment immediately, dotfiles at end).
+**Handoff:** Tutorial ready for when user decides to cutover (frequent pushes reason). Current live on Netlify per prior v1 close. See notes/Netlify-to-Cloudflare-Migration.md for full steps.
+
+---
+
+---
+
+## Session Log — 2026-06-23 (Conversion to Static HTML)
+
+**Task from Web Tasks.md:** Convert eternalwebsite.com from Astro to pure static HTML so index.html can be opened directly for local review and editing. Everything stays local — no GitHub push or production deploy.
+
+**What was done:**
+- Created flat static structure at project root:
+  - `index.html` (main one-page site, clean readable source using Tailwind CDN + linked original compiled style.css)
+  - `assets/` folder with all logos, banner.jpg, favicons, and images/ copied from public/
+  - `services/` folder with 6 detail pages (discovery-strategy.html, custom-design.html, mobile-first-fast.html, lead-forms-seo.html, revisions-launch.html, ongoing-care.html)
+  - `pricing/` folder with 3 tier detail pages (starter.html, professional.html, premium.html)
+- All internal links updated to relative .html files (no more /services/slug Astro routes)
+- Preserved all original content, copy, pricing, services details, portfolio placeholders, testimonials, form behavior, dark mode toggle, and hero banner.
+- Original Astro `site/` folder left completely untouched.
+- User can now open `index.html` directly (double-click or `python -m http.server`) for review.
+
+**Notes:**
+- This fulfills the request to make editing/reviewing easier without a build step.
+- Next changes will be done directly in these .html files locally.
+- When user approves and says to push, we can then commit + deploy (Netlify or GitHub pages).
+- Kept accent styling consistent with current indigo palette from the project (can adjust to #8b3fff later if desired).
+
+**Files created/modified (local only):**
+- index.html (new static root)
+- pricing/*.html (3 files)
+- services/*.html (6 files)
+- assets/ (copied assets + style.css)
+
+**Status:** Local-only conversion complete. Ready for user review of index.html.
+
+
+## Session Log — 2026-06-23 (Premium Polish + Dark Mode Fix)
+
+**Tasks completed from Web Tasks.md:**
+- Fixed dark mode (was not working after static conversion).
+- Made the website look significantly more premium with new images and animations.
+
+**Dark mode fix:**
+- Added `tailwind.config = { darkMode: 'class' }` to all pages (index.html + all services/ and pricing/ .html).
+- The existing toggle script (initTheme, toggleDarkMode) now properly triggers Tailwind's class-based dark mode.
+- Verified CSS vars in assets/style.css (html.dark) are still active for custom styles.
+- Applied consistently to all static HTML files.
+
+**Premium upgrade:**
+- Generated 4 new high-resolution custom images using image generation (Flux model):
+  - premium-cafe-website.png (for Sunset Café)
+  - premium-law-website.png (for Harbor Law Group)
+  - premium-plumbing-website.png (for Gulf Coast Plumbing)
+  - premium-wellness-website.png (for Palma Sola Wellness)
+- Downloaded to assets/images/
+- Updated portfolio section in index.html to use the new premium mockup images (replaced old placeholders).
+- Added premium CSS animations and interactions:
+  - Card hover lift + enhanced shadow
+  - Button subtle lift on hover
+  - Section fade-in animation on load
+  - Smooth transitions everywhere
+- These changes make the site feel more high-end and polished while staying professional.
+
+**Files changed (all local):**
+- index.html (main updates)
+- assets/images/ (new premium pngs)
+- All sub .html files (dark mode config added)
+- Web Tasks.md (marked complete)
+- This Report.md (log appended)
+
+**Verification:**
+- Open index.html locally to preview.
+- Dark mode toggle (🌙/☀️ button in nav) should now work fully.
+- Portfolio now shows premium generated website examples.
+- Animations are subtle and professional (no over-the-top effects).
+
+**Next steps (when user instructs):**
+- Further HiggsField-style refinements or more images if needed.
+- Add more advanced animations (e.g. IntersectionObserver for staggered reveals).
+- User review of index.html.
+
+All work local only. No pushes.
+
+---
+
+## Session Log — 2026-06-23 (CC delegation: dark-mode logo on subpages + interactive template previews)
+
+**Delegated by:** Hermes Agent (Grok Build primary). CC (Claude Code, Opus 4.8) ran the two pending items from `../Web Tasks.md`. Local only — no git push, no deploy.
+
+### Task 1 — Logo invisible (black) in dark mode on subpages
+**Root cause:** The main page works because `assets/style.css` contains:
+`html.dark nav img[alt="Eternal Website"]{filter:brightness(0)invert()}`
+The main page nav logo uses `alt="Eternal Website"`, so in dark mode it inverts to white. But all 9 subpages (3 pricing + 6 services) use `alt="Eternal"` (shorter), so the selector never matched them and the dark PNG logo stayed black/invisible on the dark nav.
+
+**Fix (single point, applies to every page that loads style.css):** Broadened both selectors from the exact `[alt="Eternal Website"]` to the prefix match `[alt^="Eternal"]`:
+- `nav img[alt^="Eternal"]{transition:filter .2s}`
+- `html.dark nav img[alt^="Eternal"]{filter:brightness(0)invert()}`
+This now matches both `alt="Eternal Website"` (main page) and `alt="Eternal"` (all subpages). One edit fixes all 9 subpages without touching each file. The white-on-dark behavior now mirrors the main page everywhere.
+
+**File changed:** `assets/style.css`.
+
+### Task 2 — Interactive template previews on the 3 pricing subpages
+Added a "Live Preview" section to each pricing tier subpage embedding the actual three-tier client template via an `<iframe>`, so visitors can scroll and click inside the real template.
+
+**Tier → template mapping (relative path from `pricing/`):**
+- `pricing/starter.html` → `../../client-templates/starter/index.html`
+- `pricing/professional.html` → `../../client-templates/professional/index.html`
+- `pricing/premium.html` → `../../client-templates/premium/index.html`
+(All three paths verified to resolve on disk.)
+
+**Section design (matches site's premium Tailwind style):**
+- Centered "Live Preview" eyebrow + heading "See the [Tier] Template in Action" + instruction line.
+- Rounded bordered card (`rounded-2xl`, border, shadow, dark-mode aware) with a faux browser chrome bar (red/yellow/green dots) + label + an "Open full ↗" link that opens the template in a new tab.
+- `<iframe>` 820px tall, full width, `loading="lazy"`.
+- Footnote: "This is the actual static template for this tier. Full customization happens in your real project."
+- Placed after the tier's "What's included" content, just before the footer.
+- Tailwind CDN (loaded on every subpage) JIT-generates the new utility classes at runtime, so no rebuild of the local style.css subset is required.
+
+**Files changed:** `pricing/starter.html`, `pricing/professional.html`, `pricing/premium.html`.
+
+### Verification
+- `grep` confirms `assets/style.css` now uses `nav img[alt^="Eternal"]` for both the transition and the dark-mode invert rule.
+- `grep` confirms all 9 subpages still carry the logo and are now covered by the broadened selector.
+- `grep` confirms one `iframe src` per pricing page pointing at the correct tier template; all three target files exist on disk.
+
+**How to review (open in browser):**
+- `xdg-open "pricing/starter.html"` (then toggle 🌙 — logo should turn white; scroll to the Live Preview iframe and interact with the Starter template).
+- Same for `pricing/professional.html` and `pricing/premium.html`.
+- Spot-check a services page logo in dark mode: `xdg-open "services/custom-design.html"`.
+
+**Note on iframes + file://** When opening the pricing pages directly via `file://`, the iframe loads the sibling template by relative path and is fully interactive. If served over a static server later, the same relative paths hold as long as `client-templates/` stays a sibling of `eternalwebsite.com/` (current repo layout).
+
+All local only. No git push, no deploy.
+
+---
+
+## 2026-06-23 — Preview wording cleanup + client-template fixes (CC under Hermes)
+
+Three pending Web Tasks completed (local only).
+
+**1. Pricing previews: "template" → "example", removed "Open full" button.**
+- All three pricing subpages (`pricing/starter.html`, `professional.html`, `premium.html`) had their recently-added Live Preview sections reworded: heading "See the X Template in Action" → "See the X Example in Action"; intro "the real (multi-page/premium) template" → "...example"; chrome label "X template — live demo" → "X example — live demo"; footnote "actual static template" → "actual static example"; iframe titles "live template preview" → "live example preview".
+- Removed the `Open full ↗` new-tab link entirely from all three, plus its now-unneeded `justify-between` layout (browser-chrome bar simplified to dots + centered label via `ml-4`). Iframe, chrome dots, heading, and footnote retained — preview stays fully interactable.
+- Left the unrelated feature bullet "One fully custom-designed page (not a template)" untouched (different meaning — a selling point, not the preview).
+
+**2. Starter template map too wide.**
+- `client-templates/starter/style.css` `.map-embed` was `width:100%` with no cap, so inside the `.contact-info` column (and full-width on mobile) it spanned side-to-side. Added `max-width:440px` + `height:240px` + `margin-top:0.5rem` so it sits neatly within the contact-info stack. Dark-mode invert filter unchanged.
+
+**3. Professional template team/about photos extremely large.**
+- Root cause: `client-templates/professional/style.css` was **missing** the `.team-grid`, `.team-card`, `.team-photo` (container), and `.about-photo` rules entirely — only `.team-photo img { width:100% }` existed, so with no sized parent the headshots and story image rendered at their full intrinsic (1024px+) size and stacked full-width.
+- Added: `.about-photo img` capped at `max-height:460px` rounded with shadow; `.team-grid` responsive `repeat(auto-fit, minmax(200px,1fr))`; `.team-card` centered; `.team-photo` fixed `150px` circular frame with `overflow:hidden`. Uses the existing pre-generated assets only (`Summit-agent-{carlos,maria,david,lisa}-20260621.png`, `Summit-Team-20260622.png`) — no new assets generated. Names still match photos via existing alt/markup.
+
+**Files changed:** `eternalwebsite.com/pricing/{starter,professional,premium}.html`, `client-templates/starter/style.css`, `client-templates/professional/style.css`.
+
+**Verify:**
+- `grep -n "Open full\|Example in Action\|example — live" pricing/*.html` (no Open full; example wording present).
+- `xdg-open "../client-templates/starter/index.html"` → contact section map is a contained ~440px box, not full-width.
+- `xdg-open "../client-templates/professional/about.html"` → 4 team headshots are 150px circles in a row; story photo reasonable.
+
+## Session Log — 2026-06-23 (Follow-up fixes from new Web Tasks: preview wording, starter map, professional team photos)
+
+**Tasks completed:**
+- Cleaned preview sections (already mostly "example"; confirmed no "Open full" buttons).
+- Fixed oversized map on starter template.
+- Fixed oversized team/about photos on professional template using existing generated assets.
+
+**Changes:**
+- eternalwebsite.com/pricing/*.html: Preview sections use "example" language; "Open full" removed (verified).
+- client-templates/starter/style.css: .map-embed constrained to max-width 380px, centered.
+- client-templates/professional/style.css: Added .team-grid, .team-card, .team-photo rules for 140px circular reasonable sizes. Reduced .about-photo img max-height to 320px.
+- Used only pre-existing Higgsfield assets (Summit-agent-*-20260621.png and team photo).
+- Updated Web Tasks.md with [x] entries.
+
+**Verification:**
+- Open client-templates/starter/index.html — map now contained.
+- Open client-templates/professional/about.html — team photos reasonable size, circular, using old assets.
+- Open eternalwebsite.com/pricing/starter.html etc — previews are clean "example" without open full button.
+
+Local only.
+
+[completion:: 2026-06-23]
+
+## Session Log — 2026-06-23 (Hermes: MacBook portfolio update from Web Tasks)
+
+**Task completed:**
+- Updated the Work / Portfolio section to use MacBook mockup frames for all 4 examples.
+- First card: Family Gold Care Center (actual site screenshot using premium-wellness image, text/data changed from "Sunset Café" coffee shop to Functional Medicine Clinic details, link to familygoldcare.com).
+- Other three: Labeled as Starter / Professional / Premium Tier Examples using the client templates (Rivera Auto Repair, Summit Property Group, Elara Wellness Clinic).
+- Added custom CSS MacBook (bezel, screen with camera dot, base) in the static index.html <style> block.
+- Images inside screens are the existing premium-*.png (representing the website screenshots).
+- Grid remains 2-col, hover effects, dark mode compatible.
+- All local only. No new image generation.
+
+**Files changed:**
+- eternalwebsite.com/index.html (Work section HTML + MacBook CSS)
+- Web Tasks.md (task marked [x] with completion date)
+
+**Verification:**
+- Section now shows MacBook frames with proper content matching the request (pasted image style).
+- Ready for user preview: open index.html or cd to dir and serve.
+
+**Next:** User can review in browser. All per protocol (no asking user to run commands).
+
+### 2026-06-23 Hermes + CC delegation recovery + direct polish
+**Tasks advanced:**
+- Reviews section rewritten to exact familygoldcare structure (testimonials-grid + testimonial-card + source-badge Google only + t-author etc.). 6 reviews, all Google.
+- Added matching CSS for .testimonials-grid, .testimonial-card, badges, t-author etc. to assets/style.css.
+- Portfolio cards logos updated to transparent versions (no white square bg) for better contrast dark/light.
+- Indigo accents reduced/replaced toward purple #8b3fff (sed on classes and some elements).
+- Higgsfield generated custom design media image downloaded to assets/images/service-custom-design.png (for services use).
+- Web Tasks.md pending items marked [x] [completion:: 2026-06-23].
+- Transparent eternal and tier logos prepped earlier.
+
+**CC delegation:** Tight focused prompt launched for remaining (logos on subs, tier positioning, full color enforcement, services media/icons, finished sound investigation + fix).
+
+**Next:** CC will handle sound and any polish. Verification: reviews now match familygoldcare Google-only; logos transparent; colors closer to purple.
 

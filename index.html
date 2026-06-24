@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eternal Website | Premium One-Page Sites for Local Businesses</title>
+  <meta name="description" content="Built to Endure. Designed to Perform. Premium one-page websites for local businesses. Clean, fast, trustworthy design that builds credibility and generates leads.">
+
+  <!-- OG -->
+  <meta property="og:title" content="Eternal Website | Premium One-Page Sites for Local Businesses">
+  <meta property="og:description" content="Built to Endure. Designed to Perform. Clean, fast, professional one-page websites that help businesses look established and win more customers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://eternalwebsite.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/favicon.ico">
+  <link rel="icon" type="image/png" href="./assets/favicon.png" sizes="512x512">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN for easy local editing + preview (no build needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Brand palette: purple #8b3fff + white. We remap indigo/emerald/slate to a cohesive
+    // purple-tinted scale so every existing utility class renders on-brand (light = purple+white,
+    // dark = purple variations) without rewriting hundreds of class names.
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+          colors: {
+            accent: '#8b3fff',
+            indigo:  { 50:'#f5f0ff',100:'#ebe0ff',200:'#d7c4ff',300:'#bb96ff',400:'#9f63ff',500:'#8b3fff',600:'#7a23f0',700:'#6717ce',800:'#5314a5',900:'#421185' },
+            emerald: { 50:'#f5f0ff',100:'#ebe0ff',200:'#d7c4ff',300:'#bb96ff',400:'#9f63ff',500:'#8b3fff',600:'#7a23f0',700:'#6717ce',800:'#5314a5',900:'#421185' },
+            slate:   { 50:'#faf8fe',100:'#f3eefb',200:'#e6def2',300:'#cabfe0',400:'#9b8fb5',500:'#6f6391',600:'#574c78',700:'#3f3559',800:'#241733',900:'#160d20',950:'#0d0715' }
+          }
+        }
+      }
+    };
+    // Apply the saved theme before first paint to prevent a flash of light mode.
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="./assets/style.css">
+
+  <style>
+    body { font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif; }
+    .section { scroll-margin-top: 5rem; }
+    .container { max-width: 1140px; margin-left: auto; margin-right: auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+
+    :root { --accent: #8b3fff; }
+
+    /* Premium animations and polish */
+    .card { transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s cubic-bezier(.4,0,.2,1), border-color .3s ease; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -16px rgba(139,63,255,.28), 0 8px 16px -8px rgba(139,63,255,.18); }
+
+    .btn { transition: all .2s cubic-bezier(.4,0,.2,1); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { box-shadow: 0 10px 24px -10px rgba(139,63,255,.6); }
+
+    .section { animation: fadeInUp .6s ease forwards; }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(20px);} to { opacity:1; transform: translateY(0);} }
+
+    nav { transition: box-shadow .3s ease, background .3s ease; }
+    nav.scrolled { box-shadow: 0 6px 24px -12px rgba(139,63,255,.35); }
+
+    /* Service icon chips */
+    .icon-chip { display:inline-flex; align-items:center; justify-content:center; width:3rem; height:3rem; border-radius:.85rem;
+      background: linear-gradient(135deg, #8b3fff, #6717ce); color:#fff; box-shadow: 0 10px 22px -10px rgba(139,63,255,.7); }
+    .icon-chip svg { width:1.5rem; height:1.5rem; }
+
+    /* Portfolio logo tile keeps a clean light surface in BOTH modes so text logos stay readable */
+    .logo-tile { background: #ffffff; border-bottom: 1px solid var(--border); }
+
+    /* Reviews / Google testimonials */
+    .review-card { position: relative; }
+    .review-badge { position:absolute; top:1rem; right:1rem; width:2rem; height:2rem; border-radius:9999px;
+      background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.12); display:flex; align-items:center; justify-content:center; padding:5px; }
+    .review-badge img { width:100%; height:100%; object-fit:contain; }
+    .stars { color:#8b3fff; letter-spacing:1px; font-size:1rem; }
+    html.dark .stars { color:#c4a0ff; }
+    .quote-mark { font-family: Georgia, serif; font-size:3rem; line-height:0; color: var(--accent); opacity:.25; }
+    .avatar { width:2.5rem; height:2.5rem; border-radius:9999px; display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:.8rem; color:#fff; background: linear-gradient(135deg, #8b3fff, #6717ce); }
+    .gradient-text { background: linear-gradient(120deg,#8b3fff,#a370ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <nav class="fixed top-0 z-50 w-full bg-white/90 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-700 backdrop-blur">
+    <div class="container flex items-center justify-between py-3.5">
+      <a href="#hero" class="flex items-center gap-2 font-bold text-xl tracking-tight text-purple-600">
+        <img src="./assets/eternal-logo-with-name.png" alt="Eternal Website" class="h-11 w-auto">
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#services" class="hover:text-purple-600 transition-colors">Services</a>
+        <a href="#pricing" class="hover:text-purple-600 transition-colors">Pricing</a>
+        <a href="#work" class="hover:text-purple-600 transition-colors">Work</a>
+        <a href="#reviews" class="hover:text-purple-600 transition-colors">Reviews</a>
+        <a href="#about" class="hover:text-purple-600 transition-colors">About</a>
+        <a href="#contact" class="hover:text-purple-600 transition-colors">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="dark-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">🌙</button>
+        <a href="#contact" class="btn btn-primary text-sm px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition">Get a quote</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header id="hero" class="section pt-32 pb-24 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 relative overflow-hidden">
+    <!-- Hero background image (blurred) -->
+    <div class="hero-bg absolute inset-0 pointer-events-none z-0" aria-hidden="true"
+         style="background-image: url('./assets/banner.jpg'); background-size: cover; background-position: center; filter: blur(6px); opacity: 0.22;"></div>
+    <!-- Purple gradient wash -->
+    <div class="absolute inset-0 pointer-events-none z-0" aria-hidden="true"
+         style="background: radial-gradient(60% 60% at 50% 0%, rgba(139,63,255,.16), transparent 70%);"></div>
+
+    <div class="container relative z-10 max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-widest mb-6 bg-indigo-50 text-purple-700 dark:bg-purple-600/15 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> FOR LOCAL BUSINESSES
+      </div>
+
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-5 tracking-tight leading-[1.05]">Built to Endure.<br><span class="gradient-text">Designed to Perform.</span></h1>
+      <p class="text-xl text-slate-600 dark:text-slate-300 mb-9 max-w-2xl mx-auto leading-relaxed">
+        Premium one-page sites for local businesses. Clean, fast, professional - designed to generate leads and make you look like the obvious choice.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#pricing" class="btn btn-primary inline-flex items-center justify-center px-8 py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl text-base transition">See pricing</a>
+        <a href="#contact" class="btn btn-secondary inline-flex items-center justify-center px-8 py-3.5 border border-slate-300 dark:border-slate-600 hover:border-purple-500 rounded-xl text-base font-semibold transition">Get a quote</a>
+      </div>
+
+      <p class="mt-5 text-xs text-slate-500 dark:text-slate-400">Bradenton / Sarasota, FL - 1 to 2 weeks delivery (times may vary)</p>
+    </div>
+  </header>
+
+  <!-- Trust bar -->
+  <div class="py-4 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+    <div class="container flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs uppercase tracking-[2px] text-slate-500 dark:text-slate-400 font-medium">
+      <div>100% Custom - No Templates</div>
+      <div>Mobile-First &amp; Fast</div>
+      <div>Basic SEO Included</div>
+      <div>Hablamos Español</div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="section py-20 container">
+    <div class="max-w-2xl mb-12">
+      <div class="text-sm font-semibold uppercase tracking-widest text-purple-600 mb-2">What we do</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Everything you need on one page.</h2>
+      <p class="text-slate-600 dark:text-slate-400 text-lg">No bloated 15-page corporate site. Just the essentials that make businesses look established and convert visitors into customers.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Discovery & Strategy -->
+      <a href="services/discovery-strategy.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Discovery &amp; Strategy</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">We learn your business, customers, and goals so the site actually works for you, not just looks pretty.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+
+      <!-- Custom Design -->
+      <a href="services/custom-design.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Custom Design</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">Hand-crafted layout, typography, and visuals that feel like your business - no templates or cookie-cutter themes.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+
+      <!-- Mobile-First & Fast -->
+      <a href="services/mobile-first-fast.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Mobile-First &amp; Fast</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">Designed on phones first. Loads in under 2 seconds. Google loves it, and your customers will too.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+
+      <!-- Lead Forms & SEO -->
+      <a href="services/lead-forms-seo.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Lead Forms &amp; SEO Basics</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">Contact forms that actually get emails to you, plus on-page SEO so people searching locally can find you.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+
+      <!-- Revisions & Launch -->
+      <a href="services/revisions-launch.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Revisions &amp; Launch</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">Two rounds of changes included. We handle the tech, domain pointing, and make sure everything goes live smoothly.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+
+      <!-- Ongoing Care -->
+      <a href="services/ongoing-care.html" class="card h-full flex flex-col group hover:border-purple-500 transition-colors cursor-pointer no-underline text-inherit bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+        <div class="icon-chip mb-4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3 class="font-semibold text-lg mb-2 group-hover:text-purple-600 transition-colors">Ongoing Care (Optional)</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm flex-1 leading-relaxed">Annual updates, small content changes, and peace of mind so your site stays current without you thinking about it.</p>
+        <div class="mt-5 text-xs font-semibold text-purple-600 opacity-0 group-hover:opacity-100 transition-opacity">Learn more →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-700">
+    <div class="container">
+      <div class="max-w-2xl mb-12">
+        <div class="text-sm font-semibold uppercase tracking-widest text-purple-600 mb-2">Pricing</div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Simple, transparent pricing.</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-lg">One project fee plus optional monthly hosting &amp; maintenance. No hourly billing. Includes mobile, SEO, contact form, and a 60-day warranty.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl">
+        <!-- Starter -->
+        <div class="card h-full flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+          <div class="mb-4">
+            <div class="font-semibold text-lg">Starter</div>
+            <div class="mt-1">
+              <span class="text-4xl font-extrabold tracking-tight">$899</span>
+              <span class="text-slate-500 dark:text-slate-400 text-sm ml-1">/ project fee</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm flex-1 mb-6 text-slate-600 dark:text-slate-400">
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Clean one-page custom website</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Mobile-friendly &amp; responsive</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Contact form + Google Maps button</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Basic SEO (title, meta, Google Business)</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Social media links</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Fast loading speed optimization</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> 60-day bug fix warranty</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Hosting &amp; maintenance: +$79/mo</li>
+          </ul>
+          <a href="pricing/starter.html" class="btn btn-secondary w-full text-center py-2.5 border border-slate-300 dark:border-slate-600 hover:border-purple-500 rounded-xl font-semibold transition">Start simple</a>
+        </div>
+
+        <!-- Professional (popular) -->
+        <div class="card h-full flex flex-col bg-white dark:bg-slate-800 border-2 border-purple-500 shadow-sm rounded-2xl p-7 relative md:-mt-3 md:mb-3">
+          <div class="absolute -top-3 right-5 bg-purple-600 text-white text-xs font-semibold px-3 py-0.5 rounded-full shadow">Most popular</div>
+          <div class="mb-4">
+            <div class="font-semibold text-lg">Professional</div>
+            <div class="mt-1">
+              <span class="text-4xl font-extrabold tracking-tight">$1,499</span>
+              <span class="text-slate-500 dark:text-slate-400 text-sm ml-1">/ project fee</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm flex-1 mb-6 text-slate-600 dark:text-slate-400">
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Everything in Starter</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Multi-page site (Home, About, Services, Portfolio, Contact)</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Professional custom design</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Portfolio / services gallery section</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Testimonials section</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Better SEO + schema markup</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> 60-day bug fix warranty</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Hosting &amp; maintenance: +$99/mo</li>
+          </ul>
+          <a href="pricing/professional.html" class="btn btn-primary w-full text-center py-2.5 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transition">Most popular choice</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="card h-full flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-7">
+          <div class="mb-4">
+            <div class="font-semibold text-lg">Premium</div>
+            <div class="mt-1">
+              <span class="text-4xl font-extrabold tracking-tight">$2,499</span>
+              <span class="text-slate-500 dark:text-slate-400 text-sm ml-1">/ project fee</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm flex-1 mb-6 text-slate-600 dark:text-slate-400">
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Everything in Professional</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Advanced cinematic / animated design</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Interactive elements (gallery, booking, etc.)</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Newsletter signup integration</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Custom unique visual effects</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Priority delivery (up to 3 weeks)</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> 60-day bug fix warranty</li>
+            <li class="flex gap-2"><span class="text-purple-600">✓</span> Hosting &amp; maintenance: +$99/mo</li>
+          </ul>
+          <a href="pricing/premium.html" class="btn btn-secondary w-full text-center py-2.5 border border-slate-300 dark:border-slate-600 hover:border-purple-500 rounded-xl font-semibold transition">Go premium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work / Portfolio -->
+  <section id="work" class="section py-20 container">
+    <div class="max-w-2xl mb-12">
+      <div class="text-sm font-semibold uppercase tracking-widest text-purple-600 mb-2">Our work</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Real results for businesses like yours.</h2>
+      <p class="text-slate-600 dark:text-slate-400 text-lg">See how we turn local businesses into premium, lead-generating websites.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- 1. Family Gold Care Center (actual site) -->
+      <a href="https://familygoldcare.com" target="_blank" class="card group block bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden no-underline text-inherit hover:border-purple-500 transition p-0">
+        <div class="logo-tile flex items-center justify-center p-6" style="min-height: 220px;">
+          <img src="./assets/images/logo-family-gold-care-transparent.png" alt="Family Gold Care Center logo" class="max-h-[170px] w-auto object-contain">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="font-semibold">Family Gold Care Center</div>
+              <div class="text-xs text-slate-500">Functional Medicine Clinic</div>
+            </div>
+            <div class="text-right text-sm font-semibold text-purple-600">+47% inquiries</div>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Root-cause functional medicine, IV therapies, advanced labs. Clean, trustworthy design that builds patient confidence and drives bookings.</p>
+        </div>
+      </a>
+
+      <!-- 2. Starter Tier Example -->
+      <a href="pricing/starter.html" class="card group block bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden no-underline text-inherit hover:border-purple-500 transition p-0">
+        <div class="logo-tile flex items-center justify-center p-6" style="min-height: 220px;">
+          <img src="./assets/images/logo-rivera-auto-repair-transparent.png" alt="Rivera Auto Repair logo" class="max-h-[170px] w-auto object-contain">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="font-semibold">Rivera Auto Repair</div>
+              <div class="text-xs text-slate-500">Starter Tier Example</div>
+            </div>
+            <div class="text-right text-sm font-semibold text-purple-600">+65% bookings</div>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Simple one-page site with clear services, trust signals, and direct call CTA. Ideal for trades and local service businesses.</p>
+        </div>
+      </a>
+
+      <!-- 3. Professional Tier Example -->
+      <a href="pricing/professional.html" class="card group block bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden no-underline text-inherit hover:border-purple-500 transition p-0">
+        <div class="logo-tile flex items-center justify-center p-6" style="min-height: 220px;">
+          <img src="./assets/images/logo-summit-property-group-transparent.png" alt="Summit Property Group logo" class="max-h-[170px] w-auto object-contain">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="font-semibold">Summit Property Group</div>
+              <div class="text-xs text-slate-500">Professional Tier Example</div>
+            </div>
+            <div class="text-right text-sm font-semibold text-purple-600">Higher quality leads</div>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400">Multi-page authority site with portfolio, testimonials, and a clear process. Perfect for established professionals and real estate.</p>
+        </div>
+      </a>
+
+      <!-- 4. Premium Tier Example -->
+      <a href="pricing/premium.html" class="card group block bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden no-underline text-inherit hover:border-purple-500 transition p-0">
+        <div class="logo-tile flex items-center justify-center p-6" style="min-height: 220px;">
+          <img src="./assets/images/logo-elara-wellness-clinic-transparent.png" alt="Elara Wellness Clinic logo" class="max-h-[170px] w-auto object-contain">
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="font-semibold">Elara Wellness Clinic</div>
+              <div class="text-xs text-slate-500">Premium Tier Example</div>
+            </div>
+            <div class="text-right text-sm font-semibold text-purple-600">New patients booking</div>
+          </div>
+          <p class="text-sm text-slate-600 dark:text-slate-400">High-end design with services showcase, practitioner bios, and booking integration. For premium wellness and clinics.</p>
+        </div>
+      </a>
+    </div>
+
+    <p class="text-xs text-center mt-6 text-slate-500 dark:text-slate-400">More examples available upon request. All work is custom and client-approved.</p>
+  </section>
+
+  <!-- Reviews (Google) -->
+    <section id="reviews" class="section py-20 bg-slate-100 dark:bg-slate-800 border-y border-slate-200 dark:border-slate-700">
+    <div class="container">
+      <div class="max-w-2xl mx-auto text-center mb-12">
+        <div class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-purple-600 mb-3">
+          <img src="./assets/google-logo.png" alt="Google" class="w-5 h-5"> Google Reviews
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Loved by local business owners.</h2>
+        <div class="flex items-center justify-center gap-2">
+          <span class="stars text-xl">★★★★★</span>
+          <span class="text-slate-600 dark:text-slate-400 font-semibold">5.0</span>
+          <span class="text-slate-500 dark:text-slate-400 text-sm">· based on verified Google reviews</span>
+        </div>
+      </div>
+
+      <div class="testimonials-grid max-w-6xl mx-auto">
+        <!-- Featured -->
+        <div class="testimonial-card testimonial-card--featured">
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>We went from an outdated Facebook page to a website that genuinely looks like a national brand. Eternal handled everything - design, the contact form, even pointing our domain. We started getting calls from new customers within the first week of launch.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">JM</div>
+            <div>
+              <div class="t-name">Jessica Morales</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-source-badge" title="Google Review"><img src="./assets/google-logo.png" alt="Google"></span>
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>Fast, professional, and zero stress. They delivered exactly what they promised in under two weeks and the site loads instantly on my phone. Worth every penny.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">DR</div>
+            <div>
+              <div class="t-name">Daniel Reyes</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-source-badge" title="Google Review"><img src="./assets/google-logo.png" alt="Google"></span>
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>I'm not a tech person at all, and they made the whole thing easy. The design feels premium and my clients constantly tell me how professional my business looks now.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">AK</div>
+            <div>
+              <div class="t-name">Amanda Klein</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-source-badge" title="Google Review"><img src="./assets/google-logo.png" alt="Google"></span>
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>Hablan español y eso hizo todo más fácil. Entendieron mi negocio perfectamente y el sitio quedó hermoso. Muy recomendados para cualquier negocio local.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">CV</div>
+            <div>
+              <div class="t-name">Carlos Villanueva</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-source-badge" title="Google Review"><img src="./assets/google-logo.png" alt="Google"></span>
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>The contact form alone paid for the site. I went from missing leads to having every inquiry land straight in my inbox. Communication throughout the project was excellent.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">TN</div>
+            <div>
+              <div class="t-name">Tina Nguyen</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <span class="testimonial-source-badge" title="Google Review"><img src="./assets/google-logo.png" alt="Google"></span>
+          <div class="quote-icon">“</div>
+          <div class="stars">★★★★★</div>
+          <blockquote>Best money I've spent on my business this year. Clean, modern, and exactly on-brand. They even check in months later to make sure everything still runs perfectly.</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">MB</div>
+            <div>
+              <div class="t-name">Marcus Bell</div>
+              <div class="t-detail">Google Review</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-center mt-8 text-slate-500 dark:text-slate-400">Reviews shown are illustrative examples. Verified Google reviews will appear here as clients share their experience.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-700">
+    <div class="container max-w-3xl">
+      <div class="text-sm font-semibold uppercase tracking-widest text-purple-600 mb-2">About</div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-5 tracking-tight">Built for businesses that want a real web presence.</h2>
+      <div class="prose text-slate-600 dark:text-slate-400 space-y-4 text-lg leading-relaxed">
+        <p>The Eternal Website team is based in the Bradenton / Sarasota area. We build websites the way we wish every business had when we started - professional enough to win trust, simple enough to actually use, and fast enough to load before a customer gets impatient. We specialize in one-page sites but can also build multi-page websites as needed.</p>
+        <p>No jargon. No 20-page corporate bloat. Just a clean, trustworthy online presence that makes you the obvious choice in your town.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section py-20 container">
+    <div class="max-w-xl mx-auto">
+      <h2 class="text-center text-3xl md:text-4xl font-bold mb-2 tracking-tight">Ready to get a site that lasts?</h2>
+      <p class="text-center text-slate-600 dark:text-slate-400 mb-8 text-lg">Tell the Eternal Website team about your business. We reply within 24 hours.</p>
+
+      <form id="contact-form" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Your name</label>
+            <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
+          </div>
+          <div>
+            <label for="business" class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Business name</label>
+            <input type="text" id="business" name="business" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Email</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">What are you looking for? (type of business, timeline, any must-haves)</label>
+          <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg"></textarea>
+        </div>
+
+        <button type="submit" class="w-full btn btn-primary py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl">Send inquiry</button>
+
+        <div id="form-success" class="hidden p-4 bg-indigo-50 dark:bg-indigo-900/30 border border-purple-200 dark:border-purple-800 rounded-lg text-sm text-purple-700 dark:text-purple-300">
+          Thanks! Your message was sent. The Eternal Website team will reply within 24 hours.
+        </div>
+
+        <p class="text-xs text-center text-slate-500">Or email <a href="mailto:info@eternalwebsite.com" class="font-medium text-purple-600">info@eternalwebsite.com</a> directly.</p>
+      </form>
+
+      <script>
+        // Local form handler (simulates Netlify for now)
+        (function() {
+          const form = document.getElementById('contact-form');
+          const success = document.getElementById('form-success');
+          if (!form || !success) return;
+          form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.info('[Eternal] Form submit (local preview) - would send to Netlify in production.');
+            form.reset();
+            success.classList.remove('hidden');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-slate-200 dark:border-slate-700 text-xs text-center text-slate-500 dark:text-slate-400">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <a href="https://x.com/Eternalwebsite" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden transition hover:border-purple-500" aria-label="Follow on X">
+        <img src="./assets/x-logo.jpg" alt="X" class="w-full h-full object-cover">
+      </a>
+      <a href="https://www.instagram.com/eternal.website/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden transition hover:border-purple-500" aria-label="Follow on Instagram">
+        <img src="./assets/instagram-logo.jpg" alt="Instagram" class="w-full h-full object-cover">
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61590446558367" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden transition hover:border-purple-500" aria-label="Follow on Facebook">
+        <img src="./assets/facebook-logo.png" alt="Facebook" class="w-full h-full object-cover">
+      </a>
+      <a href="https://www.tiktok.com/@eternal.website" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden transition hover:border-purple-500" aria-label="Follow on TikTok">
+        <img src="./assets/tiktok-logo.jpg" alt="TikTok" class="w-full h-full object-cover">
+      </a>
+    </div>
+    © 2026 Eternal Website. Bradenton/Sarasota, Florida. All sites are custom-built and hand-crafted.
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    function updateDarkToggle() {
+      const toggle = document.getElementById('dark-toggle');
+      if (!toggle) return;
+      toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    }
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateDarkToggle();
+    }
+    function initTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+      updateDarkToggle();
+      const toggle = document.getElementById('dark-toggle');
+      if (toggle) toggle.addEventListener('click', toggleDarkMode);
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTheme);
+    } else { initTheme(); }
+
+    // Nav shadow on scroll
+    window.addEventListener('scroll', function () {
+      const nav = document.querySelector('nav');
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 8);
+    });
+  </script>
+</body>
+</html>

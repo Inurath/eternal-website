@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ongoing Care - Eternal Website</title>
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Class-based dark mode + apply saved theme before paint (prevents flash, keeps site-wide toggle consistent)
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['"Plus Jakarta Sans"','ui-sans-serif','system-ui','sans-serif'] }, colors: { accent: '#8b3fff', indigo:{50:'#f5f0ff',100:'#ebe0ff',200:'#d7c4ff',300:'#bb96ff',400:'#9f63ff',500:'#8b3fff',600:'#7a23f0',700:'#6717ce',800:'#5314a5',900:'#421185'}, emerald:{50:'#f5f0ff',100:'#ebe0ff',200:'#d7c4ff',300:'#bb96ff',400:'#9f63ff',500:'#8b3fff',600:'#7a23f0',700:'#6717ce',800:'#5314a5',900:'#421185'}, slate:{50:'#faf8fe',100:'#f3eefb',200:'#e6def2',300:'#cabfe0',400:'#9b8fb5',500:'#6f6391',600:'#574c78',700:'#3f3559',800:'#241733',900:'#160d20',950:'#0d0715'} } } } };
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>body{font-family:"Plus Jakarta Sans",ui-sans-serif,system-ui,sans-serif;} .btn-primary{box-shadow:0 10px 24px -10px rgba(139,63,255,.6);}</style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
+  <nav class="border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="../index.html" class="font-bold text-xl tracking-tight text-purple-600 flex items-center gap-2">
+        <img src="../assets/eternal-logo-with-name.png" alt="Eternal" class="h-9 w-auto">
+        <span class="text-sm font-normal text-slate-500">/ Services</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <button id="dark-toggle" title="Toggle dark mode" aria-label="Toggle dark mode" class="px-2 py-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">🌙</button>
+        <a href="../index.html#services" class="text-sm hover:text-purple-600">← Back to services</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-3xl mx-auto px-6 py-12">
+    <div class="mb-2 text-sm text-purple-600 font-medium">SERVICE</div>
+    <h1 class="text-4xl font-bold mb-2">Ongoing Care (Optional)</h1>
+    <div class="mt-8 mb-10">
+      <img src="../assets/images/ongoing-care.png" alt="Ongoing care and support" class="w-full rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
+    </div>
+
+    <p class="text-xl text-slate-600 dark:text-slate-400">Annual updates, small content changes, and peace of mind so your site stays current without you thinking about it.</p>
+
+    <div class="mt-10">
+      <h2 class="font-semibold text-lg mb-4">What this includes</h2>
+      <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+        <li class="flex gap-3">• Up to 3 content updates per month (hours, prices, team, services, etc.)</li>
+        <li class="flex gap-3">• Annual visual refresh to keep the design current and competitive</li>
+        <li class="flex gap-3">• Hosting included - no separate bills to manage</li>
+        <li class="flex gap-3">• Uptime monitoring with alerts if anything goes down</li>
+        <li class="flex gap-3">• Priority support - faster response times than standard clients</li>
+        <li class="flex gap-3">• Optional: $49/mo hosting &amp; support subscription (available on Professional and Premium plans)</li>
+      </ul>
+    </div>
+
+    <div class="mt-10 p-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl">
+      <p class="italic text-slate-600 dark:text-slate-400">Most business owners don't have time to think about their website after it launches. That's exactly why this plan exists. Set it, forget it, and know it's handled.</p>
+    </div>
+
+    <div class="mt-8">
+      <a href="../index.html#contact" class="inline-block px-6 py-3 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700">Add Ongoing Care to my project</a>
+    </div>
+  </div>
+
+  <footer class="text-xs text-center py-8 text-slate-400 border-t max-w-3xl mx-auto">
+    © 2026 Eternal Website - Bradenton/Sarasota, FL
+  </footer>
+  <script>
+    (function () {
+      var toggle = document.getElementById('dark-toggle');
+      function sync() { if (toggle) toggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙'; }
+      sync();
+      if (toggle) toggle.addEventListener('click', function () {
+        document.documentElement.classList.toggle('dark');
+        try { localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+        sync();
+      });
+    })();
+  </script>
+</body>
+</html>

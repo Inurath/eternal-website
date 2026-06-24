@@ -85,3 +85,6 @@
 **Source of truth remains the GH repo + this vault (Report + notes).** 
 
 To re-open the local dev: `cd "site" && npm run dev` (shows http://localhost:4321/ in terminal as usual).
+**Future hosting note (2026-06-06 Hermes):** Full step-by-step tutorial for migrating from Netlify to Cloudflare Pages (to support frequent `git push` → live on custom domain without hitting limits) created at `notes/Netlify-to-Cloudflare-Migration.md`. Covers: CF Pages project setup with Root directory=`site` / build=`npm run build` / publish=`dist`, Namecheap NS/DNS cutover + email record re-add, forms migration (recommend Formspree endpoint or mailto fallback; remove Netlify attrs), preview + live verification, rollback (keep Netlify project 1 week), and required doc updates in Report/AGENTS/this file + CLI registers. Follow the dedicated note when ready. All per Web Agency + eternal AGENTS (immediate companion-style update here, no user exec).
+
+**Source of truth remains the GH repo + this vault (Report + notes).** 
