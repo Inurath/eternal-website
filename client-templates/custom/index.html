@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CUSTOMIZE: Update title, description, and keywords for the client -->
+  <title>AURA Pro | Premium Wireless Headphones</title>
+  <meta name="description" content="AURA Pro wireless headphones. Adaptive noise cancelling, 40-hour battery, spatial audio, and premium materials. Sound, perfected.">
+  <meta name="keywords" content="wireless headphones, noise cancelling, spatial audio, premium audio, AURA Pro">
+  <meta property="og:title" content="AURA Pro | Premium Wireless Headphones">
+  <meta property="og:description" content="Adaptive noise cancelling, 40-hour battery, spatial audio. Sound, perfected.">
+  <meta property="og:type" content="product">
+  <meta property="og:image" content="images/aura-frame-01.png">
+
+  <!-- Product schema markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AURA Pro Wireless Headphones",
+    "brand": { "@type": "Brand", "name": "AURA Audio" },
+    "description": "Premium wireless over-ear headphones with adaptive noise cancelling, 40-hour battery, and spatial audio.",
+    "image": "images/aura-frame-01.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "349.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       CUSTOMIZE: logo text, nav links, Buy link
+  ============================================================ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon"><i data-lucide="audio-lines"></i></span>
+        <span>AURA Audio</span>
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#design">Design</a></li>
+          <li><a href="#buy" class="btn btn-accent">Buy</a></li>
+        </ul>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       FIXED PRODUCT STAGE
+       Full-viewport, pinned behind all content. script.js maps
+       scroll progress through #showcase to a frame index 0..9 and
+       crossfades the matching <img> in. Real images, no placeholders.
+       Frame order: front, three-quarter front-right, right side,
+       three-quarter back-right, back, three-quarter back-left,
+       left side, three-quarter front-left, top-down, bottom cushion.
+  ============================================================ -->
+  <div class="product-stage" id="stage" aria-hidden="true">
+    <div class="stage-frames">
+      <img class="frame is-current" src="images/aura-frame-01.png" alt="AURA Pro headphones, front view" data-frame="0">
+      <img class="frame" src="images/aura-frame-02.png" alt="AURA Pro headphones, three-quarter front-right view" data-frame="1">
+      <img class="frame" src="images/aura-frame-03.png" alt="AURA Pro headphones, right side view" data-frame="2">
+      <img class="frame" src="images/aura-frame-04.png" alt="AURA Pro headphones, three-quarter back-right view" data-frame="3">
+      <img class="frame" src="images/aura-frame-05.png" alt="AURA Pro headphones, back view" data-frame="4">
+      <img class="frame" src="images/aura-frame-06.png" alt="AURA Pro headphones, three-quarter back-left view" data-frame="5">
+      <img class="frame" src="images/aura-frame-07.png" alt="AURA Pro headphones, left side view" data-frame="6">
+      <img class="frame" src="images/aura-frame-08.png" alt="AURA Pro headphones, three-quarter front-left view" data-frame="7">
+      <img class="frame" src="images/aura-frame-09.png" alt="AURA Pro headphones, top-down view" data-frame="8">
+      <img class="frame" src="images/aura-frame-10.png" alt="AURA Pro headphones, bottom ear cushion view" data-frame="9">
+    </div>
+    <!-- Scrim keeps overlaid text readable in both themes -->
+    <div class="stage-scrim"></div>
+  </div>
+
+  <main id="home">
+
+    <!-- ============================================================
+         HERO (text floats over the fixed product stage)
+    ============================================================ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">Introducing AURA Pro</span>
+        <h1>Sound, <em>perfected.</em></h1>
+        <p class="subhead">Adaptive noise cancelling, spatial audio, and a 40-hour battery, wrapped in materials you can feel.</p>
+        <div class="hero-actions">
+          <a href="#buy" class="btn btn-accent btn-lg">Buy AURA Pro</a>
+          <a href="#showcase" class="btn btn-outline btn-lg">See it turn</a>
+        </div>
+      </div>
+      <a href="#showcase" class="scroll-cue" aria-label="Scroll to explore">
+        <span>Scroll to explore</span>
+        <i data-lucide="chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         SCROLL SEQUENCE
+         A tall section. As it scrolls, the fixed stage rotates the
+         product through all 10 frames. Each panel of copy scrolls
+         over the product. The data-frame hint lets the script align
+         a panel's entry with a rough frame, purely informational.
+    ============================================================ -->
+    <section class="showcase" id="showcase">
+
+      <article class="panel panel-left" data-frame="1">
+        <div class="panel-card">
+          <span class="step-num">01</span>
+          <h2>Active Noise Cancelling</h2>
+          <p>Eight microphones map the world around you and cancel it 50,000 times a second. Adaptive mode tunes silence to your surroundings in real time.</p>
+          <ul class="spec-list">
+            <li><i data-lucide="ear-off"></i> Up to 48 dB of active reduction</li>
+            <li><i data-lucide="wind"></i> Adaptive and Transparency modes</li>
+            <li><i data-lucide="mic"></i> 8-microphone hybrid array</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel panel-right" data-frame="3">
+        <div class="panel-card">
+          <span class="step-num">02</span>
+          <h2>40-Hour Battery</h2>
+          <p>A full day of listening, then a full week more. Five minutes on the cable gives you five hours of play, so you are never caught silent.</p>
+          <ul class="spec-list">
+            <li><i data-lucide="battery-full"></i> 40 hours on a single charge</li>
+            <li><i data-lucide="zap"></i> 5-minute quick charge equals 5 hours</li>
+            <li><i data-lucide="usb"></i> USB-C fast charging</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel panel-left" data-frame="5">
+        <div class="panel-card">
+          <span class="step-num">03</span>
+          <h2>Spatial Audio</h2>
+          <p>Sound that moves with you. Dynamic head tracking places every instrument in three-dimensional space for a stage that feels genuinely alive.</p>
+          <ul class="spec-list">
+            <li><i data-lucide="orbit"></i> Dynamic head tracking</li>
+            <li><i data-lucide="speaker"></i> 40 mm custom-tuned drivers</li>
+            <li><i data-lucide="radio"></i> Lossless codec support</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel panel-right" data-frame="7" id="design">
+        <div class="panel-card">
+          <span class="step-num">04</span>
+          <h2>Premium Materials</h2>
+          <p>Anodized aluminum, a memory-foam headband, and protein-leather cushions that breathe. Built to be worn for hours and kept for years.</p>
+          <ul class="spec-list">
+            <li><i data-lucide="gem"></i> Aircraft-grade aluminum frame</li>
+            <li><i data-lucide="feather"></i> 249 g, balanced for all-day wear</li>
+            <li><i data-lucide="shield-check"></i> Replaceable magnetic cushions</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel panel-center" data-frame="9">
+        <div class="panel-card">
+          <span class="step-num">05</span>
+          <h2>Every angle considered</h2>
+          <p>From the touch-ready top plate to the plush cushion that meets your ear, every surface was shaped to disappear the moment you put it on.</p>
+          <ul class="spec-list">
+            <li><i data-lucide="hand"></i> Capacitive top-plate controls</li>
+            <li><i data-lucide="cloud"></i> Pressure-balanced ear cushions</li>
+            <li><i data-lucide="sparkles"></i> Seamless, screwless shell</li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ============================================================
+         FEATURE GRID (solid background, scrolls over the stage)
+    ============================================================ -->
+    <section class="features" id="features">
+      <div class="container">
+        <span class="eyebrow">Why AURA</span>
+        <h2>Engineered down to the last detail</h2>
+        <div class="feature-grid">
+
+          <div class="feature-card reveal">
+            <span class="icon"><i data-lucide="bluetooth"></i></span>
+            <h3>Multipoint Bluetooth</h3>
+            <p>Stay connected to two devices at once. Switch from laptop to phone without missing a beat.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="icon"><i data-lucide="hand"></i></span>
+            <h3>Touch Controls</h3>
+            <p>Tap, swipe, and hold on the ear cup to control playback, volume, and calls intuitively.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="icon"><i data-lucide="droplets"></i></span>
+            <h3>IPX4 Water Resistant</h3>
+            <p>Sweat and light rain are no problem, so your commute and workout are both covered.</p>
+          </div>
+
+          <div class="feature-card reveal">
+            <span class="icon"><i data-lucide="sliders-horizontal"></i></span>
+            <h3>Custom EQ</h3>
+            <p>Shape every frequency in the AURA app, or pick a tuned preset for any genre.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+    ============================================================ -->
+    <section class="cta" id="buy">
+      <div class="container">
+        <span class="eyebrow">Experience AURA Pro</span>
+        <h2>Hear everything. Miss nothing.</h2>
+        <p class="price"><span>$</span>349<small>Free shipping. 2-year warranty. 30-day returns.</small></p>
+        <a href="#buy" class="btn btn-accent btn-lg">Buy AURA Pro</a>
+        <div class="cta-image">
+          <img src="images/aura-frame-02.png" alt="AURA Pro headphones, three-quarter view" width="560" height="560">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       CUSTOMIZE: brand blurb, footer links, social URLs, copyright
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-icon"><i data-lucide="audio-lines"></i></span>
+            <span>AURA Audio</span>
+          </a>
+          <p>Premium audio for people who listen closely. Designed in California, tuned by ears that care.</p>
+          <!-- Social buttons. 40x40, 10px radius, square rounded (house style).
+               Swap href="#" for the client's real profile URLs. -->
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="#" aria-label="X"><i data-lucide="twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#design">Design</a>
+          <a href="#buy">Buy AURA Pro</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Warranty</a>
+          <a href="#">Returns</a>
+          <a href="#">Contact</a>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AURA Audio. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>if (window.lucide) lucide.createIcons();</script>
+</body>
+</html>

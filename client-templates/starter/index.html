@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CUSTOMIZE: Update title, description, and keywords for the client -->
+  <title>Rivera Auto Repair | Bradenton, FL</title>
+  <meta name="description" content="Honest, affordable auto repair in Bradenton, FL. Family-owned since 2008. Oil changes, brakes, tires, engine diagnostics & more.">
+  <meta name="keywords" content="auto repair Bradenton FL, oil change, brake repair, tire service, mechanic near me">
+  <meta property="og:title" content="Rivera Auto Repair | Bradenton, FL">
+  <meta property="og:description" content="Honest, affordable auto repair serving Bradenton and Sarasota since 2008. ASE-certified mechanics.">
+  <meta property="og:type" content="website">
+  <!-- Google Business / Local schema markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Rivera Auto Repair",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Palm Ave",
+      "addressLocality": "Bradenton",
+      "addressRegion": "FL",
+      "postalCode": "34205"
+    },
+    "telephone": "(941) 555-0123",
+    "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-15:00"]
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       CUSTOMIZE: logo text, phone number, nav links
+  ============================================================ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon"><i data-lucide="settings"></i></span>
+        <span>Rivera Auto</span>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:9415550123" class="btn btn-accent"><i data-lucide="phone"></i> Call Now</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO SECTION
+         CUSTOMIZE: headline, subheadline, CTA text, trust badges.
+         Hero uses high-res Higgsfield image (images/Rivera-Auto-Hero-20260621.png or similar).
+    ============================================================ -->
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">Bradenton &amp; Sarasota, FL</div>
+        <h1>Honest Auto Repair<br>You Can Count On</h1>
+        <p class="hero-sub">
+          Family-owned and ASE-certified since 2008. No upsells, no surprises  - 
+          just quality work at a fair price.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-accent btn-lg">Get a Free Estimate</a>
+          <a href="tel:9415550123" class="btn btn-outline-white btn-lg"><i data-lucide="phone"></i> (941) 555-0123</a>
+        </div>
+        <div class="hero-trust">
+          <span>✓ ASE Certified</span>
+          <span>✓ Family Owned</span>
+          <span>✓ Free Estimates</span>
+          <span>✓ 2-Year Warranty</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICES SECTION
+         CUSTOMIZE: service titles, icons (emoji or replace with images),
+         and descriptions. Add or remove cards; the grid auto-adjusts.
+    ============================================================ -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>What We Fix</h2>
+          <p>From routine maintenance to major repairs, we handle it all with honesty and expertise.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="fuel"></i></span>
+            <h3>Oil Change &amp; Lube</h3>
+            <p>Full synthetic, conventional, or high-mileage oil changes with a multi-point inspection included on every visit.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="wrench"></i></span>
+            <h3>Brake Repair</h3>
+            <p>Pads, rotors, calipers, and brake fluid service. We show you exactly what needs replacing, nothing more.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="gauge"></i></span>
+            <h3>Tire Service</h3>
+            <p>New tires, rotations, alignments, and balancing. All major brands available with competitive pricing.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="search"></i></span>
+            <h3>Engine Diagnostics</h3>
+            <p>Check engine light, emissions issues, and full computerized diagnostics on all makes and models, foreign and domestic.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="snowflake"></i></span>
+            <h3>A/C &amp; Heating</h3>
+            <p>Recharge, leak detection, and full system repairs. Critical in the Florida heat, and we get it right the first time.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-icon"><i data-lucide="clipboard-list"></i></span>
+            <h3>Inspections &amp; Tune-Ups</h3>
+            <p>Pre-purchase inspections, Florida state inspections, and complete tune-up packages to keep you running smoothly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT / WHY US SECTION
+         CUSTOMIZE: headline, body text, stats, checklist items.
+         Shop photo: images/Rivera-Auto-Shop-Interior-20260621.png (swap for the client's own).
+    ============================================================ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="why-us-inner">
+          <div class="why-us-photo">
+            <!-- Client shop photo from Higgsfield. -->
+            <img src="images/Rivera-Auto-Shop-Interior-20260621.png" alt="Inside the Rivera Auto Repair shop with an ASE-certified mechanic at work" loading="lazy">
+          </div>
+          <div class="why-us-content">
+            <h2>Why Bradenton Trusts Rivera</h2>
+            <p class="lead">
+              We've been fixing cars in this community for over 15 years. No franchise pressure,
+              no commission-based techs - just honest mechanics who treat your vehicle like their own.
+            </p>
+            <div class="stats-row">
+              <div class="stat">
+                <span class="stat-num">15+</span>
+                <span class="stat-label">Years in Business</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">5,000+</span>
+                <span class="stat-label">Vehicles Serviced</span>
+              </div>
+              <div class="stat">
+                <span class="stat-num">3</span>
+                <span class="stat-label">ASE-Certified Techs</span>
+              </div>
+            </div>
+            <ul class="check-list">
+              <li>Free estimates on all repairs - no surprises at the end</li>
+              <li>2-year / 24,000-mile warranty on parts &amp; labor</li>
+              <li>Loaner vehicles available (appointment required)</li>
+              <li>All makes &amp; models including foreign vehicles</li>
+              <li>Shuttle service within 5 miles while we work on your car</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT SECTION
+         CUSTOMIZE: address, phone, email, hours.
+         Update form action to your form handler (Formspree / Netlify).
+          <p>Questions about your vehicle? Fill out the form or give us a call - we respond same business day.</p>
+        </div>
+        <div class="contact-inner">
+
+          <!-- FORM: update action="YOUR_FORM_ENDPOINT" -->
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" placeholder="John Smith" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(941) 555-0000" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vehicle">Vehicle (Year / Make / Model)</label>
+                <input type="text" id="vehicle" name="vehicle" placeholder="2019 Toyota Camry">
+              </div>
+              <div class="form-group">
+                <label for="service">Service Needed</label>
+                <select id="service" name="service">
+                  <option value="">Select a service...</option>
+                  <option>Oil Change</option>
+                  <option>Brake Repair</option>
+                  <option>Tire Service</option>
+                  <option>Engine Diagnostics</option>
+                  <option>A/C &amp; Heating</option>
+                  <option>Inspection / Tune-Up</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Additional Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Describe what's going on with your vehicle..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-accent btn-full">Send My Request</button>
+          </form>
+
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+              <div>
+                <strong>Address</strong>
+                <p>123 Palm Ave<br>Bradenton, FL 34205</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="phone"></i></div>
+              <div>
+                <strong>Phone</strong>
+                <p><a href="tel:9415550123">(941) 555-0123</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="mail"></i></div>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:info@riveraauto.com">info@riveraauto.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i data-lucide="clock"></i></div>
+              <div>
+                <strong>Business Hours</strong>
+                <p>
+                  Mon &ndash; Fri: 8:00 AM &ndash; 6:00 PM<br>
+                  Saturday: 9:00 AM &ndash; 3:00 PM<br>
+                  Sunday: Closed
+                </p>
+              </div>
+            </div>
+            <!-- Live Google Maps embed. Swap the q= location for the client's exact address. -->
+            <iframe
+              class="map-embed"
+              title="Rivera Auto Repair location in Bradenton, FL"
+              src="https://maps.google.com/maps?q=Bradenton%2C%20FL%2034205&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       CUSTOMIZE: social links (replace href="#" with real URLs),
+       copyright name, and quick links.
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">
+          <span class="logo-icon"><i data-lucide="settings"></i></span>
+          <span>Rivera Auto</span>
+        </a>
+        <p>Honest auto repair serving Bradenton &amp; Sarasota since 2008. Family-owned, ASE-certified.</p>
+        <div class="social-links">
+          <!-- Swap href="#" for the client's real profile URLs. -->
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Google Business Profile"><i data-lucide="map-pin"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Free Estimate</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>123 Palm Ave<br>Bradenton, FL 34205</p>
+        <p><a href="tel:9415550123">(941) 555-0123</a></p>
+        <p><a href="mailto:info@riveraauto.com">info@riveraauto.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Rivera Auto Repair. All rights reserved. &nbsp;|&nbsp; Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('is-open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        const target = document.querySelector(id);
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>

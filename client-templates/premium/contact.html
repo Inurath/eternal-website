@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session | Elara Wellness Clinic</title>
+  <meta name="description" content="Book a session at Elara Wellness Clinic in Sarasota, FL. Therapeutic massage, facials, IV therapy, yoga, and nutrition consulting. Free initial consultation available.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <header class="site-header solid">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Elara Wellness</span>
+          <span class="logo-tagline">Sarasota, FL</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html" class="btn btn-accent active">Book a Session</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="contact-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>›</span><strong>Book a Session</strong>
+        </nav>
+        <h1 class="animate">Book Your Session</h1>
+        <p class="animate delay-1">We'll reach out within 2 hours to confirm your appointment. New clients receive a complimentary 20-minute wellness consultation.</p>
+      </div>
+    </section>
+
+    <section class="contact-body section">
+      <div class="container">
+        <div class="contact-inner">
+
+          <!-- BOOKING FORM: update action for production (Formspree, Netlify, etc.) -->
+          <form class="contact-form-card animate" action="#" method="POST">
+            <h3>Request a Session</h3>
+            <p class="form-intro">Fill out the form below and our team will contact you within 2 hours to confirm your appointment time.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Sofia" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Marchetti" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="sofia@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(941) 555-0000" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="treatment">Treatment / Service *</label>
+              <select id="treatment" name="treatment" required>
+                <option value="">Select a treatment...</option>
+                <option>Therapeutic Massage (60 min)</option>
+                <option>Therapeutic Massage (90 min)</option>
+                <option>HydraFacial</option>
+                <option>Anti-Aging Facial</option>
+                <option>Chemical Peel</option>
+                <option>IV Vitamin Therapy</option>
+                <option>Private Yoga Session</option>
+                <option>Body Treatment</option>
+                <option>Nutrition Consultation</option>
+                <option>Free Wellness Consultation (New Client)</option>
+                <option>Wellness Package / Membership Info</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="preferred_date">
+              </div>
+              <div class="form-group">
+                <label for="time">Preferred Time</label>
+                <select id="time" name="preferred_time">
+                  <option value="">Select time...</option>
+                  <option>Morning (9am - 12pm)</option>
+                  <option>Afternoon (12pm - 4pm)</option>
+                  <option>Late Afternoon (4pm - 7pm)</option>
+                  <option>Saturday Morning</option>
+                  <option>No preference</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Health Notes or Questions (Optional)</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="Any health conditions, allergies, injuries, or specific goals you'd like us to know about..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Request My Appointment</button>
+            <p style="font-size:0.8125rem;color:var(--text-muted);text-align:center;margin-top:1rem;">We'll confirm your appointment within 2 hours. No payment required to book.</p>
+          </form>
+
+          <!-- SIDEBAR -->
+          <div class="contact-sidebar animate delay-2">
+
+            <div class="info-card">
+              <h4>Visit Us</h4>
+              <div class="contact-item">
+                <span class="c-icon"><i data-lucide="map-pin"></i></span>
+                <div>
+                  <strong>Address</strong>
+                  <p>789 Bay Shore Dr<br>Sarasota, FL 34231</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="c-icon"><i data-lucide="phone"></i></span>
+                <div>
+                  <strong>Phone</strong>
+                  <p><a href="tel:9415550789">(941) 555-0789</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="c-icon"><i data-lucide="mail"></i></span>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:hello@elarawellness.com">hello@elarawellness.com</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="c-icon"><i data-lucide="clock"></i></span>
+                <div>
+                  <strong>Hours</strong>
+                  <p>Mon &ndash; Fri: 9:00 AM &ndash; 7:00 PM<br>Saturday: 10:00 AM &ndash; 5:00 PM<br>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Google Maps embed. Swap the q= location for the client.s exact address. -->
+            <div class="info-card" style="padding:0;overflow:hidden;">
+              <iframe class="map-embed" title="Elara Wellness Clinic in Sarasota, FL" src="https://maps.google.com/maps?q=Sarasota%2C%20FL%2034231&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="info-card">
+              <h4>New Client Offer</h4>
+              <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.75;">
+                First time at Elara? Your first visit includes a complimentary
+                <strong style="color:var(--primary);">20-minute wellness consultation</strong>
+                with one of our practitioners to build your personalized care plan.
+                No cost, no commitment.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="faq section">
+      <div class="container">
+        <div class="section-header section-header--center animate">
+          <div class="eyebrow">Common Questions</div>
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know before your first visit.</p>
+        </div>
+        <div class="faq-list animate delay-1">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What should I do to prepare for my first visit?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Arrive 10-15 minutes early to complete a brief intake form. Wear comfortable clothing and avoid heavy meals 1-2 hours before your appointment. If you're booking a massage, you don't need to bring anything special - robes and disposable undergarments are provided.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do I need to have a specific health condition to benefit from your services?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Not at all. Many of our clients come in simply for stress relief, skin maintenance, or proactive wellness. You don't need to be dealing with a specific issue to benefit from massage, facials, yoga, or nutrition consulting - prevention and self-care are equally valuable goals.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How soon will I see results from facial treatments?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Many clients notice a visible glow immediately after a HydraFacial. For deeper concerns like fine lines, hyperpigmentation, or texture issues, the best results come from a series of treatments - typically 3-6 sessions over 2-3 months. Our esthetician will give you a realistic timeline during your consultation.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What is your cancellation policy?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                We ask for at least 24 hours notice to cancel or reschedule. Cancellations with less than 24 hours notice may incur a 50% session fee. We understand that emergencies happen - please call us as soon as possible and we'll do our best to accommodate you.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you offer gift cards?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                Yes. Gift cards are available in any amount and can be purchased in-clinic or by phone. They make a thoughtful gift for any occasion and never expire. Call us at (941) 555-0789 to purchase.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What are your wellness membership options?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <div class="faq-answer-inner">
+                We offer monthly memberships starting at $149/month that include discounted treatments, priority booking, and one complimentary session per month. Memberships are flexible - pause or cancel anytime with 30 days notice. Ask our team for our current membership menu.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Elara Wellness</span>
+            <span class="logo-tagline">Sarasota, FL</span>
+          </div>
+        </a>
+        <p>Luxury wellness treatments by licensed practitioners. Personalized care for body, mind, and spirit.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i data-lucide="music"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html">Book a Session</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="services.html">Therapeutic Massage</a></li>
+          <li><a href="services.html">Facial Treatments</a></li>
+          <li><a href="services.html">IV Therapy</a></li>
+          <li><a href="services.html">Yoga &amp; Meditation</a></li>
+          <li><a href="services.html">Body Treatments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>789 Bay Shore Dr<br>Sarasota, FL 34231</p>
+        <p><a href="tel:9415550789">(941) 555-0789</a></p>
+        <p><a href="mailto:hello@elarawellness.com">hello@elarawellness.com</a></p>
+        <p style="margin-top:0.75rem;font-size:0.8125rem;">Mon&ndash;Fri: 9am&ndash;7pm<br>Sat: 10am&ndash;5pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Elara Wellness Clinic. All rights reserved.</p>
+        <p>Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>

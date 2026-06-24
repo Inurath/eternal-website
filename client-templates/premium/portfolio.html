@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery &amp; Results | Elara Wellness Clinic</title>
+  <meta name="description" content="See our gallery of treatments and real client results at Elara Wellness Clinic in Sarasota, FL. Before and after skin transformations.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <header class="site-header solid">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Elara Wellness</span>
+          <span class="logo-tagline">Sarasota, FL</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html" class="active">Gallery</a></li>
+          <li><a href="contact.html" class="btn btn-accent">Book a Session</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="gallery-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>›</span><strong>Gallery &amp; Results</strong>
+        </nav>
+        <h1 class="animate">Gallery &amp; Results</h1>
+        <p class="animate delay-1">A look at our clinic, our team at work, and the real transformations our clients experience.</p>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header section-header--center animate">
+          <div class="eyebrow">Our Space &amp; Work</div>
+          <h2>Inside Elara</h2>
+          <p>A look inside our serene treatment suites, studios, and the products we use every day.</p>
+        </div>
+        <div class="gallery-grid animate-fade">
+          <div class="gallery-item tall">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-gallery-lobby-20260621.png" alt="Elara Wellness reception and lobby" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Reception &amp; Lobby</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-massage-20260621.png" alt="Massage treatment suite" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Massage Suite</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-facial-20260621.png" alt="HydraFacial session" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">HydraFacial Session</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-yoga-20260621.png" alt="Yoga and meditation room" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Yoga &amp; Meditation Room</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-iv-therapy-20260621.png" alt="IV therapy suite" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">IV Therapy Suite</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-body-20260621.png" alt="Body ritual treatment" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Body Ritual</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-nutrition-20260621.png" alt="Nutrition consultation" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Nutrition Consultation</span></div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-item-inner">
+              <img src="images/Elara-gallery-products-20260621.png" alt="Organic wellness products and credentials" loading="lazy">
+            </div>
+            <div class="gallery-overlay"><span class="gallery-caption">Our Credentials</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEFORE / AFTER SLIDER -->
+    <section class="ba-section">
+      <div class="container">
+        <div class="ba-intro animate">
+          <div class="eyebrow">Real Results</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(1.875rem,4vw,2.75rem);font-weight:400;color:var(--primary);margin-bottom:1rem;">Skin Transformations</h2>
+          <p style="color:var(--text-muted);line-height:1.75;">Drag the handle to compare before and after our HydraFacial series. Results after 3 monthly sessions.</p>
+        </div>
+        <div class="ba-slider animate delay-2" data-ba>
+          <div class="ba-after">
+            <div class="ba-after-img"><img src="images/after1.png" alt="After 3 HydraFacial sessions"></div>
+          </div>
+          <div class="ba-before">
+            <div class="ba-before-img"><img src="images/before1.png" alt="Before HydraFacial"></div>
+          </div>
+          <div class="ba-handle">
+            <div class="ba-handle-bar"></div>
+            <div class="ba-handle-circle">&#8596;</div>
+          </div>
+        </div>
+        <div class="ba-labels animate">
+          <span>Before - HydraFacial Series</span>
+          <span>After 3 Monthly Sessions</span>
+        </div>
+
+        <!-- Additional B/A pair -->
+        <div style="margin-top:3rem;">
+          <div class="ba-slider animate" data-ba>
+            <div class="ba-after">
+              <div class="ba-after-img"><img src="images/after2.png" alt="After 6 weeks of anti-aging treatment"></div>
+            </div>
+            <div class="ba-before">
+              <div class="ba-before-img"><img src="images/before2.png" alt="Before anti-aging treatment"></div>
+            </div>
+            <div class="ba-handle">
+              <div class="ba-handle-bar"></div>
+              <div class="ba-handle-circle">&#8596;</div>
+            </div>
+          </div>
+          <div class="ba-labels animate">
+            <span>Before - Anti-Aging Treatment</span>
+            <span>After 6 Weeks</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIENT RESULTS / TESTIMONIALS -->
+    <section class="testimonials section section-dark">
+      <div class="container">
+        <div class="section-header section-header--center section-header--light animate">
+          <div class="eyebrow" style="color:rgba(255,255,255,0.45);">Client Stories</div>
+          <h2>Results That Speak</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card animate delay-1">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"My skin is genuinely the best it's been in my 40s. Elena's approach to skincare is clinical and results-driven, not just relaxing spa fluff. Six months in and I'm a convert."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">TK</div>
+              <div><div class="t-name">Teresa K.</div><div class="t-detail">HydraFacial Series + Anti-Aging</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card animate delay-2">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"After my marathon I was completely broken down. James built me a recovery massage program and I was back to full training in three weeks instead of six. Extraordinary hands."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">RC</div>
+              <div><div class="t-name">Rafael C.</div><div class="t-detail">Sports Massage &amp; Recovery</div></div>
+            </div>
+          </div>
+          <div class="testimonial-card animate delay-3">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"Priya's nutrition program combined with weekly yoga has completely changed how I feel day-to-day. Down 18 lbs and I have more energy than I did at 30. I cannot recommend this enough."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">DM</div>
+              <div><div class="t-name">Diane M.</div><div class="t-detail">Nutrition + Yoga Program</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:var(--primary);padding:5rem 0;text-align:center;">
+      <div class="container animate">
+        <h2 style="font-family:Georgia,serif;font-size:clamp(1.875rem,4vw,2.875rem);font-weight:400;color:#fff;margin-bottom:1.25rem;">Your Transformation Starts Here</h2>
+        <p style="font-size:1.0625rem;color:rgba(255,255,255,0.72);max-width:480px;margin:0 auto 2.5rem;line-height:1.8;">Book a free consultation and let our practitioners build a personalized plan for your goals.</p>
+        <a href="contact.html" class="btn btn-accent btn-lg">Book Free Consultation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Elara Wellness</span>
+            <span class="logo-tagline">Sarasota, FL</span>
+          </div>
+        </a>
+        <p>Luxury wellness treatments by licensed practitioners. Personalized care for body, mind, and spirit.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i data-lucide="music"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html">Book a Session</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="services.html">Therapeutic Massage</a></li>
+          <li><a href="services.html">Facial Treatments</a></li>
+          <li><a href="services.html">IV Therapy</a></li>
+          <li><a href="services.html">Yoga &amp; Meditation</a></li>
+          <li><a href="services.html">Body Treatments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>789 Bay Shore Dr<br>Sarasota, FL 34231</p>
+        <p><a href="tel:9415550789">(941) 555-0789</a></p>
+        <p><a href="mailto:hello@elarawellness.com">hello@elarawellness.com</a></p>
+        <p style="margin-top:0.75rem;font-size:0.8125rem;">Mon&ndash;Fri: 9am&ndash;7pm<br>Sat: 10am&ndash;5pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Elara Wellness Clinic. All rights reserved.</p>
+        <p>Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>

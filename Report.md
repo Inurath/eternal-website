@@ -1318,3 +1318,16 @@ Local only.
 
 **Next:** CC will handle sound and any polish. Verification: reviews now match familygoldcare Google-only; logos transparent; colors closer to purple.
 
+
+
+### 2026-06-23 — Pushed perfect static version to production
+- Committed all final static HTML (index, pricing subpages, services subpages with media)
+- All assets (Higgsfield images, transparent logos, favicons etc.)
+- Report and notes updated
+- git push origin main successful (475c32c)
+- Netlify should auto-deploy the root static files on main (or set Publish directory to '.' in Netlify UI if still pointing to site/dist)
+- Live site: https://eternalwebsite.com will reflect the perfect version shortly (hard refresh / incognito after 1-2 min)
+- GitHub: https://github.com/Inurath/eternal-website
+
+All Web Tasks complete. Site pushed and production-ready.
+

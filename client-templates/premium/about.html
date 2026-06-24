@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Elara Wellness Clinic</title>
+  <meta name="description" content="Meet the Elara Wellness team. Founded by Dr. Sofia Marchetti, we offer luxury personalized wellness treatments in Sarasota, FL.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <header class="site-header solid">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Elara Wellness</span>
+          <span class="logo-tagline">Sarasota, FL</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html" class="btn btn-accent">Book a Session</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="about-hero-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>›</span><strong>About Us</strong>
+        </nav>
+        <h1 class="animate">Our Story</h1>
+        <p class="animate delay-1">Born from a belief that genuine wellness should be accessible, personal, and profoundly effective - not just expensive.</p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="about-story-section section">
+      <div class="container">
+        <div class="story-inner">
+          <div class="animate">
+            <!-- Swap images/Elara-founder-sofia-20260621.png for the client's real founder photo. -->
+            <img src="images/Elara-founder-sofia-20260621.png" alt="Dr. Sofia Marchetti, founder of Elara Wellness Clinic" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;box-shadow:var(--shadow-lg);display:block;" loading="lazy">
+          </div>
+          <div class="story-text animate delay-2">
+            <div class="eyebrow">Founded in 2018</div>
+            <h2>Built Around You,<br>Not Around Protocols</h2>
+            <p>
+              Dr. Sofia Marchetti founded Elara after 12 years working in clinical settings where she watched
+              patients get treated as conditions, not people. She wanted to build something different.
+            </p>
+            <p>
+              Elara was designed from the ground up to be the kind of place where every practitioner knows
+              your name, your history, and your goals - and every treatment is genuinely tailored to you.
+            </p>
+            <p>
+              Today we have a team of 8 licensed specialists and have served over 3,000 clients across Sarasota
+              County. Our approach combines evidence-based treatments with a luxury, unhurried environment that
+              makes every visit feel restorative from the moment you walk in.
+            </p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0;">
+              <div style="text-align:center;background:var(--bg-cream);border-radius:12px;padding:1.5rem 1rem;border:1px solid var(--border);">
+                <div style="font-family:Georgia,serif;font-size:1.875rem;color:var(--primary);font-weight:400;">3,000+</div>
+                <div style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.25rem;">Clients Served</div>
+              </div>
+              <div style="text-align:center;background:var(--bg-cream);border-radius:12px;padding:1.5rem 1rem;border:1px solid var(--border);">
+                <div style="font-family:Georgia,serif;font-size:1.875rem;color:var(--primary);font-weight:400;">8</div>
+                <div style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.25rem;">Licensed Specialists</div>
+              </div>
+              <div style="text-align:center;background:var(--bg-cream);border-radius:12px;padding:1.5rem 1rem;border:1px solid var(--border);">
+                <div style="font-family:Georgia,serif;font-size:1.875rem;color:var(--primary);font-weight:400;">500+</div>
+                <div style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.25rem;">5-Star Reviews</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy section section-alt">
+      <div class="container">
+        <div class="section-header section-header--center animate">
+          <div class="eyebrow">What We Believe</div>
+          <h2>Our Philosophy</h2>
+          <p>Every decision we make at Elara comes back to these four principles.</p>
+        </div>
+        <div class="philosophy-grid">
+          <div class="phil-card animate delay-1">
+            <div class="phil-icon"><i data-lucide="sprout"></i></div>
+            <h3>Whole-Person Care</h3>
+            <p>We treat the whole person, not isolated symptoms. Body, mind, and spirit are connected - our programs reflect that.</p>
+          </div>
+          <div class="phil-card animate delay-2">
+            <div class="phil-icon"><i data-lucide="microscope"></i></div>
+            <h3>Evidence-Based</h3>
+            <p>Every treatment we offer is grounded in clinical research. We don't offer wellness theater - we offer results.</p>
+          </div>
+          <div class="phil-card animate delay-3">
+            <div class="phil-icon"><i data-lucide="sparkles"></i></div>
+            <h3>True Luxury</h3>
+            <p>Luxury isn't about price - it's about the quality of attention. Every client receives our full focus and care.</p>
+          </div>
+          <div class="phil-card animate delay-4">
+            <div class="phil-icon"><i data-lucide="handshake"></i></div>
+            <h3>Long-Term Partnership</h3>
+            <p>We're not in the business of one-off treatments. We want to be your wellness partner for years - and we build that relationship intentionally.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team-section section">
+      <div class="container">
+        <div class="section-header section-header--center animate">
+          <div class="eyebrow">The Practitioners</div>
+          <h2>Meet Your Care Team</h2>
+          <p>Licensed, experienced, and genuinely passionate about your well-being.</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-card animate delay-1">
+            <div class="team-photo"><img src="images/Elara-team-sofia-20260621.png" alt="Dr. Sofia Marchetti, Founder and Clinical Director" loading="lazy"></div>
+            <div class="team-name">Dr. Sofia Marchetti</div>
+            <div class="team-role">Founder &amp; Clinical Director</div>
+            <p class="team-bio">12 years in clinical medicine before founding Elara. Specializes in whole-person wellness programs, nutrition, and IV therapy protocols.</p>
+          </div>
+          <div class="team-card animate delay-2">
+            <div class="team-photo"><img src="images/Elara-team-elena-20260621.png" alt="Elena Voss, Senior Esthetician" loading="lazy"></div>
+            <div class="team-name">Elena Voss</div>
+            <div class="team-role">Senior Esthetician</div>
+            <p class="team-bio">HydraFacial specialist and anti-aging expert. Trained in Paris and New York. Known for transformative skin results that speak for themselves.</p>
+          </div>
+          <div class="team-card animate delay-3">
+            <div class="team-photo"><img src="images/Elara-team-james-20260621.png" alt="James Park, Licensed Massage Therapist" loading="lazy"></div>
+            <div class="team-name">James Park</div>
+            <div class="team-role">Licensed Massage Therapist</div>
+            <p class="team-bio">Certified in deep tissue, Swedish, sports, and Thai massage. Former physical therapy assistant with a deep understanding of anatomy and recovery.</p>
+          </div>
+          <div class="team-card animate delay-4">
+            <div class="team-photo"><img src="images/Elara-team-priya-20260621.png" alt="Priya Nair, Nutritionist and Yoga Instructor" loading="lazy"></div>
+            <div class="team-name">Priya Nair</div>
+            <div class="team-role">Nutritionist &amp; Yoga Instructor</div>
+            <p class="team-bio">500-hour certified yoga instructor and registered dietitian. Leads our group yoga programs and personalized nutrition consulting services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:var(--primary);padding:5rem 0;text-align:center;">
+      <div class="container">
+        <div class="animate">
+          <div class="eyebrow" style="color:rgba(255,255,255,0.45);">Start Today</div>
+          <h2 style="font-family:Georgia,serif;font-size:clamp(1.875rem,4vw,3rem);font-weight:400;color:#fff;margin-bottom:1.25rem;">Your First Session Is On Us</h2>
+          <p style="font-size:1.0625rem;color:rgba(255,255,255,0.72);max-width:480px;margin:0 auto 2.5rem;line-height:1.8;">Book a free 20-minute wellness consultation. No commitment, no upsells - just clarity on where to start.</p>
+          <a href="contact.html" class="btn btn-accent btn-lg">Book Free Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Elara Wellness</span>
+            <span class="logo-tagline">Sarasota, FL</span>
+          </div>
+        </a>
+        <p>Luxury wellness treatments by licensed practitioners. Personalized care for body, mind, and spirit.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i data-lucide="music"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html">Book a Session</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="services.html">Therapeutic Massage</a></li>
+          <li><a href="services.html">Facial Treatments</a></li>
+          <li><a href="services.html">IV Therapy</a></li>
+          <li><a href="services.html">Yoga &amp; Meditation</a></li>
+          <li><a href="services.html">Body Treatments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>789 Bay Shore Dr<br>Sarasota, FL 34231</p>
+        <p><a href="tel:9415550789">(941) 555-0789</a></p>
+        <p><a href="mailto:hello@elarawellness.com">hello@elarawellness.com</a></p>
+        <p style="margin-top:0.75rem;font-size:0.8125rem;">Mon&ndash;Fri: 9am&ndash;7pm<br>Sat: 10am&ndash;5pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Elara Wellness Clinic. All rights reserved.</p>
+        <p>Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CUSTOMIZE: Update title, description for the client -->
+  <title>Elara Wellness Clinic | Sarasota, FL</title>
+  <meta name="description" content="Luxury wellness clinic in Sarasota, FL. Therapeutic massage, facials, IV therapy, yoga, nutrition consulting, and more. Book your session today.">
+  <meta property="og:title" content="Elara Wellness Clinic | Sarasota, FL">
+  <meta property="og:description" content="Elevate your wellness. Expert practitioners, personalized care, and transformative results in Sarasota, FL.">
+  <meta property="og:type" content="website">
+  <!-- Local Business Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Elara Wellness Clinic",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "789 Bay Shore Dr",
+      "addressLocality": "Sarasota",
+      "addressRegion": "FL",
+      "postalCode": "34231"
+    },
+    "telephone": "(941) 555-0789",
+    "url": "https://www.elarawellness.com",
+    "openingHours": ["Mo-Fr 09:00-19:00", "Sa 10:00-17:00"]
+  }
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION - Copy to every page.
+       On inner pages: add class="solid" to site-header and
+       remove class="header-transparent" from nav links logic.
+  ============================================================ -->
+  <header class="site-header header-transparent" data-home-nav>
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Elara Wellness</span>
+          <span class="logo-tagline">Sarasota, FL</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html" class="btn btn-accent">Book a Session</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-decor" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-eyebrow animate">
+          <span></span>Sarasota's Premier Wellness Destination<span></span>
+        </div>
+        <h1 class="animate delay-1">
+          Restore Your<br><em>Body, Mind &amp;</em><br>Spirit
+        </h1>
+        <p class="hero-sub animate delay-2">
+          Personalized wellness experiences designed around you - from therapeutic
+          massage and advanced facials to IV therapy and mindfulness programs.
+        </p>
+        <div class="hero-actions animate delay-3">
+          <a href="contact.html" class="btn btn-accent btn-lg">Book Your Session</a>
+          <a href="services.html" class="btn btn-outline-white btn-lg">Explore Services</a>
+        </div>
+        <div class="hero-trust animate delay-4">
+          <div class="hero-trust-item"><span>✦</span> Licensed Practitioners</div>
+          <div class="hero-trust-item"><span>✦</span> Luxury Private Suites</div>
+          <div class="hero-trust-item"><span>✦</span> Personalized Care Plans</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES OVERVIEW -->
+    <section class="services-home section section-alt">
+      <div class="container">
+        <div class="section-header section-header--center animate">
+          <div class="eyebrow">Our Offerings</div>
+          <h2>Treatments Designed for<br>Total Transformation</h2>
+          <p>Every service is tailored to your unique needs and goals by our team of licensed practitioners.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card animate delay-1">
+            <div class="service-icon-wrap"><i data-lucide="heart-pulse"></i></div>
+            <h3>Therapeutic Massage</h3>
+            <p>Deep tissue, Swedish, hot stone, and prenatal massage by licensed therapists with 10+ years of experience.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card animate delay-2">
+            <div class="service-icon-wrap"><i data-lucide="sparkles"></i></div>
+            <h3>Facial Treatments</h3>
+            <p>HydraFacial, anti-aging, chemical peels, and custom glow treatments. Real results, no downtime.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card animate delay-3">
+            <div class="service-icon-wrap"><i data-lucide="droplets"></i></div>
+            <h3>IV Vitamin Therapy</h3>
+            <p>Immunity, energy, hydration, and beauty IV drips formulated by our clinical team. 45-minute sessions.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card animate delay-1">
+            <div class="service-icon-wrap"><i data-lucide="activity"></i></div>
+            <h3>Yoga &amp; Meditation</h3>
+            <p>Private and group sessions for all levels. Hatha, Vinyasa, restorative, and guided mindfulness.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card animate delay-2">
+            <div class="service-icon-wrap"><i data-lucide="leaf"></i></div>
+            <h3>Body Treatments</h3>
+            <p>Detox wraps, exfoliation, and signature body rituals using premium organic ingredients.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+          <div class="service-card animate delay-3">
+            <div class="service-icon-wrap"><i data-lucide="salad"></i></div>
+            <h3>Nutrition Consulting</h3>
+            <p>Personalized nutrition plans, metabolic testing, and ongoing coaching by our certified nutritionist.</p>
+            <a href="services.html" class="service-link">Explore &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SNIPPET -->
+    <section class="about-snippet section">
+      <div class="container">
+        <div class="about-snippet-inner">
+          <div class="about-visual animate">
+            <div class="about-main-photo">
+              <!-- Swap images/Elara-clinic-interior-20260621.png for the client's real clinic interior. -->
+              <img src="images/Elara-clinic-interior-20260621.png" alt="The serene interior of Elara Wellness Clinic">
+            </div>
+            <div class="about-badge">
+              <span class="badge-num">500+</span>
+              <span class="badge-label">5-Star Reviews</span>
+            </div>
+          </div>
+          <div class="about-snippet-text animate delay-2">
+            <div class="eyebrow">Our Philosophy</div>
+            <h2>Wellness Isn't a Luxury  - <br>It's a Foundation</h2>
+            <p>
+              Founded by Dr. Sofia Marchetti, Elara was built on one conviction: that every person deserves
+              expert, personalized care in an environment that feels truly restorative.
+            </p>
+            <p>
+              We don't believe in one-size-fits-all treatments. Every session begins with a consultation so
+              we can build a plan that actually fits your body, your goals, and your schedule.
+            </p>
+            <div class="about-pills">
+              <span class="pill">Licensed & Certified</span>
+              <span class="pill">Organic Products</span>
+              <span class="pill">Private Suites</span>
+              <span class="pill">Free Consultation</span>
+            </div>
+            <a href="about.html" class="btn btn-outline">Learn Our Story</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials section section-dark">
+      <div class="container">
+        <div class="section-header section-header--center section-header--light animate">
+          <div class="eyebrow" style="color:rgba(255,255,255,0.45)">What Clients Say</div>
+          <h2>Transformative Experiences,<br>Real Results</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card animate delay-1">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"My HydraFacial series with Elena completely changed my skin. Three months in and I get compliments weekly. The environment here is unlike anything else in Sarasota."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">SD</div>
+              <div>
+                <div class="t-name">Sophia D.</div>
+                <div class="t-detail">HydraFacial Series Client</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card animate delay-2">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"I started with monthly massages and now I'm on a full wellness plan with IV therapy and nutrition coaching. My energy levels are at a 10. This place genuinely changed my life."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">MR</div>
+              <div>
+                <div class="t-name">Michael R.</div>
+                <div class="t-detail">Wellness Plan Member</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card animate delay-3">
+            <div class="quote-icon">&ldquo;</div>
+            <div class="stars">★★★★★</div>
+            <blockquote>"Dr. Marchetti designed a nutrition and mindfulness plan that helped me lose 22 pounds in 4 months, sustainably. The attention and care here is extraordinary."</blockquote>
+            <div class="t-author">
+              <div class="t-avatar">JK</div>
+              <div>
+                <div class="t-name">Janet K.</div>
+                <div class="t-detail">Nutrition & Wellness Client</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-band">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div class="animate">
+            <h2>Wellness Tips,<br>Exclusive Offers</h2>
+            <p>Join 2,000+ subscribers who get our monthly wellness guides, seasonal specials, and early access to new treatments.</p>
+          </div>
+          <div class="animate delay-2">
+            <!-- Update form action for production (Mailchimp, ConvertKit, etc.) -->
+            <form class="newsletter-form" action="#" method="POST">
+              <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address">
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+            <p style="font-size:0.8125rem;color:rgba(255,255,255,0.6);margin-top:0.75rem;">No spam. Unsubscribe any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER - Copy to every page -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-symbol"><i data-lucide="leaf"></i></div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Elara Wellness</span>
+            <span class="logo-tagline">Sarasota, FL</span>
+          </div>
+        </a>
+        <p>Luxury wellness treatments by licensed practitioners. Personalized care for body, mind, and spirit.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="TikTok"><i data-lucide="music"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="contact.html">Book a Session</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Treatments</h4>
+        <ul>
+          <li><a href="services.html">Therapeutic Massage</a></li>
+          <li><a href="services.html">Facial Treatments</a></li>
+          <li><a href="services.html">IV Therapy</a></li>
+          <li><a href="services.html">Yoga &amp; Meditation</a></li>
+          <li><a href="services.html">Body Treatments</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>789 Bay Shore Dr<br>Sarasota, FL 34231</p>
+        <p><a href="tel:9415550789">(941) 555-0789</a></p>
+        <p><a href="mailto:hello@elarawellness.com">hello@elarawellness.com</a></p>
+        <p style="margin-top:0.75rem;font-size:0.8125rem;">Mon&ndash;Fri: 9am&ndash;7pm<br>Sat: 10am&ndash;5pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Elara Wellness Clinic. All rights reserved.</p>
+        <p>Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>

@@ -19,7 +19,7 @@ npm run preview   # or npx serve dist
 
 ## Project Notes
 
-- **Full documentation & decisions:** See the parent vault `Report.md` (and `notes/`) at the root of `/home/randy/Documents/Eternal Website/`.
+- **Full documentation & decisions:** See the parent vault `Report.md` (and `notes/`) at the root of `/home/randy/Documents/Web Agency/eternalwebsite.com/`.
 - This `site/` folder contains the Astro source. The vault root holds the second-brain notes, research, pricing, content, and project Report.
 - Every source file has (or will have) a companion `.md` note explaining purpose, tradeoffs, and how to customize for client projects.
 - Tech: Astro + Tailwind (v4) + TS. Static output. Purple accent (#8b3fff) for brand consistency with the owner's rice.

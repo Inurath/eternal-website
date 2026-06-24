@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Summit Property Group</title>
+  <meta name="description" content="Contact Summit Property Group for a free real estate consultation in Sarasota, FL. Call (941) 555-0456 or fill out our form.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Set dark/light mode before first paint to avoid a flash of the wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-mark">S</div>
+        <div class="logo-text-wrap">
+          <span class="logo-name">Summit Property Group</span>
+          <span class="logo-tagline">Sarasota, FL</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" type="button">
+          <i data-lucide="moon"></i>
+        </button>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html" class="btn btn-accent active">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span>›</span><strong>Contact</strong>
+        </nav>
+        <h1>Let's Talk</h1>
+        <p>Schedule a free 30-minute consultation or send us a message. We respond same business day.</p>
+      </div>
+    </section>
+
+    <section class="contact-page section">
+      <div class="container">
+        <div class="contact-inner">
+
+          <!-- FORM: update action="YOUR_FORM_ENDPOINT" for production -->
+          <form class="contact-form" action="#" method="POST">
+            <h3>Request a Free Consultation</h3>
+            <p class="form-intro">Tell us about your situation and we'll reach out to schedule a time that works for you.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Carlos" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Rivera" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="carlos@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(941) 555-0000" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="interest">I Am Interested In *</label>
+              <select id="interest" name="interest" required>
+                <option value="">Select one...</option>
+                <option>Buying a Home</option>
+                <option>Selling My Home</option>
+                <option>Renting a Property</option>
+                <option>Investment Properties</option>
+                <option>Commercial Real Estate</option>
+                <option>Property Management</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="budget">Budget / Price Range</label>
+                <select id="budget" name="budget">
+                  <option value="">Select range...</option>
+                  <option>Under $300,000</option>
+                  <option>$300,000 - $500,000</option>
+                  <option>$500,000 - $800,000</option>
+                  <option>$800,000 - $1.5M</option>
+                  <option>Over $1.5M</option>
+                  <option>Not applicable</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="timeline">Timeline</label>
+                <select id="timeline" name="timeline">
+                  <option value="">Select timeline...</option>
+                  <option>Within 30 days</option>
+                  <option>1-3 months</option>
+                  <option>3-6 months</option>
+                  <option>6-12 months</option>
+                  <option>Just exploring</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us More</label>
+              <textarea id="message" name="message" rows="4" placeholder="Describe your situation, what you're looking for, or any questions you have..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send My Consultation Request</button>
+          </form>
+
+          <!-- SIDEBAR -->
+          <div class="contact-sidebar">
+
+            <div class="contact-info-box">
+              <h3>Our Office</h3>
+              <div class="contact-item">
+                <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+                <div>
+                  <strong>Address</strong>
+                  <p>456 Magnolia Blvd, Suite 200<br>Sarasota, FL 34236</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i data-lucide="phone"></i></div>
+                <div>
+                  <strong>Phone</strong>
+                  <p><a href="tel:9415550456">(941) 555-0456</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i data-lucide="mail"></i></div>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:info@summitpropertygroup.com">info@summitpropertygroup.com</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i data-lucide="clock"></i></div>
+                <div>
+                  <strong>Office Hours</strong>
+                  <p>Mon &ndash; Fri: 9:00 AM &ndash; 6:00 PM<br>Saturday: 10:00 AM &ndash; 3:00 PM<br>Sunday: By appointment</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Google Maps embed. Swap the q= location for the client's exact address. -->
+            <div class="contact-info-box" style="padding:0;overflow:hidden;">
+              <iframe
+                class="map-embed"
+                title="Summit Property Group office in Sarasota, FL"
+                src="https://maps.google.com/maps?q=Sarasota%2C%20FL%2034236&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="contact-info-box">
+              <h3>Quick Response Guarantee</h3>
+              <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.7;">
+                We respond to all consultation requests within 4 business hours.
+                If you need to speak with someone immediately, please call us directly at
+                <a href="tel:9415550456" style="color:var(--primary);font-weight:600;">(941) 555-0456</a>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-mark">S</div>
+          <div class="logo-text-wrap">
+            <span class="logo-name">Summit Property Group</span>
+            <span class="logo-tagline">Sarasota, FL</span>
+          </div>
+        </a>
+        <p>Your trusted real estate partner in Sarasota County since 2010. Residential, commercial, and investment.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Home Buying</a></li>
+          <li><a href="services.html">Home Selling</a></li>
+          <li><a href="services.html">Rentals</a></li>
+          <li><a href="services.html">Investments</a></li>
+          <li><a href="services.html">Commercial</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Office</h4>
+        <p class="contact-line">456 Magnolia Blvd, Suite 200<br>Sarasota, FL 34236</p>
+        <p class="contact-line"><a href="tel:9415550456">(941) 555-0456</a></p>
+        <p class="contact-line"><a href="mailto:info@summitpropertygroup.com">info@summitpropertygroup.com</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Summit Property Group. All rights reserved.</p>
+        <p>Website by <a href="https://eternalwebsite.com">Eternal Website</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('is-open');
+    });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+  <script src="dark-mode.js"></script>
+</body>
+</html>
