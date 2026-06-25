@@ -654,6 +654,8 @@ input, select, textarea, button { font-family: inherit; }
 @media (max-width: 480px) {
   .section { padding: 4rem 0; }
   .about-badge { right: 0; bottom: -1rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero-content { padding-top: 7rem; }
 }
 
 /* ============================================================
