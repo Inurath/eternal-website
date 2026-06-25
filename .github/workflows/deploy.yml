@@ -15,7 +15,7 @@ jobs:
           username: master_eternal
           key: ${{ secrets.CLOUDWAYS_SSH_KEY }}
           script: |
-            echo 'TODO: update cd path for this application public_html'
-            cd /home/master_eternal/applications/PLACEHOLDER/public_html
+            echo '🚀 Starting deployment for eternalwebsite.com'
+            cd /home/master_eternal/applications/cphuypcgph/public_html
             git pull origin main
             echo '✅ Deployment completed at $(date)'
