@@ -505,14 +505,18 @@
           <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
           <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
           <input type="tel" name="phone" placeholder="Phone (optional)" class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg">
-
+          
           <textarea name="message" placeholder="Your Message" rows="6" required class="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg"></textarea>
-
+          
           <!-- Anti-spam -->
           <input type="text" name="_gotcha" style="display:none;">
 
           <button type="submit" class="w-full btn btn-primary py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl">Send Message</button>
       </form>
+
+      <div id="form-success" class="hidden mt-4 p-4 bg-indigo-50 dark:bg-indigo-900/30 border border-purple-200 dark:border-purple-800 rounded-lg text-sm text-purple-700 dark:text-purple-300">
+          Thank you! Your message has been sent. We'll reply to the email you provided within 24 hours.
+      </div>
 
     </div>
   </section>
@@ -562,6 +566,39 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initTheme);
     } else { initTheme(); }
+
+    // Contact form submission (sends to Cloudflare Worker → email at info@eternalwebsite.com)
+    (function() {
+      const form = document.getElementById("contact-form");
+      const success = document.getElementById("form-success");
+      if (!form || !success) return;
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const submitButton = form.querySelector("button[type=\"submit\"]");
+        if (submitButton) submitButton.disabled = true;
+
+        try {
+          await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            redirect: "manual"
+          });
+
+          form.reset();
+          success.classList.remove("hidden");
+          success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        } catch (err) {
+          alert("Sorry, there was a problem sending your message. Please email us directly at info@eternalwebsite.com");
+          console.error("Form submission error:", err);
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+    })();
 
     // Nav shadow on scroll
     window.addEventListener('scroll', function () {
