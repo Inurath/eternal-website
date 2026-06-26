@@ -577,28 +577,20 @@
       form.addEventListener("submit", async function(e) {
         e.preventDefault();
 
-        const formData = new FormData(form);
-        const params = new URLSearchParams(formData);
         const submitButton = form.querySelector("button[type=\"submit\"]");
         if (submitButton) submitButton.disabled = true;
 
-        try {
-          const formData = new FormData(form);
-          await fetch(form.action, {
-            method: "POST",
-            body: formData
-          });
+        await fetch(form.action, {
+          method: "POST",
+          mode: "no-cors",
+          body: new FormData(form)
+        });
 
-          form.reset();
-          success.classList.remove("hidden");
-          success.scrollIntoView({ behavior: "smooth", block: "center" });
+        form.reset();
+        success.classList.remove("hidden");
+        success.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        } catch (err) {
-          alert("Sorry, there was a problem sending your message. Please email us directly at info@eternalwebsite.com");
-          console.error("Form submission error:", err);
-        } finally {
-          if (submitButton) submitButton.disabled = false;
-        }
+        if (submitButton) submitButton.disabled = false;
       });
     })();
 
